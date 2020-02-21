@@ -29,7 +29,7 @@ public class Player {
 	private float yspeedm = 1;
 	private float xspeedp = 1;
 	private float yspeedp = 1;
-	private float accel = 3;
+	private float accel = 5;
 	private int q = 0;
 	public static void initialize() {
 		hvlLoad("arrowup.png"); //0
@@ -60,17 +60,17 @@ public class Player {
 		} else {
 			yspeedm = 1;
 		}
-		if( xspeedm > 2){
-			xspeedm = 2;
+		if( xspeedm > 3){
+			xspeedm = 3;
 			}
-		if(xspeedp > 2) {
-			xspeedp = 2;
+		if(xspeedp > 3) {
+			xspeedp = 3;
 		}
-		if(yspeedp > 2) {
-			yspeedp = 2;
+		if(yspeedp > 3) {
+			yspeedp = 3;
 		}
-		if(yspeedm > 2) {
-			yspeedm = 2;
+		if(yspeedm > 3) {
+			yspeedm = 3;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)) {
 			yPos = yPos - 1*yspeedm;

@@ -33,7 +33,10 @@ public Bullet(float xArg, float yArg, float xSpeedArg,float ySpeedArg){
 		yPos = yArg;
 
 	}
-	
+	public void fire(float xSpeedArg, float ySpeedArg) {
+		xSpeed=xSpeedArg;
+		ySpeed=ySpeedArg;
+	}
 /* public void update(float delta, Player player) {
 		if(Keyboard.isKeyDown(Keyboard.KEY_UP) && !(Keyboard.isKeyDown(Keyboard.KEY_LEFT))  && !(Keyboard.isKeyDown(Keyboard.KEY_DOWN))  && !(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) && bulletTime == 1 ) {
 			yPos = (player.getyPos() - 5);
