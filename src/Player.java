@@ -21,7 +21,8 @@ public class Player {
 	public static final float PLAYER_START_X = 1280/2;
 	public static final float PLAYER_START_Y = 720/2;
 	
-	public static final float PLAYER_SIZE = 20;
+	public static final float PLAYER_WIDTH = 40;
+	public static final float PLAYER_HEIGHT = 80;
 	private float xPos = 1280/2;
 	private float yPos = 720 / 2;
 	private float xspeedm = 1;
@@ -30,16 +31,16 @@ public class Player {
 	private float xspeedp = 1;
 	private float yspeedp = 1;
 	private float accel = 5;
-	private int q = 0;
+	private int playerTexture = 0;
 	public static void initialize() {
-		hvlLoad("arrowup.png"); //0
+		hvlLoad("PlayerBlueBack.png"); //0
 		hvlLoad("arrowleft.png"); //1
 		hvlLoad("arrowright.png"); //2
-		hvlLoad("arrowdown.png"); //3
+		hvlLoad("PlayerBlue.png"); //3
+		
 	}
 
 	public void update(float delta) {
-		//System.out.println(xspeedp);
 		if(Keyboard.isKeyDown(Keyboard.KEY_A)) {
 			xspeedm = xspeedm + delta*accel;
 		} else {
@@ -74,19 +75,19 @@ public class Player {
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_W)) {
 			yPos = yPos - 1*yspeedm;
-			q = 0;
+			playerTexture = 0;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_S)) {
 			yPos = yPos + 1*yspeedp;
-			q = 3;
+			playerTexture = 3;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_A)) {
 			xPos = xPos - 1*xspeedm;
-			q = 1;
+			playerTexture = 1;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_D)) {
 			xPos = xPos + 1*xspeedp;
-			q = 2;
+			playerTexture = 2;
 		}
 		if(xPos > 1270) {
 			xPos = 1270;} 
@@ -100,7 +101,7 @@ public class Player {
 	
 	public void draw(float delta){
 		
-		hvlDraw(hvlQuadc(xPos, yPos, PLAYER_SIZE, PLAYER_SIZE), hvlTexture(q));
+		hvlDraw(hvlQuadc(xPos, yPos, PLAYER_WIDTH, PLAYER_HEIGHT), hvlTexture(playerTexture));
 		
 	}
 		

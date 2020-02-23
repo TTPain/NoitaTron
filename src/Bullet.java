@@ -17,25 +17,27 @@ public class Bullet {
 	private int bulletDirection;
 	private static boolean bulletDrawn = false;
 	private boolean fired = false;
+	
 public Bullet(float xArg, float yArg, float xSpeedArg,float ySpeedArg){
 		xSpeed=xSpeedArg;
 		ySpeed=ySpeedArg;
 		xPos = xArg;
 		yPos = yArg;
 
-	}
+}
+
 	public void fire(float xSpeedArg, float ySpeedArg) {
 		xSpeed=xSpeedArg;
 		ySpeed=ySpeedArg;
-	}
+}
 	
 public int getBulletDirection() {
 		return bulletDirection;
-	}
+}
 
 public void setBulletDirection(int bulletDirection) {
 		this.bulletDirection = bulletDirection;
-	}
+}
 
 public boolean isOnScreen() {
 	if((xPos > 0 && xPos < 1280) && (yPos > 0 && yPos < 720)) {

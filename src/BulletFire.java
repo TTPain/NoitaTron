@@ -23,7 +23,9 @@ public class BulletFire {
 	private static boolean b5drawn = false;
 	private static boolean b6drawn = false;
 	private static boolean b7drawn = false;
-	private static boolean b8drawn = false;
+	
+	private static float bSpeedC = 1650;
+	private static float bSpeedD = 1167;
 
 	private static int bulletDirection=0;
 	private static float cooldown = 0.0f;
@@ -40,45 +42,44 @@ public class BulletFire {
 public static void update(float delta,Player player) {
 
 if(Keyboard.isKeyDown(Keyboard.KEY_UP)) {
-	bulletDirection=1;
-	
+	bulletDirection=1;	
 }
+
 if(Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
-	bulletDirection=5;
-	
+	bulletDirection=5;	
 }
+
 if(Keyboard.isKeyDown(Keyboard.KEY_LEFT)) {
 	bulletDirection=7;
-	
 }
+
 if(Keyboard.isKeyDown(Keyboard.KEY_RIGHT)) {
-	bulletDirection=3;
-	
+	bulletDirection=3;	
 }
+
 if(Keyboard.isKeyDown(Keyboard.KEY_UP) && (Keyboard.isKeyDown(Keyboard.KEY_RIGHT))) {
-	bulletDirection=2;
-	
+	bulletDirection=2;	
 }
+
 if(Keyboard.isKeyDown(Keyboard.KEY_DOWN) && (Keyboard.isKeyDown(Keyboard.KEY_RIGHT))) {
-	bulletDirection=4;
-	
+	bulletDirection=4;	
 }
+
 if(Keyboard.isKeyDown(Keyboard.KEY_DOWN) && (Keyboard.isKeyDown(Keyboard.KEY_LEFT))) {
 	bulletDirection=6;
-	
 }
+
 if(Keyboard.isKeyDown(Keyboard.KEY_UP) && (Keyboard.isKeyDown(Keyboard.KEY_LEFT))) {
 	bulletDirection=8;
-	
 }
+
 if(cooldown>0) {
-		cooldown = cooldown-(delta*10);
-	}
+		cooldown = cooldown-(delta*15);
+}
+
 if(cooldown<0) {
 		cooldown=0;
-	}
-
-
+}
 
 //draw bullet if it is in playfield and make it move in the direction specified, below
 
@@ -88,36 +89,36 @@ if(fire1==false && bulletDirection>0 && (cooldown==0)) {
 		cooldown=1;
 	}
 	if(bulletDirection==1) {
-		bullet1.setySpeed(-1000);
+		bullet1.setySpeed(-bSpeedC);
 		bullet1.setxSpeed(0);
 	}
 	else if(bulletDirection==2) {
-		bullet1.setySpeed(-707);
-		bullet1.setxSpeed(707);
+		bullet1.setySpeed(-bSpeedD);
+		bullet1.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==3) {
 		bullet1.setySpeed(0);
-		bullet1.setxSpeed(1000);
+		bullet1.setxSpeed(bSpeedC);
 	}
 	else if(bulletDirection==4) {
-		bullet1.setySpeed(707);
-		bullet1.setxSpeed(707);
+		bullet1.setySpeed(bSpeedD);
+		bullet1.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==5) {
-		bullet1.setySpeed(1000);
+		bullet1.setySpeed(bSpeedC);
 		bullet1.setxSpeed(0);
 	}
 	else if(bulletDirection==6) {
-		bullet1.setySpeed(707);
-		bullet1.setxSpeed(-707);
+		bullet1.setySpeed(bSpeedD);
+		bullet1.setxSpeed(-bSpeedD);
 	}
 	else if(bulletDirection==7) {
 		bullet1.setySpeed(0);
-		bullet1.setxSpeed(-1000);
+		bullet1.setxSpeed(-bSpeedC);
 	}
 	else if(bulletDirection==8) {
-		bullet1.setySpeed(-707);
-		bullet1.setxSpeed(-707);
+		bullet1.setySpeed(-bSpeedD);
+		bullet1.setxSpeed(-bSpeedD);
 	}
 }
 	
@@ -127,36 +128,36 @@ if(b1drawn==true && fire1==true && fire2==false && bulletDirection>0 && cooldown
 		cooldown=1;
 	}
 	if(bulletDirection==1) {
-		bullet2.setySpeed(-1000);
+		bullet2.setySpeed(-bSpeedC);
 		bullet2.setxSpeed(0);
 	}
 	else if(bulletDirection==2) {
-		bullet2.setySpeed(-707);
-		bullet2.setxSpeed(707);
+		bullet2.setySpeed(-bSpeedD);
+		bullet2.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==3) {
 		bullet2.setySpeed(0);
-		bullet2.setxSpeed(1000);
+		bullet2.setxSpeed(bSpeedC);
 	}
 	else if(bulletDirection==4) {
-		bullet2.setySpeed(707);
-		bullet2.setxSpeed(707);
+		bullet2.setySpeed(bSpeedD);
+		bullet2.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==5) {
-		bullet2.setySpeed(1000);
+		bullet2.setySpeed(bSpeedC);
 		bullet2.setxSpeed(0);
 	}
 	else if(bulletDirection==6) {
-		bullet2.setySpeed(707);
-		bullet2.setxSpeed(-707);
+		bullet2.setySpeed(bSpeedD);
+		bullet2.setxSpeed(-bSpeedD);
 	}
 	else if(bulletDirection==7) {
 		bullet2.setySpeed(0);
-		bullet2.setxSpeed(-1000);
+		bullet2.setxSpeed(-bSpeedC);
 	}
 	else if(bulletDirection==8) {
-		bullet2.setySpeed(-707);
-		bullet2.setxSpeed(-707);
+		bullet2.setySpeed(-bSpeedD);
+		bullet2.setxSpeed(-bSpeedD);
 	}
 }
 
@@ -166,36 +167,36 @@ if(b1drawn==true && b2drawn==true && fire1==true && fire2==true && fire3==false 
 		cooldown=1;
 	}
 	if(bulletDirection==1) {
-		bullet3.setySpeed(-1000);
+		bullet3.setySpeed(-bSpeedC);
 		bullet3.setxSpeed(0);
 	}
 	else if(bulletDirection==2) {
-		bullet3.setySpeed(-707);
-		bullet3.setxSpeed(707);
+		bullet3.setySpeed(-bSpeedD);
+		bullet3.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==3) {
 		bullet3.setySpeed(0);
-		bullet3.setxSpeed(1000);
+		bullet3.setxSpeed(bSpeedC);
 	}
 	else if(bulletDirection==4) {
-		bullet3.setySpeed(707);
-		bullet3.setxSpeed(707);
+		bullet3.setySpeed(bSpeedD);
+		bullet3.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==5) {
-		bullet3.setySpeed(1000);
+		bullet3.setySpeed(bSpeedC);
 		bullet3.setxSpeed(0);
 	}
 	else if(bulletDirection==6) {
-		bullet3.setySpeed(707);
-		bullet3.setxSpeed(-707);
+		bullet3.setySpeed(bSpeedD);
+		bullet3.setxSpeed(-bSpeedD);
 	}
 	else if(bulletDirection==7) {
 		bullet3.setySpeed(0);
-		bullet3.setxSpeed(-1000);
+		bullet3.setxSpeed(-bSpeedC);
 	}
 	else if(bulletDirection==8) {
-		bullet3.setySpeed(-707);
-		bullet3.setxSpeed(-707);
+		bullet3.setySpeed(-bSpeedD);
+		bullet3.setxSpeed(-bSpeedD);
 	}
 }
 
@@ -204,36 +205,36 @@ if(b1drawn==true && b2drawn==true && fire1==true && fire2==true && fire3==false 
 if(b1drawn==true && b2drawn==true && b3drawn==true && fire1==true && fire2==true && fire3==true && fire4==false && bulletDirection>0 && cooldown==0 ) {
 	fire4=true;
 	if(bulletDirection==1) {
-		bullet4.setySpeed(-1000);
+		bullet4.setySpeed(-bSpeedC);
 		bullet4.setxSpeed(0);
 	}
 	else if(bulletDirection==2) {
-		bullet4.setySpeed(-707);
-		bullet4.setxSpeed(707);
+		bullet4.setySpeed(-bSpeedD);
+		bullet4.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==3) {
 		bullet4.setySpeed(0);
-		bullet4.setxSpeed(1000);
+		bullet4.setxSpeed(bSpeedC);
 	}
 	else if(bulletDirection==4) {
-		bullet4.setySpeed(707);
-		bullet4.setxSpeed(707);
+		bullet4.setySpeed(bSpeedD);
+		bullet4.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==5) {
-		bullet4.setySpeed(1000);
+		bullet4.setySpeed(bSpeedC);
 		bullet4.setxSpeed(0);
 	}
 	else if(bulletDirection==6) {
-		bullet4.setySpeed(707);
-		bullet4.setxSpeed(-707);
+		bullet4.setySpeed(bSpeedD);
+		bullet4.setxSpeed(-bSpeedD);
 	}
 	else if(bulletDirection==7) {
 		bullet4.setySpeed(0);
-		bullet4.setxSpeed(-1000);
+		bullet4.setxSpeed(-bSpeedC);
 	}
 	else if(bulletDirection==8) {
-		bullet4.setySpeed(-707);
-		bullet4.setxSpeed(-707);
+		bullet4.setySpeed(-bSpeedD);
+		bullet4.setxSpeed(-bSpeedD);
 	}
 	if(cooldown==0) {
 		cooldown=1;
@@ -247,36 +248,36 @@ if(b1drawn==true && b2drawn==true && b3drawn==true && b4drawn==true && fire1==tr
 && fire4==true && fire5==false && bulletDirection>0 && cooldown==0 ) {
 	fire5=true;
 	if(bulletDirection==1) {
-		bullet5.setySpeed(-1000);
+		bullet5.setySpeed(-bSpeedC);
 		bullet5.setxSpeed(0);
 	}
 	else if(bulletDirection==2) {
-		bullet5.setySpeed(-707);
-		bullet5.setxSpeed(707);
+		bullet5.setySpeed(-bSpeedD);
+		bullet5.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==3) {
 		bullet5.setySpeed(0);
-		bullet5.setxSpeed(1000);
+		bullet5.setxSpeed(bSpeedC);
 	}
 	else if(bulletDirection==4) {
-		bullet5.setySpeed(707);
-		bullet5.setxSpeed(707);
+		bullet5.setySpeed(bSpeedD);
+		bullet5.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==5) {
-		bullet5.setySpeed(1000);
+		bullet5.setySpeed(bSpeedC);
 		bullet5.setxSpeed(0);
 	}
 	else if(bulletDirection==6) {
-		bullet5.setySpeed(707);
-		bullet5.setxSpeed(-707);
+		bullet5.setySpeed(bSpeedD);
+		bullet5.setxSpeed(-bSpeedD);
 	}
 	else if(bulletDirection==7) {
 		bullet5.setySpeed(0);
-		bullet5.setxSpeed(-1000);
+		bullet5.setxSpeed(-bSpeedC);
 	}
 	else if(bulletDirection==8) {
-		bullet5.setySpeed(-707);
-		bullet5.setxSpeed(-707);
+		bullet5.setySpeed(-bSpeedD);
+		bullet5.setxSpeed(-bSpeedD);
 	}
 	if(cooldown==0) {
 		cooldown=1;
@@ -287,36 +288,36 @@ if(b1drawn==true && b2drawn==true && b3drawn==true && b4drawn==true && b5drawn =
 	&& fire4==true && fire5==true && fire6==false && bulletDirection>0 && cooldown==0 ) {
 	fire6=true;
 	if(bulletDirection==1) {
-		bullet6.setySpeed(-1000);
+		bullet6.setySpeed(-bSpeedC);
 		bullet6.setxSpeed(0);
 	}
 	else if(bulletDirection==2) {
-		bullet6.setySpeed(-707);
-		bullet6.setxSpeed(707);
+		bullet6.setySpeed(-bSpeedD);
+		bullet6.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==3) {
 		bullet6.setySpeed(0);
-		bullet6.setxSpeed(1000);
+		bullet6.setxSpeed(bSpeedC);
 	}
 	else if(bulletDirection==4) {
-		bullet6.setySpeed(707);
-		bullet6.setxSpeed(707);
+		bullet6.setySpeed(bSpeedD);
+		bullet6.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==5) {
-		bullet6.setySpeed(1000);
+		bullet6.setySpeed(bSpeedC);
 		bullet6.setxSpeed(0);
 	}
 	else if(bulletDirection==6) {
-		bullet6.setySpeed(707);
-		bullet6.setxSpeed(-707);
+		bullet6.setySpeed(bSpeedD);
+		bullet6.setxSpeed(-bSpeedD);
 	}
 	else if(bulletDirection==7) {
 		bullet6.setySpeed(0);
-		bullet6.setxSpeed(-1000);
+		bullet6.setxSpeed(-bSpeedC);
 	}
 	else if(bulletDirection==8) {
-		bullet6.setySpeed(-707);
-		bullet6.setxSpeed(-707);
+		bullet6.setySpeed(-bSpeedD);
+		bullet6.setxSpeed(-bSpeedD);
 	}
 	if(cooldown==0) {
 		cooldown=1;
@@ -327,36 +328,36 @@ if(b1drawn==true && b2drawn==true && b3drawn==true && b4drawn==true && b5drawn =
 && fire4==true && fire5==true && fire6==true && fire7==false && bulletDirection>0 && cooldown==0 ) {
 	fire7=true;
 	if(bulletDirection==1) {
-		bullet7.setySpeed(-1000);
+		bullet7.setySpeed(-bSpeedC);
 		bullet7.setxSpeed(0);
 	}
 	else if(bulletDirection==2) {
-		bullet7.setySpeed(-707);
-		bullet7.setxSpeed(707);
+		bullet7.setySpeed(-bSpeedD);
+		bullet7.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==3) {
 		bullet7.setySpeed(0);
-		bullet7.setxSpeed(1000);
+		bullet7.setxSpeed(bSpeedC);
 	}
 	else if(bulletDirection==4) {
-		bullet7.setySpeed(707);
-		bullet7.setxSpeed(707);
+		bullet7.setySpeed(bSpeedD);
+		bullet7.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==5) {
-		bullet7.setySpeed(1000);
+		bullet7.setySpeed(bSpeedC);
 		bullet7.setxSpeed(0);
 	}
 	else if(bulletDirection==6) {
-		bullet7.setySpeed(707);
-		bullet7.setxSpeed(-707);
+		bullet7.setySpeed(bSpeedD);
+		bullet7.setxSpeed(-bSpeedD);
 	}
 	else if(bulletDirection==7) {
 		bullet7.setySpeed(0);
-		bullet7.setxSpeed(-1000);
+		bullet7.setxSpeed(-bSpeedC);
 	}
 	else if(bulletDirection==8) {
-		bullet7.setySpeed(-707);
-		bullet7.setxSpeed(-707);
+		bullet7.setySpeed(-bSpeedD);
+		bullet7.setxSpeed(-bSpeedD);
 	}
 	if(cooldown==0) {
 		cooldown=1;
@@ -367,36 +368,36 @@ if(b1drawn==true && b2drawn==true && b3drawn==true && b4drawn==true && b5drawn==
 && fire4==true && fire5==true && fire6==true && fire7==true && fire8==false && bulletDirection>0 && cooldown==0 ) {
 	fire8=true;
 	if(bulletDirection==1) {
-		bullet8.setySpeed(-1000);
+		bullet8.setySpeed(-bSpeedC);
 		bullet8.setxSpeed(0);
 	}
 	else if(bulletDirection==2) {
-		bullet8.setySpeed(-707);
-		bullet8.setxSpeed(707);
+		bullet8.setySpeed(-bSpeedD);
+		bullet8.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==3) {
 		bullet8.setySpeed(0);
-		bullet8.setxSpeed(1000);
+		bullet8.setxSpeed(bSpeedC);
 	}
 	else if(bulletDirection==4) {
-		bullet8.setySpeed(707);
-		bullet8.setxSpeed(707);
+		bullet8.setySpeed(bSpeedD);
+		bullet8.setxSpeed(bSpeedD);
 	}
 	else if(bulletDirection==5) {
-		bullet8.setySpeed(1000);
+		bullet8.setySpeed(bSpeedC);
 		bullet8.setxSpeed(0);
 	}
 	else if(bulletDirection==6) {
-		bullet8.setySpeed(707);
-		bullet8.setxSpeed(-707);
+		bullet8.setySpeed(bSpeedD);
+		bullet8.setxSpeed(-bSpeedD);
 	}
 	else if(bulletDirection==7) {
 		bullet8.setySpeed(0);
-		bullet8.setxSpeed(-1000);
+		bullet8.setxSpeed(-bSpeedC);
 	}
 	else if(bulletDirection==8) {
-		bullet8.setySpeed(-707);
-		bullet8.setxSpeed(-707);
+		bullet8.setySpeed(-bSpeedD);
+		bullet8.setxSpeed(-bSpeedD);
 	}
 	if(cooldown==0) {
 		cooldown=1;
@@ -536,7 +537,6 @@ if(bullet8.isOnScreen()) {
 }
 if(bullet8.isOnScreen() && fire8==true) {
 	bullet8.draw(delta);
-	b8drawn = true;
 }
 else {
 	fire8=false;
@@ -545,11 +545,10 @@ else {
 	bullet8.setxSpeed(0);
 	bullet8.setySpeed(0);
 	bulletDirection=0;
-	b8drawn = false;
 }
 	
 //System.out.println(bullet1.getxSpeed());
-System.out.println(cooldown);
+//System.out.println(cooldown);
 } //End of Update
 
 

@@ -11,8 +11,6 @@ import com.osreboot.ridhvl2.template.HvlDisplayWindowed;
 import com.osreboot.ridhvl2.template.HvlTemplateI;
 
 public class Main extends HvlTemplateI{
-	//TEST PUSH
-	//TEST PUSH 2
 
     public static void main(String[] args) {
     	for(int i = 0; i < 5; i++) {
