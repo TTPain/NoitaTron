@@ -1,6 +1,8 @@
 import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
+import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
+import static com.osreboot.ridhvl2.HvlStatics.hvlTexture;
 
 import org.newdawn.slick.Color;
 
@@ -42,6 +44,7 @@ public class Main extends HvlTemplateI{
 
     @Override
     public void update(float delta) {
+    	//hvlDraw(hvlQuadc(640, 360, 1280, 720),Color.white);
         Game.update(delta);
 
     }

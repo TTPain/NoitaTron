@@ -21,10 +21,16 @@ public class Game {
 
     public static void update(float delta){
     globalTimer += delta;
+    
     player.update(delta);
     player.draw(delta);
+    
+    EnemyGrunt.gruntMovementUpdate(delta);
+    
     EnemySpawner.update(delta);
+    
     BulletFire.update(delta, player);
+   
 
    // if(bullet.isFired()) {
     	//bullet.draw(delta);

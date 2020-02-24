@@ -11,24 +11,27 @@ public class EnemyGrunt {
 	public float yPos = 0;
 	public float xPos = 0;
 	public boolean livingState = true;
+	public static int gruntStutter=65;
 	
+
 	public void update(float delta, Player player) {
-		//GRUNT MOVEMENT
-		if(livingState = true) {
-			if(player.getxPos() > xPos) {
-				xPos = xPos + 1;
+		
+		//GRUNT SPEED
+		if(livingState = true){
+			if(player.getxPos() > xPos &&( gruntStutter==0 || gruntStutter==20)) {
+				xPos = xPos + 12;
 			}
-			if(player.getxPos() < xPos) {
-				xPos = xPos - 1;
+			if(player.getxPos() < xPos && (gruntStutter==0 || gruntStutter==20)) {
+				xPos = xPos - 12;
 			}
-			if(player.getyPos() > yPos) {
-				yPos = yPos + 1;
+			if(player.getyPos() > yPos && (gruntStutter==0 || gruntStutter==20)) {
+				yPos = yPos + 12;
 			}
-			if(player.getyPos() < yPos) {
-				yPos = yPos - 1;
+			if(player.getyPos() < yPos && (gruntStutter==0 || gruntStutter==20)) {
+				yPos = yPos - 12;
 			}
 		}
-		//END GRUNT MOVEMENT
+		//END GRUNT SPEED
 		//GRUNT HITBOX
 		if(((BulletFire.bullet1.getxPos() < xPos + 10) && (BulletFire.bullet1.getxPos() > xPos - 10) &&
 			(BulletFire.bullet1.getyPos() < yPos + 10) && (BulletFire.bullet1.getyPos() > yPos - 10)) ||
@@ -48,11 +51,20 @@ public class EnemyGrunt {
 			(BulletFire.bullet8.getyPos() < yPos + 10) && (BulletFire.bullet8.getyPos() > yPos - 10))) {
 			
 			livingState = false;
-			
+		
 		}
 		//END GRUNT HITBOX
 	}
-
+		//GRUNT MOVEMENT
+	public static void gruntMovementUpdate(float delta){
+			if(gruntStutter==0) {
+				gruntStutter=100;
+			}
+			if(gruntStutter>0) {
+				gruntStutter=gruntStutter-1;
+			}
+	}
+		//END GRUNT MOVEMENT
 
 public float getyPos() {
 	return yPos;
