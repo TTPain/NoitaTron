@@ -21,8 +21,8 @@ public class Player {
 	public static final float PLAYER_START_X = 1280/2;
 	public static final float PLAYER_START_Y = 720/2;
 	
-	public static final float PLAYER_WIDTH = 40;
-	public static final float PLAYER_HEIGHT = 80;
+	public static final float PLAYER_WIDTH = 25;
+	public static final float PLAYER_HEIGHT = 50;
 	private float xPos = 1280/2;
 	private float yPos = 720 / 2;
 	private float xspeedm = 1;
