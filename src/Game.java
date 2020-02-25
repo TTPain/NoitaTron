@@ -9,7 +9,6 @@ public class Game {
     public static float globalTimer = 0f;
 	
     public static Player player;
-    public static Bullet bullet;
 
     public static int selected_level = 1;
 
@@ -29,6 +28,8 @@ public class Game {
     EnemySpawner.update(delta);
     
     BulletFire.update(delta, player);
+    
+    
    
 
    // if(bullet.isFired()) {

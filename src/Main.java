@@ -15,9 +15,7 @@ import com.osreboot.ridhvl2.template.HvlTemplateI;
 public class Main extends HvlTemplateI{
 
     public static void main(String[] args) {
-    	for(int i = 0; i < 5; i++) {
-    		System.out.println("Hello Worlk!");
-    	}
+
         new Main();
     }
 
@@ -42,8 +40,6 @@ public class Main extends HvlTemplateI{
 		hvlLoad("GruntStep1.png"); //4
 		hvlLoad("GruntStep2.png"); //5
         Game.initialize();
-
-       // Player.initialize(); 
     }
 
     @Override
