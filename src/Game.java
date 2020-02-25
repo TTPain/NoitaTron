@@ -16,6 +16,7 @@ public class Game {
     public static void initialize(){
         player = new Player(Player.PLAYER_START_X, Player.PLAYER_START_Y);
         EnemySpawner.restart();
+       // EnemyGrunt.initialize();
        // bullet = new Bullet(Player.PLAYER_START_X, Player.PLAYER_START_Y,1,1);
     }
 
@@ -23,10 +24,8 @@ public class Game {
     globalTimer += delta;
     
     player.update(delta);
-    player.draw(delta);
-    
-    EnemyGrunt.gruntMovementUpdate(delta);
-    
+    player.draw(delta);    
+
     EnemySpawner.update(delta);
     
     BulletFire.update(delta, player);

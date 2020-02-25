@@ -22,11 +22,11 @@ public class EnemySpawner {
 		enemyGrunts.clear();
 		//Fill array with enemies, exact placement can be specified
 		if(Game.selected_level == 1) {
-			enemyGrunts.add(new EnemyGrunt(100f, 100f, true));
-			enemyGrunts.add(new EnemyGrunt(500f, 500f, true));
-			enemyGrunts.add(new EnemyGrunt(700f, 700f, true));
-			enemyGrunts.add(new EnemyGrunt(600f, 200f, true));
-			enemyGrunts.add(new EnemyGrunt(400f, 200f, true));
+			enemyGrunts.add(new EnemyGrunt(100f, 100f, true, 60, 5));
+			enemyGrunts.add(new EnemyGrunt(500f, 500f, true, 65, 5));
+			enemyGrunts.add(new EnemyGrunt(700f, 700f, true, 58, 5));
+			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, 53, 5));
+			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, 69, 5));
 		}	
 	}
 	
@@ -34,7 +34,7 @@ public class EnemySpawner {
 	//Each frame check if each enemy is alive, and if so, update and draw it.
 		for(EnemyGrunt grunt : enemyGrunts) {
 			if(grunt.getLivingState()) {
-			hvlDraw(hvlQuadc(grunt.xPos, grunt.yPos, EnemyGrunt.GRUNT_SIZE, EnemyGrunt.GRUNT_SIZE), Color.red);
+			hvlDraw(hvlQuadc(grunt.xPos, grunt.yPos, EnemyGrunt.GRUNT_SIZE, EnemyGrunt.GRUNT_SIZE), hvlTexture(grunt.gruntTexture));
 			grunt.update(delta, Game.player);
 			}
 		

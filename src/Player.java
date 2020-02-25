@@ -32,13 +32,7 @@ public class Player {
 	private float yspeedp = 1;
 	private float accel = 5;
 	private int playerTexture = 0;
-	public static void initialize() {
-		hvlLoad("PlayerBlueBack.png"); //0
-		hvlLoad("arrowleft.png"); //1
-		hvlLoad("arrowright.png"); //2
-		hvlLoad("PlayerBlue.png"); //3
-		
-	}
+
 
 	public void update(float delta) {
 		if(Keyboard.isKeyDown(Keyboard.KEY_A)) {

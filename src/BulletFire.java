@@ -7,28 +7,30 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
 
 public class BulletFire {
 	
-	private static boolean fire1 = false;
-	private static boolean fire2 = false;
-	private static boolean fire3 = false;
-	private static boolean fire4 = false;
-	private static boolean fire5 = false;
-	private static boolean fire6 = false;
-	private static boolean fire7 = false;
-	private static boolean fire8 = false;
+	public static boolean fire1 = false;
+	public static boolean fire2 = false;
+	public static boolean fire3 = false;
+	public static boolean fire4 = false;
+	public static boolean fire5 = false;
+	public static boolean fire6 = false;
+	public static boolean fire7 = false;
+	public static boolean fire8 = false;
 	
-	private static boolean b1drawn = false;
-	private static boolean b2drawn = false;
-	private static boolean b3drawn = false;
-	private static boolean b4drawn = false;
-	private static boolean b5drawn = false;
-	private static boolean b6drawn = false;
-	private static boolean b7drawn = false;
+	public static boolean b1drawn = false;
+	public static boolean b2drawn = false;
+	public static boolean b3drawn = false;
+	public static boolean b4drawn = false;
+	public static boolean b5drawn = false;
+	public static boolean b6drawn = false;
+	public static boolean b7drawn = false;
+	public static boolean b8drawn = false;
 	
-	private static float bSpeedC = 1650;
-	private static float bSpeedD = 1167;
+	private static float bSpeedC = 1000;
+	private static float bSpeedD = 700;
 
 	private static int bulletDirection=0;
 	private static float cooldown = 0.0f;
+	private static float cooldownSpeed = 10;
 
 	static Bullet bullet1 = new Bullet(Game.player.getxPos(),Game.player.getyPos(),0,0);
 	static Bullet bullet2 = new Bullet(Game.player.getxPos(),Game.player.getyPos(),0,0);
@@ -74,7 +76,7 @@ if(Keyboard.isKeyDown(Keyboard.KEY_UP) && (Keyboard.isKeyDown(Keyboard.KEY_LEFT)
 }
 
 if(cooldown>0) {
-		cooldown = cooldown-(delta*15);
+		cooldown = cooldown-(delta*cooldownSpeed);
 }
 
 if(cooldown<0) {
@@ -537,6 +539,7 @@ if(bullet8.isOnScreen()) {
 }
 if(bullet8.isOnScreen() && fire8==true) {
 	bullet8.draw(delta);
+	b8drawn = true;
 }
 else {
 	fire8=false;
@@ -545,6 +548,7 @@ else {
 	bullet8.setxSpeed(0);
 	bullet8.setySpeed(0);
 	bulletDirection=0;
+	b8drawn = false;
 }
 	
 //System.out.println(bullet1.getxSpeed());
