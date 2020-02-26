@@ -17,17 +17,17 @@ public class EnemySpawner {
 	
 	public static ArrayList<EnemyGrunt> enemyGrunts = new ArrayList<>();
 	
-	public static void restart() {
+	public static void reset() {
 		
 		enemyGrunts.clear();
 		//Fill array with enemies, exact placement can be specified
 		if(Game.selected_level == 1) {
 			//xPos, yPos, livingState, StutterStart, Starter Texture
-			enemyGrunts.add(new EnemyGrunt(100f, 100f, true, 60, 5));
-			enemyGrunts.add(new EnemyGrunt(500f, 500f, true, 65, 4));
-			enemyGrunts.add(new EnemyGrunt(700f, 700f, true, 58, 5));
-			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, 53, 4));
-			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, 69, 5));
+			enemyGrunts.add(new EnemyGrunt(100f, 100f, true, 90, 5));
+			enemyGrunts.add(new EnemyGrunt(500f, 500f, true, 85, 4));
+			enemyGrunts.add(new EnemyGrunt(700f, 700f, true, 65, 5));
+			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, 50, 4));
+			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, 45, 5));
 		}	
 	}
 	

@@ -14,7 +14,7 @@ public class Game {
 
     public static void initialize(){
         player = new Player(Player.PLAYER_START_X, Player.PLAYER_START_Y);
-        EnemySpawner.restart();
+        EnemySpawner.reset();
        // EnemyGrunt.initialize();
        // bullet = new Bullet(Player.PLAYER_START_X, Player.PLAYER_START_Y,1,1);
     }
