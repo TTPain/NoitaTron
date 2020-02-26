@@ -15,11 +15,13 @@ import java.util.ArrayList;
 
 public class EnemySpawner {
 	
+	public static float levelTimer;
 	public static ArrayList<EnemyGrunt> enemyGrunts = new ArrayList<>();
 	
 	public static void reset() {
-		
+		levelTimer = Game.globalTimer;
 		enemyGrunts.clear();
+		
 		//Fill array with enemies, exact placement can be specified
 		if(Game.selected_level == 1) {
 			//xPos, yPos, livingState, StutterStart, Starter Texture

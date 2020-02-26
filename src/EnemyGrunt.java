@@ -18,6 +18,8 @@ public class EnemyGrunt {
 	public int gruntStutter = 0;
 	public int gruntTexture;
 	
+	public int stutterSpeed = 1;
+	
 	//
 	
 	private boolean movedThisFrame;
@@ -126,10 +128,25 @@ public class EnemyGrunt {
 		
 		}
 		//END GRUNT HITBOX
+			
+			
 		//GRUNT STUTTER SPEED
-		if(gruntStutter==0) {
+			if((EnemySpawner.levelTimer+10 > Game.globalTimer)) {
+				stutterSpeed = 1;
+			}else if((EnemySpawner.levelTimer+10 <= Game.globalTimer) && (EnemySpawner.levelTimer+20 > Game.globalTimer)) {
+				stutterSpeed = 2;
+			}else if((EnemySpawner.levelTimer+20 <= Game.globalTimer)) {
+				stutterSpeed = 3;
+			}
+			
+		if(gruntStutter==0 && stutterSpeed == 1) {
 			gruntStutter=100;
+		}else if(gruntStutter==0 && stutterSpeed == 2) {
+			gruntStutter=60;
+		}else if(gruntStutter==0 && stutterSpeed == 3) {
+			gruntStutter=30;
 		}
+		
 		else{
 			gruntStutter=gruntStutter-1;
 		}

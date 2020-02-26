@@ -27,7 +27,7 @@ public class Main extends HvlTemplateI{
     	TextureLoader.loadTextures();
         Game.initialize();
     }
-
+    
     @Override
     public void update(float delta) {
         Game.update(delta);
