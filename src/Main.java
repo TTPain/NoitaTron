@@ -16,11 +16,11 @@ import com.osreboot.ridhvl2.template.HvlTemplateI;
 public class Main extends HvlTemplateI{
 
 
-	static int RNGsus;
+	//static int RNGsus;
 	
 	
     public static void main(String[] args) {
-    	RNGsus = Utility.randomIntBetween(2, 5);
+    	
         new Main();
     }
 
@@ -35,11 +35,14 @@ public class Main extends HvlTemplateI{
     public void initialize() {
     	TextureLoader.loadTextures();
         Game.initialize();
-        System.out.println(RNGsus);
+       	//RNGsus = Utility.randomIntBetween(1, 6);
+        //System.out.println(RNGsus);
+ 
     }
     
     @Override
     public void update(float delta) {
+ 
         Game.update(delta);
     }
 
