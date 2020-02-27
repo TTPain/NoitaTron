@@ -28,6 +28,7 @@ public class Game {
     EnemySpawner.update(delta);
     
     BulletFire.update(delta, player);
+    LevelManager.update();
     
     
    
