@@ -1,3 +1,4 @@
+package robotron2;
 import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
@@ -15,14 +16,16 @@ public class Bullet {
 	private float ySpeed;
 	private float bulletTime;
 	private int bulletDirection;
-	private static boolean bulletDrawn = false;
+	private boolean bulletDrawn = false;
 	private boolean fired = false;
 	
-public Bullet(float xArg, float yArg, float xSpeedArg,float ySpeedArg){
+public Bullet(float xArg, float yArg, float xSpeedArg,float ySpeedArg, boolean firedArg, boolean drawnArg){
 		xSpeed=xSpeedArg;
 		ySpeed=ySpeedArg;
 		xPos = xArg;
 		yPos = yArg;
+		fired = firedArg;
+		bulletDrawn = drawnArg;
 
 }
 
@@ -62,12 +65,12 @@ public void setBulletTime(float bulletTime) {
 	this.bulletTime = bulletTime;
 }
 
-public static boolean isBulletDrawn() {
+public  boolean isBulletDrawn() {
 	return bulletDrawn;
 }
 
-public static void setBulletDrawn(boolean bulletDrawn) {
-	Bullet.bulletDrawn = bulletDrawn;
+public  void setBulletDrawn(boolean bulletDrawn) {
+	this.bulletDrawn = bulletDrawn;
 }
 
 public boolean isFired() {

@@ -1,4 +1,7 @@
+package robotron2.load;
 import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
+
+import com.osreboot.ridhvl2.loader.HvlLoaderSound;
 
 public class TextureLoader {
 	

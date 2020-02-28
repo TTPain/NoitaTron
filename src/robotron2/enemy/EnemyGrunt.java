@@ -1,4 +1,8 @@
-import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
+package robotron2.enemy;
+import robotron2.BulletFire;
+import robotron2.EnemySpawner;
+import robotron2.Game;
+import robotron2.Player;
 
 public class EnemyGrunt {
 	
@@ -75,56 +79,56 @@ public class EnemyGrunt {
 		if(((BulletFire.bullet1.getxPos() < xPos + 15) && (BulletFire.bullet1.getxPos() > xPos - 15) &&
 			(BulletFire.bullet1.getyPos() < yPos + 15) && (BulletFire.bullet1.getyPos() > yPos - 15))){
 				livingState = false;
-				BulletFire.fire1 = false;
-				BulletFire.b1drawn=false;
+				BulletFire.bullet1.setFired(false);
+				BulletFire.bullet1.setBulletDrawn(false);
 			}
 			if((BulletFire.bullet2.getxPos() < xPos + 15) && (BulletFire.bullet2.getxPos() > xPos - 15) &&
 			(BulletFire.bullet2.getyPos() < yPos + 15) && (BulletFire.bullet2.getyPos() > yPos - 15)) {
 				livingState = false;
-				BulletFire.fire2 = false;
-				BulletFire.b2drawn=false;
+				BulletFire.bullet2.setFired(false);
+				BulletFire.bullet2.setBulletDrawn(false);
 				
 			}
 			if((BulletFire.bullet3.getxPos() < xPos + 15) && (BulletFire.bullet3.getxPos() > xPos - 15) &&
 			(BulletFire.bullet3.getyPos() < yPos + 15) && (BulletFire.bullet3.getyPos() > yPos - 15)) {
 				livingState = false;
-				BulletFire.fire3 = false;
-				BulletFire.b3drawn=false;
+				BulletFire.bullet3.setFired(false);
+				BulletFire.bullet3.setBulletDrawn(false);
 				
 			}
 			if((BulletFire.bullet4.getxPos() < xPos + 15) && (BulletFire.bullet4.getxPos() > xPos - 15) &&
 			(BulletFire.bullet4.getyPos() < yPos + 15) && (BulletFire.bullet4.getyPos() > yPos - 15)){
 				livingState = false;
-				BulletFire.fire4 = false;
-				BulletFire.b4drawn=false;
+				BulletFire.bullet4.setFired(false);
+				BulletFire.bullet4.setBulletDrawn(false);
 				
 			}
 			if((BulletFire.bullet5.getxPos() < xPos + 15) && (BulletFire.bullet5.getxPos() > xPos - 15) &&
 			(BulletFire.bullet5.getyPos() < yPos + 15) && (BulletFire.bullet5.getyPos() > yPos - 15)) {
 				livingState = false;
-				BulletFire.fire5 = false;
-				BulletFire.b5drawn=false;
+				BulletFire.bullet5.setFired(false);
+				BulletFire.bullet5.setBulletDrawn(false);
 				
 			}
 			if((BulletFire.bullet6.getxPos() < xPos + 15) && (BulletFire.bullet6.getxPos() > xPos - 15) &&
 			(BulletFire.bullet6.getyPos() < yPos + 15) && (BulletFire.bullet6.getyPos() > yPos - 15)) {
 				livingState = false;
-				BulletFire.fire6 = false;
-				BulletFire.b6drawn=false;
+				BulletFire.bullet6.setFired(false);
+				BulletFire.bullet6.setBulletDrawn(false);
 				
 			}
 			if((BulletFire.bullet7.getxPos() < xPos + 15) && (BulletFire.bullet7.getxPos() > xPos - 15) &&
 			(BulletFire.bullet7.getyPos() < yPos + 15) && (BulletFire.bullet7.getyPos() > yPos - 15)) {
 				livingState = false;
-				BulletFire.fire7 = false;
-				BulletFire.b7drawn=false;
+				BulletFire.bullet7.setFired(false);
+				BulletFire.bullet7.setBulletDrawn(false);
 				
 			}
 			if((BulletFire.bullet8.getxPos() < xPos + 15) && (BulletFire.bullet8.getxPos() > xPos - 15) &&
 			(BulletFire.bullet8.getyPos() < yPos + 15) && (BulletFire.bullet8.getyPos() > yPos - 15)) {
 				livingState = false;
-				BulletFire.fire8 = false;
-				BulletFire.b8drawn=false;
+				BulletFire.bullet8.setFired(false);
+				BulletFire.bullet8.setBulletDrawn(false);
 		
 		}
 		//END GRUNT HITBOX

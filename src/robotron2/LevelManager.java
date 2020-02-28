@@ -1,7 +1,10 @@
+package robotron2;
+
+import robotron2.enemy.EnemyGrunt;
 
 public class LevelManager {
 	
-    static int gruntDeathCount = 0;
+    public static int gruntDeathCount = 0;
     
     public static void update() {
     

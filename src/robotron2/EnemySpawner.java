@@ -1,3 +1,4 @@
+package robotron2;
 import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
@@ -9,6 +10,8 @@ import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.loader.HvlLoader;
 import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
+
+import robotron2.enemy.EnemyGrunt;
 
 import java.util.ArrayList;
 

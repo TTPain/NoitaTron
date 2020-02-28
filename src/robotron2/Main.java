@@ -1,3 +1,4 @@
+package robotron2;
 import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
@@ -13,36 +14,35 @@ import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 import com.osreboot.ridhvl2.template.HvlDisplayWindowed;
 import com.osreboot.ridhvl2.template.HvlTemplateI;
 
+import robotron2.load.SoundLoader;
+import robotron2.load.TextureLoader;
+
 public class Main extends HvlTemplateI{
 
-
-	//static int RNGsus;
+	/*
+	TODO
+	Enemy Death Particles
+	
+	*/
 	
 	
-    public static void main(String[] args) {
-    	
+    public static void main(String[] args) {	
         new Main();
     }
 
     public Main() {
-        super(new HvlDisplayWindowed(144, 1280, 720, "Robotron 2", false));
-     
-
-        
+        super(new HvlDisplayWindowed(144, 1280, 720, "Robotron 2", false));   
     }
 
     @Override
     public void initialize() {
     	TextureLoader.loadTextures();
+    	SoundLoader.loadSounds();
         Game.initialize();
-       	//RNGsus = Utility.randomIntBetween(1, 6);
-        //System.out.println(RNGsus);
- 
     }
     
     @Override
     public void update(float delta) {
- 
         Game.update(delta);
     }
 

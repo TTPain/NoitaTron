@@ -1,3 +1,4 @@
+package robotron2;
 import java.util.Random;
 
 public class Utility {
