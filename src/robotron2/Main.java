@@ -3,7 +3,12 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
+import static com.osreboot.ridhvl2.HvlStatics.hvlSound;
 import static com.osreboot.ridhvl2.HvlStatics.hvlTexture;
+import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
+
+import com.osreboot.ridhvl2.loader.HvlLoaderSound;
+
 
 import org.newdawn.slick.Color;
 
@@ -22,6 +27,13 @@ public class Main extends HvlTemplateI{
 	/*
 	TODO
 	Enemy Death Particles
+	Hulks
+	People
+	Main Menu
+	Splashes
+	Actual Textures
+	Sound
+	Score Display
 	
 	*/
 	

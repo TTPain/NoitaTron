@@ -6,6 +6,9 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
 import static com.osreboot.ridhvl2.HvlStatics.hvlSound;
+
+import java.util.ArrayList;
+
 import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 
 import com.osreboot.ridhvl2.loader.HvlLoaderSound;
@@ -20,7 +23,7 @@ public class BulletFire {
 	private static float cooldown = 0.0f;
 	private static float cooldownSpeed = 10;
 		
-	
+	public static ArrayList<Bullet> bullets = new ArrayList<>();
 
 											  //xArg, yArg, xSpeed, ySpeed, fired, drawn
 	public static Bullet bullet1 = new Bullet(Game.player.getxPos(),Game.player.getyPos(),0,0, false, false);
@@ -31,6 +34,19 @@ public class BulletFire {
 	public static Bullet bullet6 = new Bullet(Game.player.getxPos(),Game.player.getyPos(),0,0, false, false);
 	public static Bullet bullet7 = new Bullet(Game.player.getxPos(),Game.player.getyPos(),0,0, false, false);
 	public static Bullet bullet8 = new Bullet(Game.player.getxPos(),Game.player.getyPos(),0,0, false, false);
+	
+	
+	public static void initialize() {
+		bullets.add(bullet1);
+		bullets.add(bullet2);
+		bullets.add(bullet3);
+		bullets.add(bullet4);
+		bullets.add(bullet5);
+		bullets.add(bullet6);
+		bullets.add(bullet7);
+		bullets.add(bullet8);
+	}
+	
 	
 public static void update(float delta,Player player) {
 

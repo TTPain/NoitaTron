@@ -7,10 +7,10 @@ public class SoundLoader {
 
 	 public static final int 
 	    INDEX_PEW = 0;
+	 
 
 		public static void loadSounds() {
 			hvlLoad("pew.wav"); //0
-			
 		}
 		
 		

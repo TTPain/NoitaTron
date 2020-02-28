@@ -1,4 +1,7 @@
 package robotron2.enemy;
+import java.util.ArrayList;
+
+import robotron2.Bullet;
 import robotron2.BulletFire;
 import robotron2.EnemySpawner;
 import robotron2.Game;
@@ -27,10 +30,13 @@ public class EnemyGrunt {
 	//
 	
 	private boolean movedThisFrame;
+
+	
 	
 	public void update(float delta, Player player) {
 		
 		movedThisFrame = false;
+		
 		//GRUNT MOVEMENT AND SPRITE CHANGE
 		if(livingState = true){
 			if(player.getxPos() > xPos &&( gruntStutter==0 || gruntStutter==20)) {
@@ -75,62 +81,18 @@ public class EnemyGrunt {
 			}
 		}
 		//END MOVEMENT AND SPRITE CHANGE
-		//GRUNT HITBOX
-		if(((BulletFire.bullet1.getxPos() < xPos + 15) && (BulletFire.bullet1.getxPos() > xPos - 15) &&
-			(BulletFire.bullet1.getyPos() < yPos + 15) && (BulletFire.bullet1.getyPos() > yPos - 15))){
-				livingState = false;
-				BulletFire.bullet1.setFired(false);
-				BulletFire.bullet1.setBulletDrawn(false);
-			}
-			if((BulletFire.bullet2.getxPos() < xPos + 15) && (BulletFire.bullet2.getxPos() > xPos - 15) &&
-			(BulletFire.bullet2.getyPos() < yPos + 15) && (BulletFire.bullet2.getyPos() > yPos - 15)) {
-				livingState = false;
-				BulletFire.bullet2.setFired(false);
-				BulletFire.bullet2.setBulletDrawn(false);
-				
-			}
-			if((BulletFire.bullet3.getxPos() < xPos + 15) && (BulletFire.bullet3.getxPos() > xPos - 15) &&
-			(BulletFire.bullet3.getyPos() < yPos + 15) && (BulletFire.bullet3.getyPos() > yPos - 15)) {
-				livingState = false;
-				BulletFire.bullet3.setFired(false);
-				BulletFire.bullet3.setBulletDrawn(false);
-				
-			}
-			if((BulletFire.bullet4.getxPos() < xPos + 15) && (BulletFire.bullet4.getxPos() > xPos - 15) &&
-			(BulletFire.bullet4.getyPos() < yPos + 15) && (BulletFire.bullet4.getyPos() > yPos - 15)){
-				livingState = false;
-				BulletFire.bullet4.setFired(false);
-				BulletFire.bullet4.setBulletDrawn(false);
-				
-			}
-			if((BulletFire.bullet5.getxPos() < xPos + 15) && (BulletFire.bullet5.getxPos() > xPos - 15) &&
-			(BulletFire.bullet5.getyPos() < yPos + 15) && (BulletFire.bullet5.getyPos() > yPos - 15)) {
-				livingState = false;
-				BulletFire.bullet5.setFired(false);
-				BulletFire.bullet5.setBulletDrawn(false);
-				
-			}
-			if((BulletFire.bullet6.getxPos() < xPos + 15) && (BulletFire.bullet6.getxPos() > xPos - 15) &&
-			(BulletFire.bullet6.getyPos() < yPos + 15) && (BulletFire.bullet6.getyPos() > yPos - 15)) {
-				livingState = false;
-				BulletFire.bullet6.setFired(false);
-				BulletFire.bullet6.setBulletDrawn(false);
-				
-			}
-			if((BulletFire.bullet7.getxPos() < xPos + 15) && (BulletFire.bullet7.getxPos() > xPos - 15) &&
-			(BulletFire.bullet7.getyPos() < yPos + 15) && (BulletFire.bullet7.getyPos() > yPos - 15)) {
-				livingState = false;
-				BulletFire.bullet7.setFired(false);
-				BulletFire.bullet7.setBulletDrawn(false);
-				
-			}
-			if((BulletFire.bullet8.getxPos() < xPos + 15) && (BulletFire.bullet8.getxPos() > xPos - 15) &&
-			(BulletFire.bullet8.getyPos() < yPos + 15) && (BulletFire.bullet8.getyPos() > yPos - 15)) {
-				livingState = false;
-				BulletFire.bullet8.setFired(false);
-				BulletFire.bullet8.setBulletDrawn(false);
 		
-		}
+		//GRUNT HITBOX
+		for(Bullet bullet : BulletFire.bullets) {
+	        if(((bullet.getxPos() < xPos + 15) && (bullet.getxPos() > xPos - 15) &&
+	    			(bullet.getyPos() < yPos + 15) && (bullet.getyPos() > yPos - 15))) {
+	            
+	        	livingState = false;
+				bullet.setFired(false);
+				bullet.setBulletDrawn(false);
+	        	
+	        }
+	    }
 		//END GRUNT HITBOX
 			
 			

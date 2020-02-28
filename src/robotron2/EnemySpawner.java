@@ -26,7 +26,7 @@ public class EnemySpawner {
 		enemyGrunts.clear();
 		
 		//Fill array with enemies, exact placement can be specified
-		if((Game.selected_level == 1) ||(Game.selected_level == 2) ) {
+		if((Game.selected_level == 1) || (Game.selected_level == 2)) {
 			//xPos, yPos, livingState, StutterStart, Starter Texture
 			enemyGrunts.add(new EnemyGrunt(100f, 100f, true, 90, 5));
 			enemyGrunts.add(new EnemyGrunt(500f, 500f, true, 85, 4));
