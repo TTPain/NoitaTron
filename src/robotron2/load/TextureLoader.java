@@ -1,4 +1,5 @@
 package robotron2.load;
+import static com.osreboot.ridhvl2.HvlStatics.hvlFont;
 import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 
 import com.osreboot.ridhvl2.loader.HvlLoaderSound;
@@ -14,12 +15,14 @@ public class TextureLoader {
     INDEX_GRUNTSTEP_2 = 5;
 
 	public static void loadTextures() {
-		hvlLoad("PlayerBlueBack.png"); //0
-		hvlLoad("arrowleft.png"); //1
-		hvlLoad("arrowright.png"); //2
-		hvlLoad("PlayerBlue.png"); //3
-		hvlLoad("GruntStep1.png"); //4
-		hvlLoad("GruntStep2.png"); //5
+		hvlLoad("PlayerBlueBack.png");  //0
+		hvlLoad("arrowleft.png");       //1
+		hvlLoad("arrowright.png");      //2
+		hvlLoad("PlayerBlue.png");      //3
+		hvlLoad("GruntStep1.png");      //4
+		hvlLoad("GruntStep2.png");      //5
+		hvlLoad("INOF.hvlft");	        //6
+		hvlFont(0);
 	}
 	
 }

@@ -7,15 +7,17 @@ import robotron2.BulletFire;
 import robotron2.EnemySpawner;
 import robotron2.Game;
 import robotron2.Player;
+import robotron2.Score;
 
 public class EnemyGrunt {
 
-	public EnemyGrunt(float xPosArg, float yPosArg, boolean livingStateArg, int stutterArg, int textureArg) {
+	public EnemyGrunt(float xPosArg, float yPosArg, boolean livingStateArg, int stutterArg, int shatterDirectionArg, int textureArg) {
 		xPos = xPosArg;
 		yPos = yPosArg;
 		livingState = livingStateArg;
 		gruntStutter = stutterArg;
 		gruntTexture = textureArg;
+		shatterDirection  = shatterDirectionArg;
 	}
 
 	public static final float GRUNT_SIZE = 25;
@@ -25,6 +27,7 @@ public class EnemyGrunt {
 	public boolean livingState = true;
 	public int gruntStutter = 0;
 	public int gruntTexture;
+	public int shatterDirection;
 
 	public int stutterSpeed = 1;
 	private boolean movedThisFrame;
@@ -83,8 +86,15 @@ public class EnemyGrunt {
 				livingState = false;
 				bullet.setFired(false);
 				bullet.setBulletDrawn(false);
+				shatterDirection = bullet.getDirectionFired();
+				Score.addPoints(100);
 			}
 		}
+		
+		if((player.getxPos() < xPos + 15) && (player.getxPos() > xPos - 15) && (player.getyPos() < yPos + 15) && player.getyPos() > yPos - 15) {
+			player.setAlive(false);
+		}
+		
 		// END GRUNT HITBOX
 
 		// GRUNT STUTTER SPEED

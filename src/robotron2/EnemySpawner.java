@@ -27,12 +27,12 @@ public class EnemySpawner {
 
 		// Fill array with enemies, exact placement can be specified
 		if ((Game.selected_level == 1) || (Game.selected_level == 2)) {
-			// xPos, yPos, livingState, StutterStart, Starter Texture
-			enemyGrunts.add(new EnemyGrunt(100f, 100f, true, 90, 5));
-			enemyGrunts.add(new EnemyGrunt(500f, 500f, true, 85, 4));
-			enemyGrunts.add(new EnemyGrunt(700f, 700f, true, 65, 5));
-			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, 50, 4));
-			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, 45, 5));
+			// xPos, yPos, livingState, StutterStart, ShatterDirection, Starter Texture
+			enemyGrunts.add(new EnemyGrunt(300f, 100f, true, 90, 0, 5));
+			enemyGrunts.add(new EnemyGrunt(500f, 500f, true, 85, 0, 4));
+			enemyGrunts.add(new EnemyGrunt(700f, 700f, true, 65, 0, 5));
+			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, 50, 0, 4));
+			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, 45, 0, 5));
 		}
 	}
 

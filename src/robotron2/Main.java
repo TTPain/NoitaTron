@@ -24,14 +24,18 @@ import robotron2.load.TextureLoader;
 public class Main extends HvlTemplateI {
 
 	/*
-	 * TODO Enemy Death Particles
-	 *  Hulks
-	 *  People
-	 *  Main Menu
-	 *  Splashes
-	 *  Actual Textures
-	 *  Sound
-	 *  Score Display
+	 * TODO
+	 * Enemy Death Particles
+	 * Hulks, other enemies
+	 * People
+	 * Main Menu
+	 * Pause Menu
+	 * Splashes
+	 * Actual Textures
+	 * Sound
+	 * Score
+	 * Player Hitbox/Death
+	 * Tie anything to delta that needs it. Game still speeds up with framerate.
 	 * 
 	 */
 
@@ -48,6 +52,8 @@ public class Main extends HvlTemplateI {
 		TextureLoader.loadTextures();
 		SoundLoader.loadSounds();
 		Game.initialize();
+		hvlSound(1).playAsMusic(1, 1, true);
+		
 	}
 
 	@Override

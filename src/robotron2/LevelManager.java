@@ -7,7 +7,6 @@ public class LevelManager {
 	public static int gruntDeathCount = 0;
 
 	public static void update() {
-		System.out.println(gruntDeathCount);
 
 		gruntDeathCount = 0;
 		for (EnemyGrunt grunt : EnemySpawner.enemyGrunts) {

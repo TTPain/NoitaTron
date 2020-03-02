@@ -14,60 +14,78 @@ import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 
 public class Player {
 
-	public Player(float xArg, float yArg) {
+	public Player(float xArg, float yArg, boolean aliveArg) {
 
 		xPos = xArg;
 		yPos = yArg;
+		alive = aliveArg;
 
 	}
 
 	public static final float PLAYER_START_X = 1280 / 2;
 	public static final float PLAYER_START_Y = 720 / 2;
-
 	public static final float PLAYER_WIDTH = 25;
 	public static final float PLAYER_HEIGHT = 50;
+	
 	private float xPos = 1280 / 2;
 	private float yPos = 720 / 2;
+	private boolean alive = true;
+	
 	private float xspeedm = 1;
-
 	private float yspeedm = 1;
 	private float xspeedp = 1;
 	private float yspeedp = 1;
-	private float accel = 5;
+	private float accel = 3;
 	private int playerTexture = 0;
+	private float respawn = 1;
 
 	public void update(float delta) {
+		
+		//Death Handling
+		
+		if(alive==false) {
+			xPos=640;
+			yPos=360;
+			respawn=respawn-delta;
+		}
+		if(respawn<0) {
+			respawn=1;
+			alive=true;
+			//Score.score = Score.score+100;
+			Score.lives = Score.lives-1; 
+		}
+		
 		if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
-			xspeedm = xspeedm + delta * accel;
+			xspeedm = xspeedm + (delta * accel);
 		} else {
 			xspeedm = 1;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
-			xspeedp = xspeedp + delta * accel;
+			xspeedp = xspeedp + (delta * accel);
 		} else {
 			xspeedp = 1;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-			yspeedp = yspeedp + delta * accel;
+			yspeedp = yspeedp + (delta * accel);
 		} else {
 			yspeedp = 1;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-			yspeedm = yspeedm + delta * accel;
+			yspeedm = yspeedm + (delta * accel);
 		} else {
 			yspeedm = 1;
 		}
-		if (xspeedm > 3) {
-			xspeedm = 3;
+		if (xspeedm > 2) {
+			xspeedm = 2;
 		}
-		if (xspeedp > 3) {
-			xspeedp = 3;
+		if (xspeedp > 2) {
+			xspeedp = 2;
 		}
-		if (yspeedp > 3) {
-			yspeedp = 3;
+		if (yspeedp > 2) {
+			yspeedp = 2;
 		}
-		if (yspeedm > 3) {
-			yspeedm = 3;
+		if (yspeedm > 2) {
+			yspeedm = 2;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
 			yPos = yPos - 1 * yspeedm;
@@ -85,17 +103,17 @@ public class Player {
 			xPos = xPos + 1 * xspeedp;
 			playerTexture = 2;
 		}
-		if (xPos > 1270) {
-			xPos = 1270;
+		if (xPos > 1120 - PLAYER_WIDTH/2) {
+			xPos = 1120 - PLAYER_WIDTH/2;
 		}
-		if (xPos < 10) {
-			xPos = 10;
+		if (xPos < 150 + PLAYER_WIDTH/2) {
+			xPos = 150 + PLAYER_WIDTH/2;
 		}
-		if (yPos > 710) {
-			yPos = 710;
+		if (yPos > 720 - PLAYER_HEIGHT/2) {
+			yPos = 720;
 		}
-		if (yPos < 10) {
-			yPos = 10;
+		if (yPos < 0 + PLAYER_HEIGHT/2) {
+			yPos = 0 + PLAYER_HEIGHT/2;
 		}
 	}
 
@@ -118,5 +136,15 @@ public class Player {
 	public void setyPos(float yPos) {
 		this.yPos = yPos;
 	}
+
+	public boolean isAlive() {
+		return alive;
+	}
+
+	public void setAlive(boolean alive) {
+		this.alive = alive;
+	}
+	
+	
 
 }
