@@ -37,7 +37,7 @@ public class EnemyGrunt {
 		movedThisFrame = false;
 
 		// GRUNT MOVEMENT AND SPRITE CHANGE
-		if (livingState = true) {
+		if (livingState == true) {
 			if (player.getxPos() > xPos && (gruntStutter == 0 || gruntStutter == 20)) {
 				xPos = xPos + 12;
 				if (gruntTexture == 4 && movedThisFrame == false) {

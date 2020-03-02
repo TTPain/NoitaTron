@@ -49,15 +49,6 @@ public class BulletFire {
 
 	public static void update(float delta, Player player) {
 		
-		System.out.println(bullet1.getDirectionFired());
-		System.out.println(bullet2.getDirectionFired());
-		System.out.println(bullet3.getDirectionFired());
-		System.out.println(bullet4.getDirectionFired());
-		System.out.println(bullet5.getDirectionFired());
-		System.out.println(bullet6.getDirectionFired());
-		System.out.println(bullet7.getDirectionFired());
-		System.out.println(bullet8.getDirectionFired());
-
 		if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
 			bulletDirection = 1;
 		}
