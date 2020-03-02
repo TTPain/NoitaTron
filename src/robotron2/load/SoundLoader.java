@@ -7,12 +7,14 @@ public class SoundLoader {
 
 	 public static final int 
 	    INDEX_PEW = 0,
-	 	INDEX_FF = 1;
+	 	INDEX_FF = 1,
+	 	INDEX_GRUNTSTEP = 2;
 	 
 
 		public static void loadSounds() {
 			hvlLoad("pew.wav"); //0
 			hvlLoad("ff.wav");//1
+			hvlLoad("GruntStep.wav");//2
 		}
 		
 		

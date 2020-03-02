@@ -1,5 +1,7 @@
 package robotron2.enemy;
 
+import static com.osreboot.ridhvl2.HvlStatics.hvlSound;
+
 import java.util.ArrayList;
 
 import robotron2.Bullet;
@@ -8,6 +10,7 @@ import robotron2.EnemySpawner;
 import robotron2.Game;
 import robotron2.Player;
 import robotron2.Score;
+import robotron2.load.SoundLoader;
 
 public class EnemyGrunt {
 
@@ -48,6 +51,7 @@ public class EnemyGrunt {
 				xPos = xPos + 12;
 
 				firstStepX = true;
+				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -61,6 +65,7 @@ public class EnemyGrunt {
 				xPos = xPos - 12;
 
 				firstStepX = true;
+				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -71,11 +76,12 @@ public class EnemyGrunt {
 			}
 
 			if (player.getxPos() > xPos && stutterSpeed == 3
-					&& (gruntStutter <= 0 || ((gruntStutter <= 0.05) && !(firstStepX)))) {
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.1) && !(firstStepX)))) {
 
 				xPos = xPos + 13;
 
 				firstStepX = true;
+				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -84,11 +90,12 @@ public class EnemyGrunt {
 					movedThisFrame = true;
 				}
 			} else if (player.getxPos() < xPos && stutterSpeed == 3
-					&& (gruntStutter <= 0 || ((gruntStutter <= 0.05) && !(firstStepX)))) {
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.1) && !(firstStepX)))) {
 
 				xPos = xPos - 13;
 
 				firstStepX = true;
+				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -104,6 +111,7 @@ public class EnemyGrunt {
 				yPos = yPos + 12;
 
 				firstStepY = true;
+				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -117,6 +125,7 @@ public class EnemyGrunt {
 				yPos = yPos - 12;
 
 				firstStepY = true;
+				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -126,11 +135,12 @@ public class EnemyGrunt {
 				}
 			}
 			if (player.getyPos() > yPos && stutterSpeed == 3
-					&& (gruntStutter <= 0 || ((gruntStutter <= 0.05) && !(firstStepY)))) {
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.1) && !(firstStepY)))) {
 
 				yPos = yPos + 13;
 
 				firstStepY = true;
+				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -139,11 +149,12 @@ public class EnemyGrunt {
 					movedThisFrame = true;
 				}
 			} else if (player.getyPos() < yPos && stutterSpeed == 3
-					&& (gruntStutter <= 0 || ((gruntStutter <= 0.05) && !(firstStepY)))) {
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.1) && !(firstStepY)))) {
 
 				yPos = yPos - 13;
 
 				firstStepY = true;
+				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -177,6 +188,7 @@ public class EnemyGrunt {
 		// END GRUNT/PLAYER HITBOX
 
 		// GRUNT STUTTER SPEED
+		// Speeds up every 10 seconds.
 		if ((EnemySpawner.levelTimer + 10 > Game.globalTimer)) {
 			stutterSpeed = 1;
 		} else if ((EnemySpawner.levelTimer + 10 <= Game.globalTimer)

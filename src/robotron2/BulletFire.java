@@ -18,7 +18,7 @@ public class BulletFire {
 
 	private static float bSpeedC = 1200;
 	private static float bSpeedD = 700;
-	private static float pitch= 1;
+	private static float soundPitch= 1;
 	private static int bulletDirection = 0;
 
 	private static float cooldown = 0.0f;
@@ -51,7 +51,7 @@ public class BulletFire {
 		
 		//DANGER ZONE
 		if(Keyboard.isKeyDown(Keyboard.KEY_E)) {
-		    for(double d = 0; d < 360; d += 10) {
+		    for(double d = 0; d < 360; d += 15) {
 		        double d2 = d + Main.newest().getTimer().getTotalTime() * 100f;
 		        float speed = 100;
 		        float xs = (float)Math.cos(Math.toRadians(d2)) * speed;
@@ -59,6 +59,7 @@ public class BulletFire {
 		        bullets.add(new Bullet(Game.player.getxPos(), Game.player.getyPos(), xs, ys, true, false, 0));
 		    }
 		}
+		//E
 		
 		if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
 			bulletDirection = 1;
@@ -106,7 +107,7 @@ public class BulletFire {
 		if (bullet1.isFired() == false && bulletDirection > 0 && (cooldown == 0)) {
 			bullet1.setFired(true);
 			bullet1.setDirectionFired(bulletDirection);
-			hvlSound(0).playAsSoundEffect(pitch, 1, false);
+			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
 			if (cooldown == 0) {
 				cooldown = 1;
 			}
@@ -142,7 +143,7 @@ public class BulletFire {
 				&& cooldown == 0) {
 			bullet2.setFired(true);
 			bullet2.setDirectionFired(bulletDirection);
-			hvlSound(0).playAsSoundEffect(pitch, 1, false);
+			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
 			if (cooldown == 0) {
 				cooldown = 1;
 			}
@@ -177,7 +178,7 @@ public class BulletFire {
 				&& !(bullet3.isFired()) && bulletDirection > 0 && cooldown == 0) {
 			bullet3.setFired(true);
 			bullet3.setDirectionFired(bulletDirection);
-			hvlSound(0).playAsSoundEffect(pitch, 1, false);
+			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
 			if (cooldown == 0) {
 				cooldown = 1;
 			}
@@ -213,7 +214,7 @@ public class BulletFire {
 				&& cooldown == 0) {
 			bullet4.setFired(true);
 			bullet4.setDirectionFired(bulletDirection);
-			hvlSound(0).playAsSoundEffect(pitch, 1, false);
+			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
 			if (bulletDirection == 1) {
 				bullet4.setySpeed(-bSpeedC);
 				bullet4.setxSpeed(0);
@@ -249,7 +250,7 @@ public class BulletFire {
 				&& !(bullet5.isFired()) && bulletDirection > 0 && cooldown == 0) {
 			bullet5.setFired(true);
 			bullet5.setDirectionFired(bulletDirection);
-			hvlSound(0).playAsSoundEffect(pitch, 1, false);
+			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
 			if (bulletDirection == 1) {
 				bullet5.setySpeed(-bSpeedC);
 				bullet5.setxSpeed(0);
@@ -286,7 +287,7 @@ public class BulletFire {
 				&& cooldown == 0) {
 			bullet6.setFired(true);
 			bullet6.setDirectionFired(bulletDirection);
-			hvlSound(0).playAsSoundEffect(pitch, 1, false);
+			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
 			if (bulletDirection == 1) {
 				bullet6.setySpeed(-bSpeedC);
 				bullet6.setxSpeed(0);
@@ -323,7 +324,7 @@ public class BulletFire {
 				&& !(bullet7.isFired()) && bulletDirection > 0 && cooldown == 0) {
 			bullet7.setFired(true);
 			bullet7.setDirectionFired(bulletDirection);
-			hvlSound(0).playAsSoundEffect(pitch, 1, false);
+			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
 			if (bulletDirection == 1) {
 				bullet7.setySpeed(-bSpeedC);
 				bullet7.setxSpeed(0);
@@ -360,7 +361,7 @@ public class BulletFire {
 				&& bullet7.isFired() && !(bullet8.isFired()) && bulletDirection > 0 && cooldown == 0) {
 			bullet8.setFired(true);
 			bullet8.setDirectionFired(bulletDirection);
-			hvlSound(0).playAsSoundEffect(pitch, 1, false);
+			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
 			if (bulletDirection == 1) {
 				bullet8.setySpeed(-bSpeedC);
 				bullet8.setxSpeed(0);

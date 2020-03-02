@@ -37,7 +37,6 @@ public class Main extends HvlTemplateI {
 	 * Sound
 	 * Score
 	 * Player Hitbox/Death
-	 * Tie anything to delta that needs it. Game still speeds up with framerate.
 	 */
 
 	public static void main(String[] args) {
@@ -53,7 +52,7 @@ public class Main extends HvlTemplateI {
 		TextureLoader.loadTextures();
 		SoundLoader.loadSounds();
 		Game.initialize();
-		hvlSound(1).playAsMusic(1, 1, true);
+		hvlSound(1).playAsMusic(1f, 0.5f, true);
 	}
 
 	@Override
