@@ -51,8 +51,7 @@ public class Player {
 		if(respawn<0) {
 			respawn=1;
 			alive=true;
-			//Score.score = Score.score+100;
-			Score.lives = Score.lives-1; 
+			Score.lives --; 
 		}
 		
 		if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
@@ -106,11 +105,11 @@ public class Player {
 		if (xPos > 1120 - PLAYER_WIDTH/2) {
 			xPos = 1120 - PLAYER_WIDTH/2;
 		}
-		if (xPos < 150 + PLAYER_WIDTH/2) {
-			xPos = 150 + PLAYER_WIDTH/2;
+		if (xPos < 160 + PLAYER_WIDTH/2) {
+			xPos = 160 + PLAYER_WIDTH/2;
 		}
 		if (yPos > 720 - PLAYER_HEIGHT/2) {
-			yPos = 720;
+			yPos = 720 - PLAYER_HEIGHT/2;
 		}
 		if (yPos < 0 + PLAYER_HEIGHT/2) {
 			yPos = 0 + PLAYER_HEIGHT/2;

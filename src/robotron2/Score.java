@@ -17,10 +17,10 @@ public class Score {
 			lives = lives + 1;
 		}
 		
-		
 		hvlFont(0).draw("Lives: "+ lives, 1140, 10, Color.white, 0.2f);
 		hvlFont(0).draw("Score: ", 12, 10, Color.white, 0.2f);
 		hvlFont(0).draw(""+ score, 40, 45, Color.white, 0.17f);
+		
 	}
 	
 	

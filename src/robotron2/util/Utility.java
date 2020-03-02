@@ -1,4 +1,4 @@
-package robotron2;
+package robotron2.util;
 
 import java.util.Random;
 
