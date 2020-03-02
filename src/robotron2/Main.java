@@ -36,7 +36,6 @@ public class Main extends HvlTemplateI {
 	 * Score
 	 * Player Hitbox/Death
 	 * Tie anything to delta that needs it. Game still speeds up with framerate.
-	 * 
 	 */
 
 	public static void main(String[] args) {
