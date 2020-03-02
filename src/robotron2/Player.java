@@ -26,6 +26,8 @@ public class Player {
 	public static final float PLAYER_START_Y = 720 / 2;
 	public static final float PLAYER_WIDTH = 25;
 	public static final float PLAYER_HEIGHT = 50;
+	public static final float ACCELERATION = 5500;
+	public static final float MAX_SPEED = 350;
 	
 	private float xPos = 1280 / 2;
 	private float yPos = 720 / 2;
@@ -35,7 +37,6 @@ public class Player {
 	private float yspeedm = 1;
 	private float xspeedp = 1;
 	private float yspeedp = 1;
-	private float accel = 3;
 	private int playerTexture = 0;
 	private float respawn = 1;
 
@@ -55,51 +56,51 @@ public class Player {
 		}
 		
 		if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
-			xspeedm = xspeedm + (delta * accel);
+			xspeedm = xspeedm + (delta * ACCELERATION);
 		} else {
 			xspeedm = 1;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
-			xspeedp = xspeedp + (delta * accel);
+			xspeedp = xspeedp + (delta * ACCELERATION);
 		} else {
 			xspeedp = 1;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-			yspeedp = yspeedp + (delta * accel);
+			yspeedp = yspeedp + (delta * ACCELERATION);
 		} else {
 			yspeedp = 1;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-			yspeedm = yspeedm + (delta * accel);
+			yspeedm = yspeedm + (delta * ACCELERATION);
 		} else {
 			yspeedm = 1;
 		}
-		if (xspeedm > 2) {
-			xspeedm = 2;
+		if (xspeedm > MAX_SPEED) {
+			xspeedm = MAX_SPEED;
 		}
-		if (xspeedp > 2) {
-			xspeedp = 2;
+		if (xspeedp > MAX_SPEED) {
+			xspeedp = MAX_SPEED;
 		}
-		if (yspeedp > 2) {
-			yspeedp = 2;
+		if (yspeedp > MAX_SPEED) {
+			yspeedp = MAX_SPEED;
 		}
-		if (yspeedm > 2) {
-			yspeedm = 2;
+		if (yspeedm > MAX_SPEED) {
+			yspeedm = MAX_SPEED;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-			yPos = yPos - 1 * yspeedm;
+			yPos = yPos - delta * yspeedm;
 			playerTexture = 0;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-			yPos = yPos + 1 * yspeedp;
+			yPos = yPos + delta * yspeedp;
 			playerTexture = 3;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
-			xPos = xPos - 1 * xspeedm;
+			xPos = xPos - delta * xspeedm;
 			playerTexture = 1;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
-			xPos = xPos + 1 * xspeedp;
+			xPos = xPos + delta * xspeedp;
 			playerTexture = 2;
 		}
 		if (xPos > 1120 - PLAYER_WIDTH/2) {
