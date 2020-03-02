@@ -54,7 +54,6 @@ public class Main extends HvlTemplateI {
 		SoundLoader.loadSounds();
 		Game.initialize();
 		hvlSound(1).playAsMusic(1, 1, true);
-		
 	}
 
 	@Override
