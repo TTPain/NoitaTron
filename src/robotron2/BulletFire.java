@@ -49,6 +49,17 @@ public class BulletFire {
 
 	public static void update(float delta, Player player) {
 		
+		//DANGER ZONE
+		if(Keyboard.isKeyDown(Keyboard.KEY_E)) {
+		    for(double d = 0; d < 360; d += 10) {
+		        double d2 = d + Main.newest().getTimer().getTotalTime() * 100f;
+		        float speed = 100;
+		        float xs = (float)Math.cos(Math.toRadians(d2)) * speed;
+		        float ys = (float)Math.sin(Math.toRadians(d2)) * speed;
+		        bullets.add(new Bullet(Game.player.getxPos(), Game.player.getyPos(), xs, ys, true, false, 0));
+		    }
+		}
+		
 		if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
 			bulletDirection = 1;
 		}
