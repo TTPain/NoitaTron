@@ -10,6 +10,7 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 
 import com.osreboot.ridhvl2.loader.HvlLoaderSound;
 
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.HvlCoord;
@@ -20,6 +21,7 @@ import com.osreboot.ridhvl2.template.HvlTemplateI;
 
 import robotron2.load.SoundLoader;
 import robotron2.load.TextureLoader;
+import robotron2.util.Utility;
 
 public class Main extends HvlTemplateI {
 
@@ -43,7 +45,7 @@ public class Main extends HvlTemplateI {
 	}
 
 	public Main() {
-		super(new HvlDisplayWindowed(144, 1280, 720, "Robotron 2", false));
+		super(new HvlDisplayWindowed(144, 1280, 720, "Robotron 2", true));
 	}
 
 	@Override
@@ -57,7 +59,9 @@ public class Main extends HvlTemplateI {
 
 	@Override
 	public void update(float delta) {
-		Game.update(delta);
+		Utility.scale(Display.getWidth() / 1280f, Display.getHeight() / 720f, () -> {
+		    Game.update(delta);
+		});
 	}
 
 }

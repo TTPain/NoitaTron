@@ -11,13 +11,14 @@ import robotron2.Score;
 
 public class EnemyGrunt {
 
-	public EnemyGrunt(float xPosArg, float yPosArg, boolean livingStateArg, int stutterArg, int shatterDirectionArg, int textureArg) {
+	public EnemyGrunt(float xPosArg, float yPosArg, boolean livingStateArg, float stutterArg, int shatterDirectionArg,
+			int textureArg) {
 		xPos = xPosArg;
 		yPos = yPosArg;
 		livingState = livingStateArg;
 		gruntStutter = stutterArg;
 		gruntTexture = textureArg;
-		shatterDirection  = shatterDirectionArg;
+		shatterDirection = shatterDirectionArg;
 	}
 
 	public static final float GRUNT_SIZE = 25;
@@ -25,11 +26,14 @@ public class EnemyGrunt {
 	public float yPos = 0;
 	public float xPos = 0;
 	public boolean livingState = true;
-	public int gruntStutter = 0;
+	public float gruntStutter = 0;
 	public int gruntTexture;
 	public int shatterDirection;
 
 	public int stutterSpeed = 1;
+	private boolean firstStepX = false;
+	private boolean firstStepY = false;
+
 	private boolean movedThisFrame;
 
 	public void update(float delta, Player player) {
@@ -38,8 +42,12 @@ public class EnemyGrunt {
 
 		// GRUNT MOVEMENT AND SPRITE CHANGE
 		if (livingState == true) {
-			if (player.getxPos() > xPos && (gruntStutter == 0 || gruntStutter == 20)) {
+			if (player.getxPos() > xPos && stutterSpeed != 3
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepX)))) {
+
 				xPos = xPos + 12;
+
+				firstStepX = true;
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -47,8 +55,12 @@ public class EnemyGrunt {
 					gruntTexture = 4;
 					movedThisFrame = true;
 				}
-			} else if (player.getxPos() < xPos && (gruntStutter == 0 || gruntStutter == 20)) {
+			} else if (player.getxPos() < xPos && stutterSpeed != 3
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepX)))) {
+
 				xPos = xPos - 12;
+
+				firstStepX = true;
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -57,8 +69,13 @@ public class EnemyGrunt {
 					movedThisFrame = true;
 				}
 			}
-			if (player.getyPos() > yPos && (gruntStutter == 0 || gruntStutter == 20)) {
-				yPos = yPos + 12;
+
+			if (player.getxPos() > xPos && stutterSpeed == 3
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.05) && !(firstStepX)))) {
+
+				xPos = xPos + 13;
+
+				firstStepX = true;
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -66,8 +83,67 @@ public class EnemyGrunt {
 					gruntTexture = 4;
 					movedThisFrame = true;
 				}
-			} else if (player.getyPos() < yPos && (gruntStutter == 0 || gruntStutter == 20)) {
+			} else if (player.getxPos() < xPos && stutterSpeed == 3
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.05) && !(firstStepX)))) {
+
+				xPos = xPos - 13;
+
+				firstStepX = true;
+				if (gruntTexture == 4 && movedThisFrame == false) {
+					gruntTexture = 5;
+					movedThisFrame = true;
+				} else if (gruntTexture == 5 && movedThisFrame == false) {
+					gruntTexture = 4;
+					movedThisFrame = true;
+				}
+			}
+
+			if (player.getyPos() > yPos && stutterSpeed != 3
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepY)))) {
+
+				yPos = yPos + 12;
+
+				firstStepY = true;
+				if (gruntTexture == 4 && movedThisFrame == false) {
+					gruntTexture = 5;
+					movedThisFrame = true;
+				} else if (gruntTexture == 5 && movedThisFrame == false) {
+					gruntTexture = 4;
+					movedThisFrame = true;
+				}
+			} else if (player.getyPos() < yPos && stutterSpeed != 3
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepY)))) {
+
 				yPos = yPos - 12;
+
+				firstStepY = true;
+				if (gruntTexture == 4 && movedThisFrame == false) {
+					gruntTexture = 5;
+					movedThisFrame = true;
+				} else if (gruntTexture == 5 && movedThisFrame == false) {
+					gruntTexture = 4;
+					movedThisFrame = true;
+				}
+			}
+			if (player.getyPos() > yPos && stutterSpeed == 3
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.05) && !(firstStepY)))) {
+
+				yPos = yPos + 13;
+
+				firstStepY = true;
+				if (gruntTexture == 4 && movedThisFrame == false) {
+					gruntTexture = 5;
+					movedThisFrame = true;
+				} else if (gruntTexture == 5 && movedThisFrame == false) {
+					gruntTexture = 4;
+					movedThisFrame = true;
+				}
+			} else if (player.getyPos() < yPos && stutterSpeed == 3
+					&& (gruntStutter <= 0 || ((gruntStutter <= 0.05) && !(firstStepY)))) {
+
+				yPos = yPos - 13;
+
+				firstStepY = true;
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -81,8 +157,8 @@ public class EnemyGrunt {
 
 		// GRUNT HITBOX
 		for (Bullet bullet : BulletFire.bullets) {
-			if (((bullet.getxPos() < xPos + 15) && (bullet.getxPos() > xPos - 15) 
-					&& (bullet.getyPos() < yPos + 15) && (bullet.getyPos() > yPos - 15))) {
+			if (((bullet.getxPos() < xPos + 15) && (bullet.getxPos() > xPos - 15) && (bullet.getyPos() < yPos + 15)
+					&& (bullet.getyPos() > yPos - 15))) {
 				livingState = false;
 				bullet.setFired(false);
 				bullet.setBulletDrawn(false);
@@ -90,12 +166,15 @@ public class EnemyGrunt {
 				Score.addPoints(100);
 			}
 		}
-		
-		if((player.getxPos() < xPos + 15) && (player.getxPos() > xPos - 15) && (player.getyPos() < yPos + 15) && player.getyPos() > yPos - 15) {
+
+		// PLAYER HITBOX
+		if ((player.getxPos() - Player.PLAYER_WIDTH / 2 < xPos + 15)
+				&& (player.getxPos() + Player.PLAYER_WIDTH / 2 > xPos - 15)
+				&& (player.getyPos() - Player.PLAYER_HEIGHT / 2 < yPos + 15)
+				&& player.getyPos() + Player.PLAYER_HEIGHT / 2 > yPos - 15) {
 			player.setAlive(false);
 		}
-		
-		// END GRUNT HITBOX
+		// END GRUNT/PLAYER HITBOX
 
 		// GRUNT STUTTER SPEED
 		if ((EnemySpawner.levelTimer + 10 > Game.globalTimer)) {
@@ -107,17 +186,25 @@ public class EnemyGrunt {
 			stutterSpeed = 3;
 		}
 
-		if (gruntStutter == 0 && stutterSpeed == 1) {
-			gruntStutter = 100;
-		} else if (gruntStutter == 0 && stutterSpeed == 2) {
-			gruntStutter = 60;
-		} else if (gruntStutter == 0 && stutterSpeed == 3) {
-			gruntStutter = 30;
+		if (gruntStutter <= 0 && stutterSpeed == 1) {
+			gruntStutter = 0.82f;
+			firstStepX = false;
+			firstStepY = false;
+		} else if (gruntStutter <= 0 && stutterSpeed == 2) {
+			gruntStutter = 0.36f;
+			firstStepX = false;
+			firstStepY = false;
+		} else if (gruntStutter <= 0 && stutterSpeed == 3) {
+			gruntStutter = 0.13f;
+			firstStepX = false;
+			firstStepY = false;
 		}
 
 		else {
-			gruntStutter = gruntStutter - 1;
+			gruntStutter = gruntStutter - (delta * 1.2f);
 		}
+
+		System.out.println(gruntStutter);
 	}
 	// END GRUNT STUTTER SPEED
 
@@ -145,7 +232,7 @@ public class EnemyGrunt {
 		this.livingState = livingState;
 	}
 
-	public int getGruntStutter() {
+	public float getGruntStutter() {
 		return gruntStutter;
 	}
 
