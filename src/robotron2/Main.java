@@ -37,6 +37,7 @@ public class Main extends HvlTemplateI {
 	 * Sound
 	 * Score
 	 * Player Hitbox/Death
+	 * Game Over
 	 */
 
 	public static void main(String[] args) {
@@ -52,7 +53,7 @@ public class Main extends HvlTemplateI {
 		TextureLoader.loadTextures();
 		SoundLoader.loadSounds();
 		Game.initialize();
-		hvlSound(1).playAsMusic(1f, 0.5f, true);
+		//hvlSound(1).playAsMusic(1f, 0.5f, true);
 	}
 
 	@Override

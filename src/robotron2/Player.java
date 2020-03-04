@@ -39,8 +39,26 @@ public class Player {
 	private float yspeedp = 1;
 	private int playerTexture = 0;
 	private float respawn = 1;
+	
+	public void reset() {
+		xPos = 1280 / 2;
+		yPos = 720 / 2;
+		alive = true;
+		
+		xspeedm = 1;
+		yspeedm = 1;
+		xspeedp = 1;
+		yspeedp = 1;
+		playerTexture = 0;
+		respawn = 1;
+	}
 
 	public void update(float delta) {
+		
+		//Draw Player
+		if(Game.player.isAlive()==true) {
+			Game.player.draw(delta);
+		}
 		
 		//Death Handling
 		

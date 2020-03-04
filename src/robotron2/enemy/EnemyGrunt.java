@@ -51,7 +51,7 @@ public class EnemyGrunt {
 				xPos = xPos + 12;
 
 				firstStepX = true;
-				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -65,7 +65,7 @@ public class EnemyGrunt {
 				xPos = xPos - 12;
 
 				firstStepX = true;
-				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -81,7 +81,7 @@ public class EnemyGrunt {
 				xPos = xPos + 13;
 
 				firstStepX = true;
-				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -95,7 +95,7 @@ public class EnemyGrunt {
 				xPos = xPos - 13;
 
 				firstStepX = true;
-				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -111,7 +111,7 @@ public class EnemyGrunt {
 				yPos = yPos + 12;
 
 				firstStepY = true;
-				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -125,7 +125,7 @@ public class EnemyGrunt {
 				yPos = yPos - 12;
 
 				firstStepY = true;
-				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -140,7 +140,7 @@ public class EnemyGrunt {
 				yPos = yPos + 13;
 
 				firstStepY = true;
-				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -154,7 +154,7 @@ public class EnemyGrunt {
 				yPos = yPos - 13;
 
 				firstStepY = true;
-				hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
