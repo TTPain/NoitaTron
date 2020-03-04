@@ -30,7 +30,6 @@ public class Main extends HvlTemplateI {
 	 * Enemy Death Particles
 	 * Hulks, other enemies
 	 * People
-	 * Main Menu
 	 * Pause Menu
 	 * Splashes
 	 * Actual Textures
@@ -61,6 +60,7 @@ public class Main extends HvlTemplateI {
 		Utility.scale(Display.getWidth() / 1280f, Display.getHeight() / 720f, () -> {
 		    Game.update(delta);
 		});
+		MenuManager.update(delta);
 	}
 
 }

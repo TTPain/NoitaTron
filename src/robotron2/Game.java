@@ -39,7 +39,7 @@ public class Game {
 		Score.update(delta);
 		}
 		
-		MenuManager.update(delta);
+
 		//Hulk.update(delta, player);
 	}
 

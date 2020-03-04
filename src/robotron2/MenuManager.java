@@ -6,12 +6,14 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlEnvironment;
 import static com.osreboot.ridhvl2.HvlStatics.hvlFont;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
 
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.menu.HvlDefault;
 import com.osreboot.ridhvl2.menu.HvlMenu;
 import com.osreboot.ridhvl2.menu.component.HvlArranger;
 import com.osreboot.ridhvl2.menu.component.HvlButtonLabeled;
+import com.osreboot.ridhvl2.menu.component.HvlSpacer;
 import com.osreboot.ridhvl2.menu.component.HvlButton.HvlButtonState;
 
 public class MenuManager {
@@ -40,6 +42,7 @@ public class MenuManager {
 			HvlMenu.set(game);
 			EnemySpawner.reset();
 		}));
+		main.add(new HvlSpacer(1));
 		main.add(HvlButtonLabeled.fromDefault().text("Quit :(").clicked((button) -> {
 			Main.newest().setExiting();
 		}));
@@ -51,8 +54,9 @@ public class MenuManager {
 	}
 
 	public static void update(float delta) {
-
-		HvlMenu.operate(delta, hvlEnvironment(20, 240, 800, 400));
+		
+		
+		HvlMenu.operate(delta, hvlEnvironment(Display.getWidth()/16f, Display.getHeight()/4f, Display.getWidth()/2f, Display.getHeight()/2f));
 
 	}
 
