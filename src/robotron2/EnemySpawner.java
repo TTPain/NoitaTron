@@ -22,7 +22,7 @@ public class EnemySpawner {
 	public static ArrayList<EnemyGrunt> enemyGrunts = new ArrayList<>();
 
 	public static void reset() {
-		levelTimer = Game.globalTimer;
+		levelTimer = Game.gameplayTimer;
 		enemyGrunts.clear();
 
 		// Fill array with enemies, exact placement can be specified

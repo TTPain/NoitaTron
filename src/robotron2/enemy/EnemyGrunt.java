@@ -189,12 +189,12 @@ public class EnemyGrunt {
 
 		// GRUNT STUTTER SPEED
 		// Speeds up every 10 seconds.
-		if ((EnemySpawner.levelTimer + 10 > Game.globalTimer)) {
+		if ((EnemySpawner.levelTimer + 10 > Game.gameplayTimer)) {
 			stutterSpeed = 1;
-		} else if ((EnemySpawner.levelTimer + 10 <= Game.globalTimer)
-				&& (EnemySpawner.levelTimer + 20 > Game.globalTimer)) {
+		} else if ((EnemySpawner.levelTimer + 10 <= Game.gameplayTimer)
+				&& (EnemySpawner.levelTimer + 20 > Game.gameplayTimer)) {
 			stutterSpeed = 2;
-		} else if ((EnemySpawner.levelTimer + 20 <= Game.globalTimer)) {
+		} else if ((EnemySpawner.levelTimer + 20 <= Game.gameplayTimer)) {
 			stutterSpeed = 3;
 		}
 
@@ -216,7 +216,6 @@ public class EnemyGrunt {
 			gruntStutter = gruntStutter - (delta * 1.2f);
 		}
 
-		System.out.println(gruntStutter);
 	}
 	// END GRUNT STUTTER SPEED
 
