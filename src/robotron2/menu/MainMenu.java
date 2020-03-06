@@ -24,7 +24,7 @@ public class MainMenu {
 		}));
 		MenuManager.main.add(new HvlSpacer(SPACER_SIZE));
 		MenuManager.main.add(HvlButtonLabeled.fromDefault().text("Settings").align(0.5f, 0.5f).offsetY(4).clicked((button) -> {
-			Main.newest().setExiting();
+			HvlMenu.set(MenuManager.settings);
 		}));
 		MenuManager.main.add(new HvlSpacer(SPACER_SIZE));
 		MenuManager.main.add(HvlButtonLabeled.fromDefault().text("Credits").align(0.5f, 0.5f).offsetY(4).clicked((button) -> {
