@@ -36,8 +36,8 @@ public class Game {
 		EnemySpawner.update(delta);
 		BulletFire.update(delta, player);
 		LevelManager.update();
-		Score.update(delta);
 		Border.update(delta);
+		Score.update(delta);
 		}
 		
 	}

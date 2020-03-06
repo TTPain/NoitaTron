@@ -36,7 +36,7 @@ public class Main extends HvlTemplateI {
 	 * Actual Textures
 	 * Sound
 	 * Score
-	 * Player Hitbox/Death
+	 * *****Player Hitbox/Death*****
 	 * Game Over
 	 */
 	

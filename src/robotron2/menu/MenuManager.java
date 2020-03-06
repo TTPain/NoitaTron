@@ -25,45 +25,25 @@ public class MenuManager {
 	public static HvlArranger intro, main, game, pause, settings, credits, gameover;
 
 	public static void initialize() {
-		// Arranger(HorizontalArg, xAlign, yAlign)
-		// DEFAULT CREATION
+		// Default Creation MUST go before menu initialization.
 		HvlButtonLabeled defaultButton = new HvlButtonLabeled(hvlFont(0), "", Color.white, 0.2f,
 				(delta, environment, button, state) -> {
 					if (state == HvlButtonState.HOVER) {
 						hvlDraw(hvlQuad(environment.getX(), environment.getY(), environment.getWidth(),
-								environment.getHeight()), hvlColor(0.2f, 0.2f, 0.2f, 0.7f));
+								environment.getHeight()), Color.darkGray);
 					} else {
 						hvlDraw(hvlQuad(environment.getX(), environment.getY(), environment.getWidth(),
 								environment.getHeight()), Color.gray);
 					}
 				});
-		//TEXT ALIGNMENT
+		//Text Alignment
 		defaultButton.align(0.5f, 0.5f);
 		HvlDefault.put(defaultButton);
 
-		// MAIN MENU
-		main = new HvlArranger(false, 0.3f, 0.5f);
-		main.add(HvlButtonLabeled.fromDefault().text("Play!").align(0.3f, 0.5f).clicked((button) -> {
-			HvlMenu.set(game);
-			EnemySpawner.reset();
-		}));
-		main.add(new HvlSpacer(1));
-		main.add(HvlButtonLabeled.fromDefault().text("Quit :(").align(0.3f, 0.5f).clicked((button) -> {
-			Main.newest().setExiting();
-		}));
-
-		// GAME SCREEN
+		// Menu Initialization
+		MainMenu.initialize();
 		game = new HvlArranger(false, 0f, 0f);
-		
-		// PAUSE SCREEN
-		pause = new HvlArranger(false, 0.5f, 0.5f);
-		pause.add(HvlButtonLabeled.fromDefault().text("Resume").clicked((button) -> {
-			HvlMenu.set(game);
-		}));
-		pause.add(new HvlSpacer(10));
-		pause.add(HvlButtonLabeled.fromDefault().text("Quit").clicked((button) -> {
-			Main.newest().setExiting();
-		}));
+		PauseMenu.initialize();
 
 		// Initialize game to chosen menu. Can change for debug purposes.
 		HvlMenu.set(main);
@@ -75,8 +55,7 @@ public class MenuManager {
 		PauseFunction.update(delta);
 
 		if (HvlMenu.top() == main) {
-			//xPos, yPos, xSize, ySize
-			HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 16f, Display.getHeight() / 4f, Display.getWidth() / 2f, Display.getHeight() / 2f));
+			HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 20f, Display.getHeight() / 8f, Display.getWidth() / 4f, Display.getHeight() / 1.55f));
 		}
 		if (HvlMenu.top() == pause) {
 			HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 3f, Display.getHeight() / 4f, Display.getWidth() / 3f, Display.getHeight() / 2f));
