@@ -19,12 +19,13 @@ import com.osreboot.ridhvl2.menu.component.HvlButton.HvlButtonState;
 
 import robotron2.EnemySpawner;
 import robotron2.Main;
+import robotron2.Player;
 
 public class MenuManager {
 
 	public static HvlArranger intro, main, game, pause, settings, credits, gameover;
 
-	public static void initialize() {
+	public static void initialize(Player player) {
 		// Default Creation MUST go before menu initialization.
 		HvlButtonLabeled defaultButton = new HvlButtonLabeled(hvlFont(0), "", Color.white, 0.2f,
 				(delta, environment, button, state) -> {
@@ -43,7 +44,7 @@ public class MenuManager {
 		// Menu Initialization
 		MainMenu.initialize();
 		game = new HvlArranger(false, 0f, 0f);
-		PauseMenu.initialize();
+		PauseMenu.initialize(player);
 		SettingsMenu.initialize();
 		
 		// Initialize game to chosen menu. Can change for debug purposes.

@@ -22,7 +22,7 @@ public class Game {
 	public static void initialize() {
 		player = new Player(Player.PLAYER_START_X, Player.PLAYER_START_Y, true);
 		player.reset();
-		MenuManager.initialize();
+		MenuManager.initialize(player);
 		BulletFire.initialize();
 		EnemySpawner.reset();
 	}
@@ -42,4 +42,11 @@ public class Game {
 		
 	}
 
+	public static void reset(Player player) {
+		EnemySpawner.reset();
+		player.reset();
+		Score.reset();
+		BulletFire.reset(player);
+	}
+	
 }

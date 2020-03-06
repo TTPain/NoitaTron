@@ -46,6 +46,18 @@ public class BulletFire {
 		bullets.add(bullet7);
 		bullets.add(bullet8);
 	}
+	public static void reset(Player player) {
+		for(Bullet b : bullets) {
+			
+			b.setxPos(player.getxPos());
+			b.setyPos(player.getyPos());
+			b.setFired(false);
+			b.setBulletDrawn(false);
+			b.setxSpeed(0);
+			b.setySpeed(0);
+			
+		}
+	}
 
 	public static void update(float delta, Player player) {
 		

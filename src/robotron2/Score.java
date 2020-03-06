@@ -30,5 +30,8 @@ public class Score {
 		extraLifeScore = extraLifeScore + pointValue;
 		
 	}
-	
+	public static void reset() {
+		score=0;
+		lives=3;
+	}
 }
