@@ -59,10 +59,10 @@ public class MenuManager {
 		if (HvlMenu.top() == main) {
 			HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 20f, Display.getHeight() / 8f, Display.getWidth() / 4f, Display.getHeight() / 1.55f));
 		}
-		if (HvlMenu.top() == pause) {
+		else if (HvlMenu.top() == pause) {
 			HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 3f, Display.getHeight() / 4f, Display.getWidth() / 3f, Display.getHeight() / 2f));
 		}
-		if (HvlMenu.top() == settings) {
+		else if (HvlMenu.top() == settings) {
 			HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 20f, Display.getHeight() / 8f, Display.getWidth() / 4f, Display.getHeight() / 4f));
 		}
 
