@@ -28,6 +28,10 @@ public class Main extends HvlTemplateI {
 
 	/*
 	 * TODO
+	 * Current room is set to 0 as soon as game starts
+	 * Doors open when level is cleared
+	 * Update to new room when level is completed
+	 * Fix 'E' bullets so they despawn
 	 * Enemy Death Particles
 	 * Hulks, other enemies
 	 * People
@@ -35,7 +39,7 @@ public class Main extends HvlTemplateI {
 	 * Splashes
 	 * Actual Textures
 	 * Sound
-	 * Score
+	 * Rewrite score/lives so that it is a component of Player
 	 * *****Player Hitbox/Death*****
 	 * Game Over
 	 */
@@ -46,7 +50,7 @@ public class Main extends HvlTemplateI {
 	}
 
 	public Main() {
-		super(new HvlDisplayWindowed(144, 1280, 720, "Robotron 2", true));
+		super(new HvlDisplayWindowed(144, 1920, 1080, "Robotron 2", true));
 	}
 
 	@Override
@@ -58,7 +62,7 @@ public class Main extends HvlTemplateI {
 
 	@Override
 	public void update(float delta) {
-		Utility.scale(Display.getWidth() / 1280f, Display.getHeight() / 720f, () -> {
+		Utility.scale(Display.getWidth() / 1920f, Display.getHeight() / 1080f, () -> {
 		    Game.update(delta);
 		});
 		MenuManager.update(delta);

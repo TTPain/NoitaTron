@@ -16,13 +16,16 @@ public class Utility {
 
 	// Returns random int between min and max, inclusive.
 	public static int randomIntBetween(int min, int max) {
-		// max++;
-		// uncomment this ^^^ for true inclusivity
+		 max++;
 		if (max > min)
 			return min + rng.nextInt(max - min);
 		if (max < min)
 			return max + rng.nextInt(min - max);
 		return min;
+	}
+	
+	public static float randomFloatBetween(float min, float max)	{
+		return min + ((float) Math.random() * (max - min));
 	}
 	
 	public static void scale(float xScaleArg, float yScaleArg, HvlAction.A0 actionArg){

@@ -24,7 +24,9 @@ public class Game {
 		player.reset();
 		MenuManager.initialize(player);
 		BulletFire.initialize();
-		EnemySpawner.reset();
+		LevelGenerator.initialize();
+		RoomGenerator.reset();
+		LevelGenerator.reset();
 	}
 
 	public static void update(float delta) {
@@ -33,9 +35,10 @@ public class Game {
 		if(HvlMenu.top() == MenuManager.game) {	
 		gameplayTimer += delta;
 		player.update(delta);
-		EnemySpawner.update(delta);
+		RoomGenerator.update(delta);
+		LevelGenerator.update(delta);
 		BulletFire.update(delta, player);
-		LevelManager.update();
+		LevelManager.update(player, delta);
 		Border.update(delta);
 		Score.update(delta);
 		}
@@ -43,10 +46,11 @@ public class Game {
 	}
 
 	public static void reset(Player player) {
-		EnemySpawner.reset();
+		RoomGenerator.reset();
 		player.reset();
 		Score.reset();
 		BulletFire.reset(player);
+		LevelGenerator.reset();
 	}
 	
 }

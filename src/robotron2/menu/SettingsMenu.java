@@ -8,7 +8,7 @@ import com.osreboot.ridhvl2.menu.component.HvlButtonLabeled;
 import com.osreboot.ridhvl2.menu.component.HvlLabel;
 import com.osreboot.ridhvl2.menu.component.HvlSpacer;
 
-import robotron2.EnemySpawner;
+import robotron2.RoomGenerator;
 
 public class SettingsMenu {
 	

@@ -13,12 +13,12 @@ public class PauseFunction {
 			escapeHeld = false;
 		}
 		if(Keyboard.isKeyDown(Keyboard.KEY_ESCAPE) && !escapeHeld){
+			escapeHeld = true;
 			if(HvlMenu.top()==MenuManager.game) {
 				HvlMenu.set(MenuManager.pause);
 			} else if(HvlMenu.top()==MenuManager.pause) {
 				HvlMenu.set(MenuManager.game);
 			}	
-			escapeHeld = true;
 		}
 	}
 

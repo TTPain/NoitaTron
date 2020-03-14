@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import robotron2.Bullet;
 import robotron2.BulletFire;
-import robotron2.EnemySpawner;
+import robotron2.RoomGenerator;
 import robotron2.Game;
 import robotron2.Player;
 import robotron2.Score;
@@ -189,12 +189,12 @@ public class EnemyGrunt {
 
 		// GRUNT STUTTER SPEED
 		// Speeds up every 10 seconds.
-		if ((EnemySpawner.levelTimer + 10 > Game.gameplayTimer)) {
+		if ((RoomGenerator.levelTimer + 10 > Game.gameplayTimer)) {
 			stutterSpeed = 1;
-		} else if ((EnemySpawner.levelTimer + 10 <= Game.gameplayTimer)
-				&& (EnemySpawner.levelTimer + 20 > Game.gameplayTimer)) {
+		} else if ((RoomGenerator.levelTimer + 10 <= Game.gameplayTimer)
+				&& (RoomGenerator.levelTimer + 20 > Game.gameplayTimer)) {
 			stutterSpeed = 2;
-		} else if ((EnemySpawner.levelTimer + 20 <= Game.gameplayTimer)) {
+		} else if ((RoomGenerator.levelTimer + 20 <= Game.gameplayTimer)) {
 			stutterSpeed = 3;
 		}
 

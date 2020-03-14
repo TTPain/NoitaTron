@@ -17,7 +17,7 @@ import com.osreboot.ridhvl2.menu.component.HvlButtonLabeled;
 import com.osreboot.ridhvl2.menu.component.HvlSpacer;
 import com.osreboot.ridhvl2.menu.component.HvlButton.HvlButtonState;
 
-import robotron2.EnemySpawner;
+import robotron2.RoomGenerator;
 import robotron2.Main;
 import robotron2.Player;
 
@@ -56,9 +56,19 @@ public class MenuManager {
 		
 		PauseFunction.update(delta);
 		SettingsMenu.update(delta);
+		
 
 		if (HvlMenu.top() == main) {
-			HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 20f, Display.getHeight() / 8f, Display.getWidth() / 4f, Display.getHeight() / 1.55f));
+			
+			
+			if(Display.getWidth() <= 1400) {
+				HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 16f, Display.getHeight() / 5f, 300, 400));
+			}else if(Display.getWidth() > 1400) {
+				HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 16f, Display.getHeight() / 5f, 400, 500));
+			}
+	
+			
+			
 		}
 		else if (HvlMenu.top() == pause) {
 			HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 3f, Display.getHeight() / 4f, Display.getWidth() / 3f, Display.getHeight() / 2f));

@@ -7,6 +7,7 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
 import static com.osreboot.ridhvl2.HvlStatics.hvlTexture;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.loader.HvlLoader;
@@ -29,8 +30,8 @@ public class Player {
 	public static final float ACCELERATION = 5500;
 	public static final float MAX_SPEED = 250;
 	
-	private float xPos = 1280 / 2;
-	private float yPos = 720 / 2;
+	private float xPos = 1920 / 2;
+	private float yPos = 1080 / 2;
 	private boolean alive = true;
 	
 	private float xspeedm = 1;
@@ -41,8 +42,8 @@ public class Player {
 	private float respawn = 1;
 	
 	public void reset() {
-		xPos = 1280 / 2;
-		yPos = 720 / 2;
+		xPos = 1920 / 2;
+		yPos = 1080 / 2;
 		alive = true;
 		
 		xspeedm = 1;
@@ -63,8 +64,8 @@ public class Player {
 		//Death Handling
 		
 		if(alive==false) {
-			xPos=640;
-			yPos=360;
+			xPos=1920/2;
+			yPos=1080/2;
 			respawn=respawn-delta;
 		}
 		if(respawn<0) {
@@ -121,14 +122,14 @@ public class Player {
 			xPos = xPos + delta * xspeedp;
 			playerTexture = 2;
 		}
-		if (xPos > 1120 - PLAYER_WIDTH/2) {
-			xPos = 1120 - PLAYER_WIDTH/2;
+		if (xPos > 1920-160 - PLAYER_WIDTH/2) {
+			xPos = 1920-160 - PLAYER_WIDTH/2;
 		}
 		if (xPos < 160 + PLAYER_WIDTH/2) {
 			xPos = 160 + PLAYER_WIDTH/2;
 		}
-		if (yPos > 720 - PLAYER_HEIGHT/2) {
-			yPos = 720 - PLAYER_HEIGHT/2;
+		if (yPos > 1080 - PLAYER_HEIGHT/2) {
+			yPos = 1080 - PLAYER_HEIGHT/2;
 		}
 		if (yPos < 0 + PLAYER_HEIGHT/2) {
 			yPos = 0 + PLAYER_HEIGHT/2;

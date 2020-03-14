@@ -6,7 +6,7 @@ import com.osreboot.ridhvl2.menu.component.HvlButtonLabeled;
 import com.osreboot.ridhvl2.menu.component.HvlSpacer;
 
 import robotron2.BulletFire;
-import robotron2.EnemySpawner;
+import robotron2.RoomGenerator;
 import robotron2.Game;
 import robotron2.Main;
 import robotron2.Player;

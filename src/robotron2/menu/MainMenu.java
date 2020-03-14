@@ -5,7 +5,7 @@ import com.osreboot.ridhvl2.menu.component.HvlArranger;
 import com.osreboot.ridhvl2.menu.component.HvlButtonLabeled;
 import com.osreboot.ridhvl2.menu.component.HvlSpacer;
 
-import robotron2.EnemySpawner;
+import robotron2.RoomGenerator;
 import robotron2.Main;
 
 public class MainMenu {
@@ -16,7 +16,7 @@ public class MainMenu {
 		MenuManager.main = new HvlArranger(false, 0.5f, 0.5f);
 		MenuManager.main.add(HvlButtonLabeled.fromDefault().text("Start 1P").align(0.5f, 0.5f).offsetY(4).clicked((button) -> {
 			HvlMenu.set(MenuManager.game);
-			EnemySpawner.reset();
+			RoomGenerator.reset();
 		}));
 		MenuManager.main.add(new HvlSpacer(SPACER_SIZE));
 		MenuManager.main.add(HvlButtonLabeled.fromDefault().text("Start 2P").align(0.5f, 0.5f).offsetY(4).clicked((button) -> {

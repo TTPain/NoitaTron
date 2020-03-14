@@ -15,9 +15,10 @@ public class Score {
 		if(extraLifeScore >= EXTRA_LIFE_VALUE) {
 			extraLifeScore = extraLifeScore - EXTRA_LIFE_VALUE;
 			lives = lives + 1;
+			System.out.println("Extra Life!");
 		}
 		
-		hvlFont(0).draw("Lives: "+ lives, 1140, 10, Color.white, 0.2f);
+		hvlFont(0).draw("Lives: "+ lives, 1920-160, 10, Color.white, 0.2f);
 		hvlFont(0).draw("Score: ", 12, 10, Color.white, 0.2f);
 		hvlFont(0).draw(""+ score, 40, 45, Color.white, 0.17f);
 		
