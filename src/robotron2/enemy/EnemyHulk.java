@@ -7,7 +7,7 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlTexture;
 import robotron2.Player;
 
 public class EnemyHulk {
-
+//
 	public EnemyHulk(float xPosArg, float yPosArg, int textureArg) {
 		xPos = xPosArg;
 		yPos = yPosArg;
