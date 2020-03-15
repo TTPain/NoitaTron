@@ -63,7 +63,6 @@ public class RoomGenerator {
 				hvlDraw(hvlQuadc(hulk.xPos, hulk.yPos, 50, 50),
 						hvlTexture(3));
 				hulk.update(delta, Game.player);
-			
 
 		}
 
