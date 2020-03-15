@@ -13,6 +13,7 @@ import com.osreboot.ridhvl2.loader.HvlLoader;
 import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 
 import robotron2.enemy.EnemyGrunt;
+import robotron2.enemy.EnemyHulk;
 import robotron2.util.Utility;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class RoomGenerator {
 	public static float levelTimer;
 	public static ArrayList<Door> doors = new ArrayList<>();
 	public static ArrayList<EnemyGrunt> enemyGrunts = new ArrayList<>();
+	public static ArrayList<EnemyHulk> enemyHulks = new ArrayList<>();
 
 	public static void reset() {
 		levelTimer = Game.gameplayTimer;

@@ -29,7 +29,6 @@ public class Main extends HvlTemplateI {
 	/*
 	 * TODO
 	 * Current room is set to 0 as soon as game starts
-	 * Doors open when level is cleared
 	 * Update to new room when level is completed
 	 * Fix 'E' bullets so they despawn
 	 * Enemy Death Particles
