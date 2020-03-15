@@ -9,7 +9,7 @@ public class RoomClearAnimation {
 	private static float animationCounter = 0f;
 	private static float animationLength = 1.5f;
 	private static float animationTimer;
-	private static boolean stop = false;
+	public static boolean stop = false;
 
 	public static void play(float delta) {
 		

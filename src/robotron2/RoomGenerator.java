@@ -26,7 +26,7 @@ public class RoomGenerator {
 	public static void reset() {
 		levelTimer = Game.gameplayTimer;
 		enemyGrunts.clear();
-
+		RoomClearAnimation.stop = false;
 		// Fill array with enemies, exact placement can be specified
 		if ((Game.selected_level == 1)) {
 			doors.add(new Door(1920-160, 1080/2, false));
@@ -36,6 +36,7 @@ public class RoomGenerator {
 			enemyGrunts.add(new EnemyGrunt(700f, 700f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			
 		}
 	}
 

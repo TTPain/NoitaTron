@@ -27,23 +27,22 @@ public class LevelManager {
 			
 			for(Door door : RoomGenerator.doors) {
 				door.setOpen(true);
+				
 				if(door.getOpen() && player.getxPos() - Player.PLAYER_WIDTH/2 < door.getxPos() + Door.DOOR_SIZE/2 && player.getxPos() + Player.PLAYER_WIDTH/2 > door.getxPos() - Door.DOOR_SIZE/2
 						&& player.getyPos() - Player.PLAYER_HEIGHT/2 < door.getyPos() + Door.DOOR_SIZE/2 && player.getyPos() + Player.PLAYER_HEIGHT/2 > door.getyPos() - Door.DOOR_SIZE/2) {
-					//Set appropriate next room
 					LevelGenerator.currentRoom.setRoomCompleted(true);
 				}
 			}
-			RoomClearAnimation.play(delta);
-			System.out.println("Room cleared, but not yet completed.");
-		
-			
-				
-				
+				RoomClearAnimation.play(delta);
+				System.out.println("Room cleared, but not yet completed.");	
 		}
 		
-		if(LevelGenerator.currentRoom.getRoomCompleted() == true) {
+	if(LevelGenerator.currentRoom.getRoomCompleted() == true) {
 			System.out.println("Room Completed!!");
-			//Load next room.
+			//Set next room.
+			LevelGenerator.currentRoom.setRoomCleared(false);
+			LevelGenerator.currentRoom.setRoomCompleted(false);
+			RoomGenerator.reset();
 		}
 		
 		
