@@ -38,6 +38,7 @@ public class RoomGenerator {
 			enemyGrunts.add(new EnemyGrunt(700f, 700f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			enemyHulks.add(new EnemyHulk(0, 0, 1));
 			
 		}
 	}
@@ -54,6 +55,15 @@ public class RoomGenerator {
 						hvlTexture(grunt.gruntTexture));
 				grunt.update(delta, Game.player);
 			}
+
+		}
+		
+		for (EnemyHulk hulk : enemyHulks) {
+		
+				hvlDraw(hvlQuadc(hulk.xPos, hulk.yPos, 50, 50),
+						hvlTexture(3));
+				hulk.update(delta, Game.player);
+			
 
 		}
 
