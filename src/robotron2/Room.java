@@ -8,7 +8,7 @@ public class Room {
 	private int roomLevel;
 	private int roomContents;
 	
-	public Room( int roomLevelArg, int roomContentsArg, boolean roomVisitedArg, boolean roomClearedArg, boolean roomCompletedArg) {
+	public Room(int roomLevelArg, int roomContentsArg, boolean roomVisitedArg, boolean roomClearedArg, boolean roomCompletedArg) {
 		
 		roomVisited = roomVisitedArg;
 		roomContents = roomContentsArg;
