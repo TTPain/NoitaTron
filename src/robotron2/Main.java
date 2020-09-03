@@ -33,14 +33,16 @@ public class Main extends HvlTemplateI {
 	 * Fix 'E' bullets so they despawn
 	 * Enemy Death Particles
 	 * Hulks, other enemies
-	 * People
+	 * People/Money
+	 * Upgrades
 	 * Pause Menu
 	 * Splashes
 	 * Actual Textures
 	 * Sound
 	 * Rewrite score/lives so that it is a component of Player
 	 * *****Player Hitbox/Death*****
-	 * Game Over
+	 * Game over says score and "Game Over"
+	 * Rework Player Lives after adding a second player
 	 */
 	
 
@@ -49,7 +51,7 @@ public class Main extends HvlTemplateI {
 	}
 
 	public Main() {
-		super(new HvlDisplayWindowed(144, 1920, 1080, "Robotron 2", true));
+		super(new HvlDisplayWindowed(144, Display.getWidth(), Display.getHeight(), "Robotron 2", true));
 	}
 
 	@Override

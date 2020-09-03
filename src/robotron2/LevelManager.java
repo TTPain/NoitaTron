@@ -42,7 +42,7 @@ public class LevelManager {
 			//Set next room.
 			LevelGenerator.currentRoom.setRoomCleared(false);
 			LevelGenerator.currentRoom.setRoomCompleted(false);
-			RoomGenerator.reset();
+			RoomGenerator.reset(player);
 		}
 		
 		

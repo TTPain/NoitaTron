@@ -7,6 +7,7 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
 import static com.osreboot.ridhvl2.HvlStatics.hvlTexture;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.loader.HvlLoader;
@@ -25,8 +26,10 @@ public class RoomGenerator {
 	public static ArrayList<EnemyGrunt> enemyGrunts = new ArrayList<>();
 	public static ArrayList<EnemyHulk> enemyHulks = new ArrayList<>();
 
-	public static void reset() {
+	public static void reset(Player player) {
 		levelTimer = Game.gameplayTimer;
+		player.setxPos(Display.getWidth()/2);
+		player.setyPos(Display.getHeight()/2);
 		enemyGrunts.clear();
 		RoomClearAnimation.stop = false;
 		// Fill array with enemies, exact placement can be specified
@@ -38,7 +41,7 @@ public class RoomGenerator {
 			enemyGrunts.add(new EnemyGrunt(700f, 700f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
-			enemyHulks.add(new EnemyHulk(0, 0, 1));
+			//enemyHulks.add(new EnemyHulk(0, 0, 1));
 			
 		}
 	}

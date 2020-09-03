@@ -62,8 +62,8 @@ public class BulletFire {
 	public static void update(float delta, Player player) {
 		
 		//DANGER ZONE
-		if(Keyboard.isKeyDown(Keyboard.KEY_E)) {
-		    for(double d = 0; d < 360; d += 15) {
+		if(Keyboard.isKeyDown(Keyboard.KEY_E) && player.isAlive()) {
+		    for(double d = 0; d < 360; d += 45) {
 		        double d2 = d + Main.newest().getTimer().getTotalTime() * 100f;
 		        float speed = 100;
 		        float xs = (float)Math.cos(Math.toRadians(d2)) * speed;
@@ -116,7 +116,7 @@ public class BulletFire {
 		// draw bullet if it is in playfield and make it move in the direction
 		// specified, below
 
-		if (bullet1.isFired() == false && bulletDirection > 0 && (cooldown == 0)) {
+		if (bullet1.isFired() == false && bulletDirection > 0 && (cooldown == 0) && player.isAlive()) {
 			bullet1.setFired(true);
 			bullet1.setDirectionFired(bulletDirection);
 			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);

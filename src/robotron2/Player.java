@@ -20,18 +20,19 @@ public class Player {
 		xPos = xArg;
 		yPos = yArg;
 		alive = aliveArg;
+		
 
 	}
 
-	public static final float PLAYER_START_X = 1280 / 2;
-	public static final float PLAYER_START_Y = 720 / 2;
+	public static final float PLAYER_START_X = 1920/2;
+	public static final float PLAYER_START_Y = 1080/2;
 	public static final float PLAYER_WIDTH = 22;
 	public static final float PLAYER_HEIGHT = 44;
 	public static final float ACCELERATION = 5500;
 	public static final float MAX_SPEED = 250;
 	
-	private float xPos = 1920 / 2;
-	private float yPos = 1080 / 2;
+	private float xPos = 1920/2;
+	private float yPos = 1080/2;
 	private boolean alive = true;
 	
 	private float xspeedm = 1;
@@ -42,8 +43,8 @@ public class Player {
 	private float respawn = 1;
 	
 	public void reset() {
-		xPos = 1920 / 2;
-		yPos = 1080 / 2;
+		xPos = 1920/2;
+		yPos = 1080/2;
 		alive = true;
 		
 		xspeedm = 1;
@@ -57,15 +58,15 @@ public class Player {
 	public void update(float delta) {
 		
 		//Draw Player
-		if(Game.player.isAlive()==true) {
+		if(Game.player.isAlive()==true && Score.lives>=0){
 			Game.player.draw(delta);
 		}
 		
 		//Death Handling
 		
 		if(alive==false) {
-			xPos=1920/2;
-			yPos=1080/2;
+			xPos=Display.getWidth()/2;
+			yPos=Display.getHeight()/2;
 			respawn=respawn-delta;
 		}
 		if(respawn<0) {

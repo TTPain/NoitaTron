@@ -25,7 +25,7 @@ public class Game {
 		MenuManager.initialize(player);
 		BulletFire.initialize();
 		LevelGenerator.initialize();
-		RoomGenerator.reset();
+		RoomGenerator.reset(player);
 		LevelGenerator.reset();
 	}
 
@@ -40,13 +40,13 @@ public class Game {
 		BulletFire.update(delta, player);
 		LevelManager.update(player, delta);
 		Border.update(delta);
-		Score.update(delta);
+		Score.update(delta, player);
 		}
 		
 	}
 
 	public static void reset(Player player) {
-		RoomGenerator.reset();
+		RoomGenerator.reset(player);
 		player.reset();
 		Score.reset();
 		BulletFire.reset(player);

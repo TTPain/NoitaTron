@@ -4,6 +4,10 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlFont;
 
 import org.newdawn.slick.Color;
 
+import com.osreboot.ridhvl2.menu.HvlMenu;
+
+import robotron2.menu.MenuManager;
+
 public class Score {
 	public static final int EXTRA_LIFE_VALUE = 50000;
 	
@@ -11,16 +15,29 @@ public class Score {
 	public static int score=0;
 	public static int lives=3;
 
-	public static void update(float delta) {
+	public static void update(float delta, Player player) {
 		if(extraLifeScore >= EXTRA_LIFE_VALUE) {
 			extraLifeScore = extraLifeScore - EXTRA_LIFE_VALUE;
 			lives = lives + 1;
 			System.out.println("Extra Life!");
+			
+			
 		}
 		
 		hvlFont(0).draw("Lives: "+ lives, 1920-160, 10, Color.white, 0.2f);
 		hvlFont(0).draw("Score: ", 12, 10, Color.white, 0.2f);
 		hvlFont(0).draw(""+ score, 40, 45, Color.white, 0.17f);
+		
+		if(lives <= -1) {
+			RoomGenerator.reset(player);
+			player.reset();
+			Score.reset();
+			BulletFire.reset(player);
+			LevelGenerator.reset();
+			if(HvlMenu.top()==MenuManager.game) {
+				HvlMenu.set(MenuManager.gameover);
+			}
+		}
 		
 	}
 	

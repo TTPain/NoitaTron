@@ -42,10 +42,11 @@ public class MenuManager {
 		HvlDefault.put(defaultButton);
 
 		// Menu Initialization
-		MainMenu.initialize();
+		MainMenu.initialize(player);
 		game = new HvlArranger(false, 0f, 0f);
 		PauseMenu.initialize(player);
 		SettingsMenu.initialize();
+		GameOver.initialize(player);
 		
 		// Initialize game to chosen menu. Can change for debug purposes.
 		HvlMenu.set(main);
@@ -56,6 +57,7 @@ public class MenuManager {
 		
 		PauseFunction.update(delta);
 		SettingsMenu.update(delta);
+		
 		
 
 		if (HvlMenu.top() == main) {
@@ -75,6 +77,9 @@ public class MenuManager {
 		}
 		else if (HvlMenu.top() == settings) {
 			HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 20f, Display.getHeight() / 8f, Display.getWidth() / 4f, Display.getHeight() / 4f));
+		}
+		else if (HvlMenu.top() == gameover) {
+			HvlMenu.operate(delta, hvlEnvironment(Display.getWidth() / 3f, Display.getHeight() / 4f, Display.getWidth() / 3f, Display.getHeight() / 2f));
 		}
 
 		
