@@ -12,18 +12,19 @@ public class LevelManager {
 
 		//Room Cleared Detection
 		gruntDeathCount = 0;
+		RoomGenerator.enemiesAlive = RoomGenerator.enemyGrunts.size();
 		for (EnemyGrunt grunt : RoomGenerator.enemyGrunts) {
 			if (grunt.livingState == false) {
-				gruntDeathCount = gruntDeathCount + 1;
+				RoomGenerator.enemiesAlive--;
 			}
 		}
 
-		System.out.println(gruntDeathCount);
+		System.out.println(RoomGenerator.enemiesAlive);
 
 
 
 		//Hard coded for level 1 only
-		if(gruntDeathCount == 5) {
+		if(RoomGenerator.enemiesAlive == 0) {
 			///////
 
 			RoomClearAnimation.play(delta);

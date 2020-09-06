@@ -25,9 +25,11 @@ public class RoomGenerator {
 	public static ArrayList<Door> doors = new ArrayList<>();
 	public static ArrayList<EnemyGrunt> enemyGrunts = new ArrayList<>();
 	public static ArrayList<EnemyHulk> enemyHulks = new ArrayList<>();
+	public static int enemiesAlive = 0;
 
 	public static void reset(Player player) {
 		levelTimer = Game.gameplayTimer;
+		
 		player.setxPos(Display.getWidth()/2);
 		player.setyPos(Display.getHeight()/2);
 		enemyGrunts.clear();
@@ -43,6 +45,7 @@ public class RoomGenerator {
 			enemyGrunts.add(new EnemyGrunt(700f, 700f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			enemiesAlive = enemyGrunts.size();
 			//enemyHulks.add(new EnemyHulk(0, 0, 1));
 			
 		}
@@ -58,6 +61,7 @@ public class RoomGenerator {
 			enemyGrunts.add(new EnemyGrunt(440f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(430f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			enemyHulks.add(new EnemyHulk(0, 0, 1));
+			enemiesAlive = enemyGrunts.size();
 			
 		}
 	}
@@ -84,6 +88,6 @@ public class RoomGenerator {
 				hulk.update(delta, Game.player);
 
 		}
-
+		
 	}
 }

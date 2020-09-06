@@ -21,6 +21,7 @@ import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 import com.osreboot.ridhvl2.template.HvlDisplayWindowed;
 import com.osreboot.ridhvl2.template.HvlTemplateI;
 
+import robotron2.enemy.EnemyGrunt;
 import robotron2.load.SoundLoader;
 import robotron2.load.TextureLoader;
 import robotron2.menu.MenuManager;
@@ -67,6 +68,7 @@ public class Main extends HvlTemplateI {
 	@Override
 	public void update(float delta) {
 		System.out.println("Current Level: " + Game.selected_level);
+		System.out.println(RoomGenerator.enemyGrunts.size());
 		hvlTranslate(-(Game.player.getxPos() - Display.getWidth()/2), -(Game.player.getyPos() - Display.getHeight()/2), () ->{
 	//	Utility.scale(Display.getWidth() / 1280f, Display.getHeight() / 720f, () -> {
 			if(Display.getWidth() > 1280) {
