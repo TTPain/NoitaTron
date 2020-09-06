@@ -157,7 +157,7 @@ public class BulletFire {
 			bullet1.setySpeed(bullet1.getySpeed()+Utility.randomIntBetween(-5, 5)*inaccuracy*(delta));
 		}
 		if (bullet1.isBulletDrawn() && (bullet1.isFired()) && !(bullet2.isFired()) && bulletDirection > 0
-				&& cooldown == 0) {
+				&& cooldown == 0 && player.isAlive()) {
 			bullet2.setFired(true);
 			bullet2.setDirectionFired(bulletDirection);
 			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
@@ -194,7 +194,7 @@ public class BulletFire {
 			bullet2.setySpeed(bullet2.getySpeed()+Utility.randomIntBetween(-5, 5)*inaccuracy*(delta));
 		}
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet1.isFired() && bullet2.isFired()
-				&& !(bullet3.isFired()) && bulletDirection > 0 && cooldown == 0) {
+				&& !(bullet3.isFired()) && bulletDirection > 0 && cooldown == 0 && player.isAlive()) {
 			bullet3.setFired(true);
 			bullet3.setDirectionFired(bulletDirection);
 			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
@@ -232,7 +232,7 @@ public class BulletFire {
 		}
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet3.isBulletDrawn() && bullet1.isFired()
 				&& bullet2.isFired() && bullet3.isFired() && !(bullet4.isFired()) && bulletDirection > 0
-				&& cooldown == 0) {
+				&& cooldown == 0 && player.isAlive()) {
 			bullet4.setFired(true);
 			bullet4.setDirectionFired(bulletDirection);
 			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
@@ -270,7 +270,7 @@ public class BulletFire {
 		}
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet3.isBulletDrawn() && bullet4.isBulletDrawn()
 				&& bullet1.isFired() && bullet2.isFired() && bullet3.isFired() && bullet4.isFired()
-				&& !(bullet5.isFired()) && bulletDirection > 0 && cooldown == 0) {
+				&& !(bullet5.isFired()) && bulletDirection > 0 && cooldown == 0 && player.isAlive()) {
 			bullet5.setFired(true);
 			bullet5.setDirectionFired(bulletDirection);
 			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
@@ -309,7 +309,7 @@ public class BulletFire {
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet3.isBulletDrawn() && bullet4.isBulletDrawn()
 				&& bullet5.isBulletDrawn() && bullet1.isFired() && bullet2.isFired() && bullet3.isFired()
 				&& bullet4.isFired() && bullet5.isFired() && !(bullet6.isFired()) && bulletDirection > 0
-				&& cooldown == 0) {
+				&& cooldown == 0 && player.isAlive()) {
 			bullet6.setFired(true);
 			bullet6.setDirectionFired(bulletDirection);
 			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
@@ -348,7 +348,7 @@ public class BulletFire {
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet3.isBulletDrawn() && bullet4.isBulletDrawn()
 				&& bullet5.isBulletDrawn() && bullet6.isBulletDrawn() && bullet1.isFired() && bullet2.isFired()
 				&& bullet3.isFired() && bullet4.isFired() && bullet5.isFired() && bullet6.isFired()
-				&& !(bullet7.isFired()) && bulletDirection > 0 && cooldown == 0) {
+				&& !(bullet7.isFired()) && bulletDirection > 0 && cooldown == 0 && player.isAlive()) {
 			bullet7.setFired(true);
 			bullet7.setDirectionFired(bulletDirection);
 			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
@@ -387,7 +387,7 @@ public class BulletFire {
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet3.isBulletDrawn() && bullet4.isBulletDrawn()
 				&& bullet5.isBulletDrawn() && bullet6.isBulletDrawn() && bullet7.isBulletDrawn() && bullet1.isFired()
 				&& bullet2.isFired() && bullet3.isFired() && bullet4.isFired() && bullet5.isFired() && bullet6.isFired()
-				&& bullet7.isFired() && !(bullet8.isFired()) && bulletDirection > 0 && cooldown == 0) {
+				&& bullet7.isFired() && !(bullet8.isFired()) && bulletDirection > 0 && cooldown == 0 && player.isAlive()) {
 			bullet8.setFired(true);
 			bullet8.setDirectionFired(bulletDirection);
 			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
