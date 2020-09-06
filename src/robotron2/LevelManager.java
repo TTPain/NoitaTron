@@ -18,35 +18,29 @@ public class LevelManager {
 			}
 		}
 
-		if (gruntDeathCount == RoomGenerator.enemyGrunts.size()) {
-			LevelGenerator.currentRoom.setRoomCleared(true);
-		}
-		
-		//Room Completion Detection	
-		if(LevelGenerator.currentRoom.getRoomCleared() == true && LevelGenerator.currentRoom.getRoomCompleted() == false) {
-			
+		System.out.println(gruntDeathCount);
+
+
+
+		//Hard coded for level 1 only
+		if(gruntDeathCount == 5) {
+			///////
+
+			RoomClearAnimation.play(delta);
 			for(Door door : RoomGenerator.doors) {
 				door.setOpen(true);
-				
 				if(door.getOpen() && player.getxPos() - Player.PLAYER_WIDTH/2 < door.getxPos() + Door.DOOR_SIZE/2 && player.getxPos() + Player.PLAYER_WIDTH/2 > door.getxPos() - Door.DOOR_SIZE/2
 						&& player.getyPos() - Player.PLAYER_HEIGHT/2 < door.getyPos() + Door.DOOR_SIZE/2 && player.getyPos() + Player.PLAYER_HEIGHT/2 > door.getyPos() - Door.DOOR_SIZE/2) {
-					LevelGenerator.currentRoom.setRoomCompleted(true);
-				}
-			}
-				RoomClearAnimation.play(delta);
-				System.out.println("Room cleared, but not yet completed.");	
-		}
-		
-	if(LevelGenerator.currentRoom.getRoomCompleted() == true) {
-			System.out.println("Room Completed!!");
-			//Set next room.
-			LevelGenerator.currentRoom.setRoomCleared(false);
-			LevelGenerator.currentRoom.setRoomCompleted(false);
-			RoomGenerator.reset(player);
-		}
-		
-		
-		
+					
+					//SET NEXT LEVEL
+					System.out.println("You beat the game!");
+					Game.selected_level++;
+					RoomGenerator.reset(player);
 
+				}
+
+			}
+
+		}
 	}
 }

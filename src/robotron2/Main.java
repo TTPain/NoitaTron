@@ -4,8 +4,10 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
+import static com.osreboot.ridhvl2.HvlStatics.hvlScale;
 import static com.osreboot.ridhvl2.HvlStatics.hvlSound;
 import static com.osreboot.ridhvl2.HvlStatics.hvlTexture;
+import static com.osreboot.ridhvl2.HvlStatics.hvlTranslate;
 import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 
 import com.osreboot.ridhvl2.loader.HvlLoaderSound;
@@ -28,6 +30,7 @@ public class Main extends HvlTemplateI {
 
 	/*
 	 * TODO
+	 * Render Class
 	 * Current room is set to 0 as soon as game starts
 	 * Update to new room when level is completed
 	 * Fix 'E' bullets so they despawn
@@ -51,7 +54,7 @@ public class Main extends HvlTemplateI {
 	}
 
 	public Main() {
-		super(new HvlDisplayWindowed(144, Display.getWidth(), Display.getHeight(), "Robotron 2", true));
+		super(new HvlDisplayWindowed(144, 1280, 720, "Robotron 2", true));
 	}
 
 	@Override
@@ -63,8 +66,22 @@ public class Main extends HvlTemplateI {
 
 	@Override
 	public void update(float delta) {
-		Utility.scale(Display.getWidth() / 1920f, Display.getHeight() / 1080f, () -> {
-		    Game.update(delta);
+		System.out.println("Current Level: " + Game.selected_level);
+		hvlTranslate(-(Game.player.getxPos() - Display.getWidth()/2), -(Game.player.getyPos() - Display.getHeight()/2), () ->{
+	//	Utility.scale(Display.getWidth() / 1280f, Display.getHeight() / 720f, () -> {
+			if(Display.getWidth() > 1280) {
+				hvlScale(Game.player.getxPos(), Game.player.getyPos(), 1.2f, () -> {
+					Game.update(delta);
+				});
+			}else {
+			hvlScale(Game.player.getxPos(), Game.player.getyPos(), 1f, () -> {
+				Game.update(delta);
+			
+			});
+			}
+			//Draw HUD Elements outside of Translate call
+		    
+		//});
 		});
 		MenuManager.update(delta);
 	}

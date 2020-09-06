@@ -33,7 +33,7 @@ public class Score {
 			player.reset();
 			Score.reset();
 			BulletFire.reset(player);
-			LevelGenerator.reset();
+			//LevelGenerator.reset();
 			if(HvlMenu.top()==MenuManager.game) {
 				HvlMenu.set(MenuManager.gameover);
 			}

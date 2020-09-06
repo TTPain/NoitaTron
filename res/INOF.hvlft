@@ -10,10 +10,40 @@
     ],
     [
       {
+        "key" : "y_offset",
+        "typeName" : "java.lang.Float"
+      },
+      0.0
+    ],
+    [
+      {
         "key" : "texture",
         "typeName" : "java.lang.String"
       },
       "INOF.png"
+    ],
+    [
+      {
+        "key" : "character_missing",
+        "typeName" : "com.osreboot.ridhvl2.menu.HvlCharacter"
+      },
+      {
+        "uv0" : {
+          "x" : 0.140625,
+          "y" : 0.375
+        },
+        "uv1" : {
+          "x" : 0.1875,
+          "y" : 0.46875
+        }
+      }
+    ],
+    [
+      {
+        "key" : "x_offset",
+        "typeName" : "java.lang.Float"
+      },
+      0.0
     ],
     [
       {

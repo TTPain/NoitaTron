@@ -31,6 +31,8 @@ public class RoomGenerator {
 		player.setxPos(Display.getWidth()/2);
 		player.setyPos(Display.getHeight()/2);
 		enemyGrunts.clear();
+		enemyHulks.clear();
+		doors.clear();
 		RoomClearAnimation.stop = false;
 		// Fill array with enemies, exact placement can be specified
 		if ((Game.selected_level == 1)) {
@@ -42,6 +44,20 @@ public class RoomGenerator {
 			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
 			//enemyHulks.add(new EnemyHulk(0, 0, 1));
+			
+		}
+		else if ((Game.selected_level == 2)) {
+			doors.add(new Door(1920-160, 1080/2, false));
+			// xPos, yPos, livingState, StutterStart, ShatterDirection, Starter Texture
+			enemyGrunts.add(new EnemyGrunt(300f, 100f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			enemyGrunts.add(new EnemyGrunt(500f, 500f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			enemyGrunts.add(new EnemyGrunt(700f, 700f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			enemyGrunts.add(new EnemyGrunt(450f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			enemyGrunts.add(new EnemyGrunt(440f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			enemyGrunts.add(new EnemyGrunt(430f, 200f, true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			enemyHulks.add(new EnemyHulk(0, 0, 1));
 			
 		}
 	}

@@ -14,6 +14,8 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 
 import com.osreboot.ridhvl2.loader.HvlLoaderSound;
 
+import robotron2.util.Utility;
+
 public class BulletFire {
 
 	private static float bSpeedC = 1200;
@@ -23,6 +25,7 @@ public class BulletFire {
 
 	private static float cooldown = 0.0f;
 	private static float cooldownSpeed = 12;
+	private static int inaccuracy = 150;
 
 	public static ArrayList<Bullet> bullets = new ArrayList<>();
 
@@ -123,7 +126,7 @@ public class BulletFire {
 			if (cooldown == 0) {
 				cooldown = 1;
 			}
-			
+
 			if (bulletDirection == 1) {
 				bullet1.setySpeed(-bSpeedC);
 				bullet1.setxSpeed(0);
@@ -150,7 +153,9 @@ public class BulletFire {
 				bullet1.setxSpeed(-bSpeedD);
 			}
 		}
-
+	if (bullet1.isFired()== true) {
+			bullet1.setySpeed(bullet1.getySpeed()+Utility.randomIntBetween(-5, 5)*inaccuracy*(delta));
+		}
 		if (bullet1.isBulletDrawn() && (bullet1.isFired()) && !(bullet2.isFired()) && bulletDirection > 0
 				&& cooldown == 0) {
 			bullet2.setFired(true);
@@ -185,7 +190,9 @@ public class BulletFire {
 				bullet2.setxSpeed(-bSpeedD);
 			}
 		}
-
+		if (bullet2.isFired()== true) {
+			bullet2.setySpeed(bullet2.getySpeed()+Utility.randomIntBetween(-5, 5)*inaccuracy*(delta));
+		}
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet1.isFired() && bullet2.isFired()
 				&& !(bullet3.isFired()) && bulletDirection > 0 && cooldown == 0) {
 			bullet3.setFired(true);
@@ -220,7 +227,9 @@ public class BulletFire {
 				bullet3.setxSpeed(-bSpeedD);
 			}
 		}
-
+		if (bullet3.isFired()== true) {
+			bullet3.setySpeed(bullet3.getySpeed()+Utility.randomIntBetween(-5, 5)*inaccuracy*(delta));
+		}
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet3.isBulletDrawn() && bullet1.isFired()
 				&& bullet2.isFired() && bullet3.isFired() && !(bullet4.isFired()) && bulletDirection > 0
 				&& cooldown == 0) {
@@ -256,7 +265,9 @@ public class BulletFire {
 				cooldown = 1;
 			}
 		}
-
+		if (bullet4.isFired()== true) {
+			bullet4.setySpeed(bullet4.getySpeed()+Utility.randomIntBetween(-5, 5)*inaccuracy*(delta));
+		}
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet3.isBulletDrawn() && bullet4.isBulletDrawn()
 				&& bullet1.isFired() && bullet2.isFired() && bullet3.isFired() && bullet4.isFired()
 				&& !(bullet5.isFired()) && bulletDirection > 0 && cooldown == 0) {
@@ -292,7 +303,9 @@ public class BulletFire {
 				cooldown = 1;
 			}
 		}
-
+		if (bullet5.isFired()== true) {
+			bullet5.setySpeed(bullet5.getySpeed()+Utility.randomIntBetween(-5, 5)*inaccuracy*(delta));
+		}
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet3.isBulletDrawn() && bullet4.isBulletDrawn()
 				&& bullet5.isBulletDrawn() && bullet1.isFired() && bullet2.isFired() && bullet3.isFired()
 				&& bullet4.isFired() && bullet5.isFired() && !(bullet6.isFired()) && bulletDirection > 0
@@ -301,7 +314,7 @@ public class BulletFire {
 			bullet6.setDirectionFired(bulletDirection);
 			hvlSound(0).playAsSoundEffect(soundPitch, 1, false);
 			if (bulletDirection == 1) {
-				bullet6.setySpeed(-bSpeedC);
+				bullet6.setySpeed((-bSpeedC));
 				bullet6.setxSpeed(0);
 			} else if (bulletDirection == 2) {
 				bullet6.setySpeed(-bSpeedD);
@@ -329,7 +342,9 @@ public class BulletFire {
 				cooldown = 1;
 			}
 		}
-
+		if (bullet6.isFired()== true) {
+			bullet6.setySpeed(bullet6.getySpeed()+Utility.randomIntBetween(-5, 5)*inaccuracy*(delta));
+		}
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet3.isBulletDrawn() && bullet4.isBulletDrawn()
 				&& bullet5.isBulletDrawn() && bullet6.isBulletDrawn() && bullet1.isFired() && bullet2.isFired()
 				&& bullet3.isFired() && bullet4.isFired() && bullet5.isFired() && bullet6.isFired()
@@ -366,7 +381,9 @@ public class BulletFire {
 				cooldown = 1;
 			}
 		}
-
+		if (bullet7.isFired()== true) {
+			bullet7.setySpeed(bullet7.getySpeed()+Utility.randomIntBetween(-5, 5)*inaccuracy*(delta));
+		}
 		if (bullet1.isBulletDrawn() && bullet2.isBulletDrawn() && bullet3.isBulletDrawn() && bullet4.isBulletDrawn()
 				&& bullet5.isBulletDrawn() && bullet6.isBulletDrawn() && bullet7.isBulletDrawn() && bullet1.isFired()
 				&& bullet2.isFired() && bullet3.isFired() && bullet4.isFired() && bullet5.isFired() && bullet6.isFired()
@@ -403,7 +420,9 @@ public class BulletFire {
 				cooldown = 1;
 			}
 		}
-
+		if (bullet8.isFired()== true) {
+			bullet8.setySpeed(bullet8.getySpeed()+Utility.randomIntBetween(-5, 5)*inaccuracy*(delta));
+		}
 		for (Bullet bullet : bullets) {
 			if (bullet.isOnScreen()) {
 				bullet.setyPos(bullet.getyPos() + (delta * bullet.getySpeed()));
