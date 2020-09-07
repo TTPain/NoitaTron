@@ -27,7 +27,7 @@ public class Player {
 	public static final float PLAYER_START_X = 1280/2;
 	public static final float PLAYER_START_Y = 720/2;
 	public static final float PLAYER_WIDTH = 22;
-	public static final float PLAYER_HEIGHT = 44;
+	public static final float PLAYER_HEIGHT = 30;
 	public static final float ACCELERATION = 5500;
 	public static final float MAX_SPEED = 250;
 	
@@ -69,7 +69,7 @@ public class Player {
 			yPos=Display.getHeight()/2;
 			
 			////
-			respawn = respawn - delta*5f;
+			respawn = respawn - delta*2f;
 			////
 		}
 		if(respawn<0) {
@@ -141,7 +141,9 @@ public class Player {
 	}
 
 	public void draw(float delta) {
+		PlayerAimIndicator.draw(Game.player);
 		hvlDraw(hvlQuadc(xPos, yPos, PLAYER_WIDTH, PLAYER_HEIGHT), hvlTexture(playerTexture));
+		
 	}
 
 	public float getxPos() {

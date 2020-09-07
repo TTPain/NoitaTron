@@ -67,6 +67,7 @@ public class Main extends HvlTemplateI {
 
 	@Override
 	public void update(float delta) {
+
 		System.out.println("Current Level: " + Game.selected_level);
 		System.out.println(RoomGenerator.enemyGrunts.size());
 		hvlTranslate(-(Game.player.getxPos() - Display.getWidth()/2), -(Game.player.getyPos() - Display.getHeight()/2), () ->{
