@@ -31,22 +31,25 @@ public class Main extends HvlTemplateI {
 
 	/*
 	 * TODO
+	 * THINGS TO ADD:
+	 * Rework bullet mechanics
 	 * Render Class
-	 * Current room is set to 0 as soon as game starts
-	 * Update to new room when level is completed
-	 * Fix 'E' bullets so they despawn
-	 * Enemy Death Particles
-	 * New enemies
-	 * People/Money
+	 * Rewrite score/lives so that it is a component of Player
+	 * Proper death animation
+	 * Proper Game Over screen
+	 * New enemies 
 	 * Upgrades
-	 * Pause Menu
-	 * Splashes
+	 * Money system?
+	 * Enemy Death Particles
 	 * Actual Textures
 	 * Sound
-	 * Rewrite score/lives so that it is a component of Player
-	 * *****Player Hitbox/Death*****
-	 * Game over says score and "Game Over"
-	 * Rework Player Lives after adding a second player
+	 * Better menus
+	 * Credits menu
+	 * 
+	 * KNOWN BUGS:
+	 * 'E' bullets do not despawn
+	 * Player does not always spawn in the center of the screen, seems to be affected by window size
+	 * 
 	 */
 	
 
