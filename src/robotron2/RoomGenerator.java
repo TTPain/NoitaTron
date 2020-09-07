@@ -26,6 +26,7 @@ public class RoomGenerator {
 	public static ArrayList<EnemyGrunt> enemyGrunts = new ArrayList<>();
 	public static ArrayList<EnemyHulk> enemyHulks = new ArrayList<>();
 	public static int enemiesAlive = 0;
+	public static int rangen = 0;
 
 	public static void reset(Player player) {
 		levelTimer = Game.gameplayTimer;
@@ -64,6 +65,47 @@ public class RoomGenerator {
 			enemiesAlive = enemyGrunts.size();
 			
 		}
+		
+		else {
+			rangen = Utility.randomIntBetween(0, 12);
+			
+			doors.add(new Door(1920-160, 1080/2, false));
+			// xPos, yPos, livingState, StutterStart, ShatterDirection, Starter Texture
+			
+			enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(0, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			
+			enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(0, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			
+			enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(0, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			
+			enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(0, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			
+			enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(0, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			
+			enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(0, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			
+			enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(0, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			
+			enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(0, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			if (rangen > 4) {
+				enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(1, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+				enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(1, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			}
+			if (rangen > 6) {
+				enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(1, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+				enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(1, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			}
+			if (rangen > 9) {
+				enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(1, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+				enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(1, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			}
+			if (rangen > 10) {
+				enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(1, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+				enemyGrunts.add(new EnemyGrunt(75*(Utility.randomIntBetween(3, 12)), 100*(Utility.randomIntBetween(1, 9)), true, Utility.randomFloatBetween(0, 1), 0, Utility.randomIntBetween(4, 5)));
+			}
+			enemyHulks.add(new EnemyHulk(0, 0, 1));
+			enemiesAlive = enemyGrunts.size();
+		}
 	}
 
 	public static void update(float delta) {
@@ -78,7 +120,6 @@ public class RoomGenerator {
 						hvlTexture(grunt.gruntTexture));
 				grunt.update(delta, Game.player);
 			}
-
 		}
 		
 		for (EnemyHulk hulk : enemyHulks) {

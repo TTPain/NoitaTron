@@ -36,7 +36,7 @@ public class Main extends HvlTemplateI {
 	 * Update to new room when level is completed
 	 * Fix 'E' bullets so they despawn
 	 * Enemy Death Particles
-	 * Hulks, other enemies
+	 * New enemies
 	 * People/Money
 	 * Upgrades
 	 * Pause Menu

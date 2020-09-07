@@ -31,8 +31,8 @@ public class Player {
 	public static final float ACCELERATION = 5500;
 	public static final float MAX_SPEED = 250;
 	
-	private float xPos = 1280/2;
-	private float yPos = 720/2;
+	private float xPos = Display.getWidth()/2;
+	private float yPos = Display.getHeight()/2;
 	private boolean alive = true;
 	
 	private float xspeedm = 1;
@@ -43,8 +43,8 @@ public class Player {
 	private float respawn = 1;
 	
 	public void reset() {
-		xPos = 1280/2;
-		yPos = 720/2;
+		xPos = Display.getWidth()/2;
+		yPos = Display.getHeight()/2;
 		alive = true;
 		
 		xspeedm = 1;
@@ -65,9 +65,12 @@ public class Player {
 		//Death Handling
 		
 		if(alive==false) {
-			xPos=1280/2;
-			yPos=720/2;
-			respawn=respawn-delta;
+			xPos=Display.getWidth()/2;
+			yPos=Display.getHeight()/2;
+			
+			////
+			respawn = respawn - delta*5f;
+			////
 		}
 		if(respawn<0) {
 			respawn=1;

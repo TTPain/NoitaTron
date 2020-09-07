@@ -17,19 +17,20 @@ public class EnemyHulk {
 	public int hulkTexture;
 	public float xPos;
 	public float yPos;
+	public float hulktimer = 0;
 
 	public void update(float delta, Player player) {
 		if (player.getxPos() > xPos) {
-			xPos = xPos + 1;
+			xPos = xPos + (50*delta);
 		}
 		if (player.getxPos() < xPos) {
-			xPos = xPos - 1;
+			xPos = xPos - (50*delta);
 		}
 		if (player.getyPos() > yPos) {
-			yPos = yPos + 1;
+			yPos = yPos + (50*delta);
 		}
 		if (player.getyPos() < yPos) {
-			yPos = yPos - 1;
+			yPos = yPos - (50*delta);
 		}
 
 	}
