@@ -52,7 +52,10 @@ public class Utility {
 		return deg;
 	}
 
-
+	//Returns the length between two points. Source: Ridhvl1 (os_reboot)
+	public float length(float x, float y) {
+		return (float) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+	}
 
 
 }
