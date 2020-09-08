@@ -72,13 +72,12 @@ public class BulletLogic {
 		bulletSpeedx = bulletSpeed.x * 750;
 		bulletSpeedy = bulletSpeed.y * 750;	
 		
-		System.out.println("Number of Bullets: " + bulletTotal.size());
-		System.out.println("Available Bullets: " + availableBullets);
+		System.out.println("Total Number of Bullets: " + bulletTotal.size());
 
 		if(Mouse.isButtonDown(0) && player.isAlive()) {	
-			availableBullets = bulletTotal.size();
 
 			for (Bullet b : bulletTotal){
+				availableBullets = bulletTotal.size();
 				if(b.isFired() == false && (cooldownClock == 0) && player.isAlive()) {
 					b.setFired(true);
 					hvlSound(0).playAsSoundEffect(1, 1, false);
@@ -95,7 +94,7 @@ public class BulletLogic {
 					availableBullets--;
 				}
 				if(availableBullets == 0 && cooldownClock == 0) {
-					System.out.println("OUT OF BULLETS!");
+					System.out.println("OUT OF BULLETS! Adding a new bullet to the array...");
 					bulletTotal.add(new Bullet(Game.player.getxPos(), Game.player.getyPos(), 0, 0, false, false, 0));
 					break;
 				}
