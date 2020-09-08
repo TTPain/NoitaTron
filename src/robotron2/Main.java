@@ -32,7 +32,8 @@ public class Main extends HvlTemplateI {
 	/*
 	 * TODO
 	 * THINGS TO ADD:
-	 * Rework bullet mechanics
+	 * Hitboxes on new bullets
+	 * New bullets despawn when no longer needed
 	 * Render Class
 	 * Rewrite score/lives so that it is a component of Player
 	 * Proper death animation
@@ -48,7 +49,6 @@ public class Main extends HvlTemplateI {
 	 * 
 	 * KNOWN BUGS:
 	 * 'E' bullets do not despawn
-	 * Player does not always spawn in the center of the screen, seems to be affected by window size
 	 * 
 	 */
 	
