@@ -21,6 +21,7 @@ public class PlayerAimIndicator {
 		float degRot = Utility.fullRadians(Display.getWidth()/2f, Display.getHeight()/2f, Utility.getCursorX(), Utility.getCursorY());
 		hvlRotate(player.getxPos(), player.getyPos(), degRot * (180f /(float)Math.PI) + 90, () -> {
 			hvlDraw(hvlQuadc(player.getxPos(), player.getyPos()+DISTANCE_FROM_PLAYER, INDICATOR_WIDTH, INDICATOR_HEIGHT), Color.white);
+			//System.out.println("AIM"+player.getyPos()+DISTANCE_FROM_PLAYER);
 		});
 	}
 	

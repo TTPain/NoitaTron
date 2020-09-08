@@ -31,8 +31,10 @@ public class RoomGenerator {
 	public static void reset(Player player) {
 		levelTimer = Game.gameplayTimer;
 		
-		player.setxPos(Display.getWidth()/2);
-		player.setyPos(Display.getHeight()/2);
+		//PLAYER INITIAL X AND Y
+		player.setxPos(1920/2);
+		player.setyPos(1080/2);
+		
 		enemyGrunts.clear();
 		enemyHulks.clear();
 		doors.clear();

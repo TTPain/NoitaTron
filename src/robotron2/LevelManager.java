@@ -19,7 +19,7 @@ public class LevelManager {
 			}
 		}
 
-		System.out.println(RoomGenerator.enemiesAlive);
+		//System.out.println(RoomGenerator.enemiesAlive);
 
 
 

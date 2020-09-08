@@ -24,15 +24,15 @@ public class Player {
 
 	}
 
-	public static final float PLAYER_START_X = 1280/2;
-	public static final float PLAYER_START_Y = 720/2;
+	public static final float PLAYER_START_X = 1920/2;
+	public static final float PLAYER_START_Y = 1080/2;
 	public static final float PLAYER_WIDTH = 22;
 	public static final float PLAYER_HEIGHT = 30;
 	public static final float ACCELERATION = 5500;
 	public static final float MAX_SPEED = 250;
 	
-	private float xPos = Display.getWidth()/2;
-	private float yPos = Display.getHeight()/2;
+	private float xPos = 1920/2;
+	private float yPos = 1080/2;
 	private boolean alive = true;
 	
 	private float xspeedm = 1;
@@ -43,8 +43,8 @@ public class Player {
 	private float respawn = 1;
 	
 	public void reset() {
-		xPos = Display.getWidth()/2;
-		yPos = Display.getHeight()/2;
+		xPos = 1920/2;
+		yPos = 1080/2;
 		alive = true;
 		
 		xspeedm = 1;
@@ -65,8 +65,7 @@ public class Player {
 		//Death Handling
 		
 		if(alive==false) {
-			xPos=Display.getWidth()/2;
-			yPos=Display.getHeight()/2;
+			xPos=1920/2;
 			
 			////
 			respawn = respawn - delta*2f;

@@ -28,7 +28,7 @@ import robotron2.menu.MenuManager;
 import robotron2.util.Utility;
 
 public class Main extends HvlTemplateI {
-
+	
 	/*
 	 * TODO
 	 * THINGS TO ADD:
@@ -71,12 +71,13 @@ public class Main extends HvlTemplateI {
 	@Override
 	public void update(float delta) {
 
-		System.out.println("Current Level: " + Game.selected_level);
-		System.out.println(RoomGenerator.enemyGrunts.size());
+		//System.out.println("Current Level: " + Game.selected_level);
+		//System.out.println(RoomGenerator.enemyGrunts.size());
+		
 		hvlTranslate(-(Game.player.getxPos() - Display.getWidth()/2), -(Game.player.getyPos() - Display.getHeight()/2), () ->{
 	//	Utility.scale(Display.getWidth() / 1280f, Display.getHeight() / 720f, () -> {
 			if(Display.getWidth() > 1280) {
-				hvlScale(Game.player.getxPos(), Game.player.getyPos(), 1.2f, () -> {
+				hvlScale(Game.player.getxPos(), Game.player.getyPos(), 1f, () -> {
 					Game.update(delta);
 				});
 			}else {
@@ -87,8 +88,8 @@ public class Main extends HvlTemplateI {
 			}
 			//Draw HUD Elements outside of Translate call
 		    
-		//});
 		});
+		//});
 		MenuManager.update(delta);
 	}
 

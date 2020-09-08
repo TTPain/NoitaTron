@@ -56,6 +56,17 @@ public class Utility {
 	public float length(float x, float y) {
 		return (float) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
 	}
+	
+	
+	public static double angleBetweenTwoPointsWithFixedPoint(double point1X, double point1Y, 
+	        double point2X, double point2Y, 
+	        double fixedX, double fixedY) {
+
+	    double angle1 = Math.atan2(point1Y - fixedY, point1X - fixedX);
+	    double angle2 = Math.atan2(point2Y - fixedY, point2X - fixedX);
+
+	    return angle1 - angle2; 
+	}
 
 
 }

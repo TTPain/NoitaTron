@@ -24,7 +24,8 @@ public class Game {
 		player.reset();
 		MenuManager.initialize(player);
 		BulletFire.initialize();
-		
+		BulletLogic.initialize();
+		BulletLogic.reset(player);
 		RoomGenerator.reset(player);
 		
 	}
@@ -33,11 +34,15 @@ public class Game {
 		globalTimer += delta;
 
 		if(HvlMenu.top() == MenuManager.game) {	
+			
 		gameplayTimer += delta;
 		player.update(delta);
+		
 		RoomGenerator.update(delta);
 	
 		BulletFire.update(delta, player);
+		BulletLogic.update(delta, player);
+		
 		LevelManager.update(player, delta);
 		Border.update(delta);
 		Score.update(delta, player);
