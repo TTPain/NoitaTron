@@ -16,7 +16,7 @@ public class SettingsMenu {
 	public static boolean muted = false;
 
 	public static void initialize() {
-		hvlSound(1).playAsMusic(1f, 1f, true);
+		hvlSound(1).playAsMusic(1f, 0.4f, true);
 
 		MenuManager.settings = new HvlArranger(false, 0.5f, 0.5f);
 		MenuManager.settings.add(HvlButtonLabeled.fromDefault().text("Mute").align(0.5f, 0.5f).offsetY(4).clicked((button) -> {
