@@ -31,9 +31,9 @@ public class Main extends HvlTemplateI {
 	
 	/*
 	 * TODO
+	 * Swap all Drawn calls to a Render class - for Zack
+	 * Reset player and enemy positions on death and keep player in safe zone - Tristin
 	 * THINGS TO ADD:
-	 * Hitboxes on new bullets
-	 * New bullets despawn when no longer needed
 	 * Render Class
 	 * Rewrite score/lives so that it is a component of Player
 	 * Proper death animation
@@ -46,9 +46,6 @@ public class Main extends HvlTemplateI {
 	 * Sound
 	 * Better menus
 	 * Credits menu
-	 * 
-	 * KNOWN BUGS:
-	 * 'E' bullets do not despawn
 	 * 
 	 */
 	

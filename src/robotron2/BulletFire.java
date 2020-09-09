@@ -65,7 +65,7 @@ public class BulletFire {
 	public static void update(float delta, Player player) {
 		
 		//DANGER ZONE
-		if(Keyboard.isKeyDown(Keyboard.KEY_E) && player.isAlive()) {
+		/*if(Keyboard.isKeyDown(Keyboard.KEY_E) && player.isAlive()) {
 		    for(double d = 0; d < 360; d += 45) {
 		        double d2 = d + Main.newest().getTimer().getTotalTime() * 100f;
 		        float speed = 100;
@@ -74,6 +74,7 @@ public class BulletFire {
 		        bullets.add(new Bullet(Game.player.getxPos(), Game.player.getyPos(), xs, ys, true, false, 0));
 		    }
 		}
+		*/
 		//E
 		
 		if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
