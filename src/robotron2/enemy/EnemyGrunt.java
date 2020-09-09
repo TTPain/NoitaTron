@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import robotron2.Bullet;
 import robotron2.BulletFire;
+import robotron2.BulletLogic;
 import robotron2.RoomGenerator;
 import robotron2.Game;
 import robotron2.Player;
@@ -174,6 +175,16 @@ public class EnemyGrunt {
 				bullet.setFired(false);
 				bullet.setBulletDrawn(false);
 				shatterDirection = bullet.getDirectionFired();
+				Score.addPoints(100);
+			}
+		}
+		for (Bullet b : BulletLogic.bulletTotal) {
+			if (((b.getxPos() < xPos + 15) && (b.getxPos() > xPos - 15) && (b.getyPos() < yPos + 15)
+					&& (b.getyPos() > yPos - 15))) {
+				livingState = false;
+				b.setFired(false);
+				b.setBulletDrawn(false);
+				shatterDirection = b.getDirectionFired();
 				Score.addPoints(100);
 			}
 		}

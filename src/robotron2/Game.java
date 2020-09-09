@@ -55,6 +55,7 @@ public class Game {
 		player.reset();
 		Score.reset();
 		BulletFire.reset(player);
+
 		
 	}
 	

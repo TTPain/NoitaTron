@@ -28,8 +28,8 @@ public class Player {
 	public static final float PLAYER_START_Y = 1080/2;
 	public static final float PLAYER_WIDTH = 22;
 	public static final float PLAYER_HEIGHT = 30;
-	public static final float ACCELERATION = 5500;
-	public static final float MAX_SPEED = 250;
+	public static final float ACCELERATION = 500;
+	public static float MAX_SPEED = 250;
 	
 	private float xPos = 1920/2;
 	private float yPos = 1080/2;
@@ -76,6 +76,13 @@ public class Player {
 			alive=true;
 			Score.lives --; 
 		}
+		
+		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
+			MAX_SPEED = 750;
+		}else {MAX_SPEED = 250;
+				
+			}
+		
 		
 		if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
 			xspeedm = xspeedm + (delta * ACCELERATION);

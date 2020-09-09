@@ -35,6 +35,7 @@ public class RoomGenerator {
 		player.setxPos(1920/2);
 		player.setyPos(1080/2);
 		
+		BulletLogic.reset(player);
 		enemyGrunts.clear();
 		enemyHulks.clear();
 		doors.clear();
