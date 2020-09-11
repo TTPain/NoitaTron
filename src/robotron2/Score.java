@@ -24,10 +24,6 @@ public class Score {
 			
 		}
 		
-		hvlFont(0).draw("Lives: "+ lives, 1920-160, 10, Color.white, 0.2f);
-		hvlFont(0).draw("Score: ", 12, 10, Color.white, 0.2f);
-		hvlFont(0).draw(""+ score, 40, 45, Color.white, 0.17f);
-		
 		if(lives <= -1) {
 			RoomGenerator.reset(player);
 			player.reset();

@@ -44,7 +44,7 @@ public class Game {
 		BulletLogic.update(delta, player);
 		
 		LevelManager.update(player, delta);
-		Border.update(delta);
+		Border.draw(delta);
 		Score.update(delta, player);
 		}
 		

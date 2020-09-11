@@ -18,6 +18,8 @@ import robotron2.util.Utility;
 
 public class BulletFire {
 
+	//This class is deprecated
+	
 	private static float bSpeedC = 1200;
 	private static float bSpeedD = 700;
 	private static float soundPitch= 1;
