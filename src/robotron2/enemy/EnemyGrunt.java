@@ -1,12 +1,18 @@
 package robotron2.enemy;
 
+import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
+import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
+import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
 import static com.osreboot.ridhvl2.HvlStatics.hvlSound;
 
 import java.util.ArrayList;
 
+import org.newdawn.slick.Color;
+
 import robotron2.Bullet;
 import robotron2.BulletFire;
 import robotron2.BulletLogic;
+import robotron2.Door;
 import robotron2.RoomGenerator;
 import robotron2.Game;
 import robotron2.Player;
@@ -15,24 +21,26 @@ import robotron2.load.SoundLoader;
 
 public class EnemyGrunt {
 
-	public EnemyGrunt(float xPosArg, float yPosArg, boolean livingStateArg, float stutterArg, int shatterDirectionArg,
+	public EnemyGrunt(float xPosArg, float yPosArg, boolean livingStateArg, float stutterArg, boolean canSeePlayerArg,
 			int textureArg) {
 		xPos = xPosArg;
 		yPos = yPosArg;
 		livingState = livingStateArg;
 		gruntStutter = stutterArg;
 		gruntTexture = textureArg;
-		shatterDirection = shatterDirectionArg;
+		canSeePlayer = canSeePlayerArg;
 	}
 
 	public static final float GRUNT_SIZE = 25;
+	public static final int LINE_OF_SIGHT = 500;
 
 	public float yPos = 0;
 	public float xPos = 0;
+	public float enemychase = 0;
 	public boolean livingState = true;
 	public float gruntStutter = 0;
 	public int gruntTexture;
-	public int shatterDirection;
+	public boolean canSeePlayer;
 
 	public int stutterSpeed = 1;
 	private boolean firstStepX = false;
@@ -41,11 +49,15 @@ public class EnemyGrunt {
 	private boolean movedThisFrame;
 
 	public void update(float delta, Player player) {
+			
+		//Box representing grunt LOS
+		//hvlDraw(hvlQuadc(xPos, yPos, LINE_OF_SIGHT, LINE_OF_SIGHT), Color.white);
 
 		movedThisFrame = false;
 
 		// GRUNT MOVEMENT AND SPRITE CHANGE
-		if (livingState == true) {
+		if (livingState == true && enemychase > 0) {
+			enemychase = enemychase-(delta*5);
 			if (player.getxPos() > xPos && stutterSpeed != 3
 					&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepX)))) {
 
@@ -174,7 +186,6 @@ public class EnemyGrunt {
 				livingState = false;
 				bullet.setFired(false);
 				bullet.setBulletDrawn(false);
-				shatterDirection = bullet.getDirectionFired();
 				Score.addPoints(100);
 			}
 		}
@@ -184,7 +195,6 @@ public class EnemyGrunt {
 				livingState = false;
 				b.setFired(false);
 				b.setBulletDrawn(false);
-				shatterDirection = b.getDirectionFired();
 				Score.addPoints(100);
 			}
 		}
@@ -226,9 +236,23 @@ public class EnemyGrunt {
 		else {
 			gruntStutter = gruntStutter - (delta * 1.2f);
 		}
-
+		// END GRUNT STUTTER SPEED
+		
+		//GRUNT LINE OF SIGHT AND CHASE MECHANICS
+		if(player.getxPos() < xPos + LINE_OF_SIGHT/2 && player.getxPos() > xPos - LINE_OF_SIGHT/2
+				&& player.getyPos() < yPos + LINE_OF_SIGHT/2 && player.getyPos() > yPos - LINE_OF_SIGHT/2) {	
+			canSeePlayer = true;
+			enemychase = 20;
+		}else {
+			canSeePlayer = false;
+		}
+		if (enemychase < 0) {
+			enemychase = 0;
+		}
+		//END LINE OF SIGHT AND CHASE MECHANICS
+		
 	}
-	// END GRUNT STUTTER SPEED
+	
 
 	public float getyPos() {
 		return yPos;
