@@ -56,7 +56,7 @@ public class RoomGenerator {
 			
 		
 		else {
-			rangen = Utility.randomIntBetween(1, 1000);
+			rangen = Utility.randomIntBetween(1, 150);
 			
 			doors.add(new Door(1920-160, 1080/2, false));
 			// xPos, yPos, livingState, StutterStart, ShatterDirection, Starter Texture

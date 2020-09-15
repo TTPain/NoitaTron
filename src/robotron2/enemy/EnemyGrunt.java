@@ -220,15 +220,15 @@ public class EnemyGrunt {
 		}
 
 		if (gruntStutter <= 0 && stutterSpeed == 1) {
-			gruntStutter = 0.82f;
+			gruntStutter = 0.85f;
 			firstStepX = false;
 			firstStepY = false;
 		} else if (gruntStutter <= 0 && stutterSpeed == 2) {
-			gruntStutter = 0.36f;
+			gruntStutter = 0.60f;
 			firstStepX = false;
 			firstStepY = false;
 		} else if (gruntStutter <= 0 && stutterSpeed == 3) {
-			gruntStutter = 0.13f;
+			gruntStutter = 0.25f;
 			firstStepX = false;
 			firstStepY = false;
 		}
