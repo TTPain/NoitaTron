@@ -2,8 +2,26 @@ package robotron2.terrain;
 
 public class Block {
 
+	public static final float BLOCK_SIZE = 100;
+
+	private float xPos;
+	private float yPos;
+	private boolean collidable;
+
+	public Block(float xArg, float yArg, boolean isCollidable) {
+
+		xPos = xArg;
+		yPos = yArg;
+		collidable = isCollidable;
+
+	}
+	
 }
-/* 30*30 pixel blocks for a 64*36 block playfield, 4 quadrants of 1920*1080 
-1's designate air, 0 designate randomly generated blocks
-2 designates entrance, 3 designates exit
-*/
+/*
+ * Levels are room based with randomly placed obstacles
+ * After completing a room the player is given a choice of new rooms
+ * Player has a general idea of what the next room contains/how difficult it is
+ * Harder rooms give more rewards, shops and upgrades are semi-random
+ * All paths converge to a final room(?)
+ * Map system similar to slay the spire
+ */
