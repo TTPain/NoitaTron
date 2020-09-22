@@ -10,6 +10,7 @@ import com.osreboot.ridhvl2.menu.HvlMenu;
 
 import robotron2.enemy.EnemyHulk;
 import robotron2.menu.MenuManager;
+import robotron2.terrain.TerrainGeneration;
 
 public class Game {
 
@@ -17,9 +18,13 @@ public class Game {
 	public static float globalTimer = 0f;
 	public static float gameplayTimer = 0f;
 	public static int selected_level = 1;
+	public static boolean devMode = false;
     
 
 	public static void initialize() {
+		///////
+		devMode = true;
+		//////
 		player = new Player(Player.PLAYER_START_X, Player.PLAYER_START_Y, true);
 		player.reset();
 		MenuManager.initialize(player);
@@ -27,6 +32,7 @@ public class Game {
 		BulletLogic.initialize();
 		BulletLogic.reset(player);
 		RoomGenerator.reset(player);
+		TerrainGeneration.initialize();
 		
 	}
 
@@ -46,6 +52,7 @@ public class Game {
 		LevelManager.update(player, delta);
 		Border.draw(delta);
 		Score.update(delta, player);
+		TerrainGeneration.update();
 		}
 		
 	}

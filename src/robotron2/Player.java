@@ -10,6 +10,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Color;
 
+import com.osreboot.ridhvl2.HvlCoord;
 import com.osreboot.ridhvl2.loader.HvlLoader;
 import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 
@@ -41,6 +42,8 @@ public class Player {
 	private float yspeedp = 1;
 	private int playerTexture = 0;
 	private float respawn = 1;
+
+	private HvlCoord playerPos = new HvlCoord(0, 0);
 	
 	public void reset() {
 		xPos = 1920/2;
@@ -56,6 +59,9 @@ public class Player {
 	}
 
 	public void update(float delta) {
+		
+		playerPos.x = xPos;
+		playerPos.y = yPos;
 		
 		//Draw Player
 		if(Game.player.isAlive()==true && Score.lives>=0){
@@ -175,6 +181,15 @@ public class Player {
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
+	
+	public HvlCoord getPlayerPos() {
+		return playerPos;
+	}
+
+	public void setPlayerPos(HvlCoord playerPos) {
+		this.playerPos = playerPos;
+	}
+
 	
 	
 

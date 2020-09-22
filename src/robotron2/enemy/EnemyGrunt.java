@@ -1,6 +1,7 @@
 package robotron2.enemy;
 
 import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
+import static com.osreboot.ridhvl2.HvlStatics.hvlLine;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
 import static com.osreboot.ridhvl2.HvlStatics.hvlSound;
@@ -8,6 +9,8 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlSound;
 import java.util.ArrayList;
 
 import org.newdawn.slick.Color;
+
+import com.osreboot.ridhvl2.HvlCoord;
 
 import robotron2.Bullet;
 import robotron2.BulletFire;
@@ -18,6 +21,8 @@ import robotron2.Game;
 import robotron2.Player;
 import robotron2.Score;
 import robotron2.load.SoundLoader;
+import robotron2.terrain.Block;
+import robotron2.terrain.TerrainGeneration;
 
 public class EnemyGrunt {
 
@@ -46,11 +51,27 @@ public class EnemyGrunt {
 	private boolean firstStepX = false;
 	private boolean firstStepY = false;
 
+
 	private boolean movedThisFrame;
 
+	private HvlCoord gruntPos = new HvlCoord(0, 0);
+
 	public void update(float delta, Player player) {
-			
-		//Box representing grunt LOS
+		gruntPos.x = xPos;
+		gruntPos.y = yPos;
+
+		if(canSeePlayer && (Block.hasLineOfSight(TerrainGeneration.blocks, player.getPlayerPos(), gruntPos))) {
+			if(Game.devMode) {
+			hvlDraw(hvlLine(xPos, yPos, player.getxPos(), player.getyPos(), 2), Color.red);
+			}
+		}else{
+			if(Game.devMode) {
+			hvlDraw(hvlLine(xPos, yPos, player.getxPos(), player.getyPos(), 2), Color.white);
+			}
+		}
+
+
+		//Box representing grunt field of view
 		//hvlDraw(hvlQuadc(xPos, yPos, LINE_OF_SIGHT, LINE_OF_SIGHT), Color.white);
 
 		movedThisFrame = false;
@@ -237,7 +258,7 @@ public class EnemyGrunt {
 			gruntStutter = gruntStutter - (delta * 1.2f);
 		}
 		// END GRUNT STUTTER SPEED
-		
+
 		//GRUNT LINE OF SIGHT AND CHASE MECHANICS
 		if(player.getxPos() < xPos + LINE_OF_SIGHT/2 && player.getxPos() > xPos - LINE_OF_SIGHT/2
 				&& player.getyPos() < yPos + LINE_OF_SIGHT/2 && player.getyPos() > yPos - LINE_OF_SIGHT/2) {	
@@ -250,9 +271,19 @@ public class EnemyGrunt {
 			enemychase = 0;
 		}
 		//END LINE OF SIGHT AND CHASE MECHANICS
-		
+
 	}
-	
+
+
+	public HvlCoord getGruntPos() {
+		return gruntPos;
+	}
+
+
+	public void setGruntPos(HvlCoord gruntPos) {
+		this.gruntPos = gruntPos;
+	}
+
 
 	public float getyPos() {
 		return yPos;
