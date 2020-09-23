@@ -31,13 +31,16 @@ public class Player {
 
 	public static final float PLAYER_START_X = 1920/2;
 	public static final float PLAYER_START_Y = 1080/2;
-	public static final float PLAYER_WIDTH = 22;
-	public static final float PLAYER_HEIGHT = 30;
+	public static final float PLAYER_WIDTH = 24;
+	public static final float PLAYER_HEIGHT = 24;
 	public static final float ACCELERATION = 500;
+	public static final float PIXELWALK_BUFFER = 8;
 	public static float MAX_SPEED = 250;
 
 	private float xPos = 1920/2;
 	private float yPos = 1080/2;
+	private float newyPos;
+	private float newxPos;
 	private boolean alive = true;
 
 	private float xspeedm = 0;
@@ -76,7 +79,7 @@ public class Player {
 		playerPos.x = xPos;
 		playerPos.y = yPos;
 
-		checkForBlockCollision(delta);
+
 
 		//Draw Player
 		if(Game.player.isAlive()==true && Score.lives>=0){
@@ -137,22 +140,20 @@ public class Player {
 		}
 		xSpeed = xspeedp - xspeedm;
 		ySpeed = yspeedp - yspeedm;
+
 		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-			yPos = yPos + delta * ySpeed;
 			playerTexture = 0;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-			yPos = yPos + delta * ySpeed;
 			playerTexture = 3;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
-			xPos = xPos + delta * xSpeed;
 			playerTexture = 1;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
-			xPos = xPos + delta * xSpeed;
 			playerTexture = 2;
 		}
+
 		if (xPos > 1920-160 - PLAYER_WIDTH/2) {
 			xPos = 1920-160 - PLAYER_WIDTH/2;
 		}
@@ -165,6 +166,15 @@ public class Player {
 		if (yPos < 0 + PLAYER_HEIGHT/2) {
 			yPos = 0 + PLAYER_HEIGHT/2;
 		}
+
+		//Represents the player's position on the next frame.
+		newyPos = yPos + (delta * ySpeed);
+		newxPos = xPos + (delta * xSpeed);
+
+		checkForBlockCollision(delta);
+
+		xPos = newxPos;
+		yPos = newyPos;
 	}
 
 	public void draw(float delta) {
@@ -176,25 +186,50 @@ public class Player {
 	}
 
 	public void checkForBlockCollision(float delta) {
-
-		//Determine which side of the square the player collides with
-		//reduce X or Y speed accordingly
-		//Set X/Y pos to wherever the player was before the collision occurred
 		for(Block b : TerrainGeneration.blocks) {
-			
+
 			//Determining which side of the block the player is currently on.
-			boolean plLeft = (xPos <= b.getxPos() - (Block.BLOCK_SIZE/2));
+			boolean plLeft  = (xPos <= b.getxPos() - (Block.BLOCK_SIZE/2));
 			boolean plRight = (xPos >= b.getxPos() + (Block.BLOCK_SIZE/2));
 			boolean plAbove = (yPos <= b.getyPos() - (Block.BLOCK_SIZE/2));
 			boolean plBelow = (yPos >= b.getyPos() + (Block.BLOCK_SIZE/2));
+
+			//Determining if a collision will occur on the next frame.
+			if(newyPos >= b.getyPos() - (Block.BLOCK_SIZE/2) && newyPos <= b.getyPos() + (Block.BLOCK_SIZE/2) && 
+					newxPos >= b.getxPos() - (Block.BLOCK_SIZE/2) && newxPos <= b.getxPos() + (Block.BLOCK_SIZE/2)){
+
+				if(plLeft && !plRight && !plAbove && !plBelow) { //Player is to the left
+					if(xSpeed > 0) {
+						xSpeed = 0;
+					}
+					newxPos = b.getxPos() - Block.BLOCK_SIZE/2;
+				}
+				else if(!plLeft && plRight && !plAbove && !plBelow) { //Player is to the right
+					if(xSpeed < 0) {
+						xSpeed = 0;
+					}
+					newxPos = b.getxPos() + Block.BLOCK_SIZE/2;
+				}
+				else if(!plLeft && !plRight && plAbove && !plBelow) { //Player is above
+					if(ySpeed > 0) {
+						ySpeed = 0;
+					}
+					newyPos = b.getyPos() - Block.BLOCK_SIZE/2;
+				}
+				else if(!plLeft && !plRight && !plAbove && plBelow) { //Player is below
+					if(ySpeed < 0) {
+						ySpeed = 0;
+					}
+					newyPos = b.getyPos() + Block.BLOCK_SIZE/2;
+				}
+				
+				//Still need to address corner collisions.
+
+			}
 			
-			//Determining if a collision has occurred.
-			//???
 			
+
 		}
-
-
-
 
 	}
 

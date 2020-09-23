@@ -44,7 +44,6 @@ public class Game {
 		if(HvlMenu.top() == MenuManager.game) {	
 			
 		gameplayTimer += delta;
-		player.update(delta);
 		
 		RoomGenerator.update(delta);
 	
@@ -55,6 +54,7 @@ public class Game {
 		Border.draw(delta);
 		Score.update(delta, player);
 		TerrainGeneration.update();
+		player.update(delta);
 		}
 		
 	}
