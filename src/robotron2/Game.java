@@ -2,6 +2,7 @@ package robotron2;
 
 import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
+import static com.osreboot.ridhvl2.HvlStatics.hvlSound;
 
 import org.lwjgl.input.Keyboard;
 import org.newdawn.slick.Color;
@@ -25,6 +26,7 @@ public class Game {
 		///////
 		devMode = true;
 		//////
+		//hvlSound(1).playAsMusic(1f, 1f, true);
 		player = new Player(Player.PLAYER_START_X, Player.PLAYER_START_Y, true);
 		player.reset();
 		MenuManager.initialize(player);

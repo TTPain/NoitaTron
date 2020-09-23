@@ -1,6 +1,7 @@
 package robotron2;
 
 import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
+import static com.osreboot.ridhvl2.HvlStatics.hvlLine;
 import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
@@ -14,6 +15,9 @@ import com.osreboot.ridhvl2.HvlCoord;
 import com.osreboot.ridhvl2.loader.HvlLoader;
 import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 
+import robotron2.terrain.Block;
+import robotron2.terrain.TerrainGeneration;
+
 public class Player {
 
 	public Player(float xArg, float yArg, boolean aliveArg) {
@@ -21,7 +25,7 @@ public class Player {
 		xPos = xArg;
 		yPos = yArg;
 		alive = aliveArg;
-		
+
 
 	}
 
@@ -31,48 +35,57 @@ public class Player {
 	public static final float PLAYER_HEIGHT = 30;
 	public static final float ACCELERATION = 500;
 	public static float MAX_SPEED = 250;
-	
+
 	private float xPos = 1920/2;
 	private float yPos = 1080/2;
 	private boolean alive = true;
-	
-	private float xspeedm = 1;
-	private float yspeedm = 1;
-	private float xspeedp = 1;
-	private float yspeedp = 1;
+
+	private float xspeedm = 0;
+	private float yspeedm = 0;
+	private float xspeedp = 0;
+	private float yspeedp = 0;
+
+	private float xSpeed = 0;
+	private float ySpeed = 0;
+
 	private int playerTexture = 0;
 	private float respawn = 1;
 
 	private HvlCoord playerPos = new HvlCoord(0, 0);
-	
+
 	public void reset() {
 		xPos = 1920/2;
 		yPos = 1080/2;
 		alive = true;
-		
-		xspeedm = 1;
-		yspeedm = 1;
-		xspeedp = 1;
-		yspeedp = 1;
+
+		xspeedm = 0;
+		yspeedm = 0;
+		xspeedp = 0;
+		yspeedp = 0;
 		playerTexture = 0;
 		respawn = 1;
 	}
 
 	public void update(float delta) {
-		
+
+
+
+		System.out.println(xSpeed);
+		System.out.println(ySpeed);
+
 		playerPos.x = xPos;
 		playerPos.y = yPos;
-		
+
+		checkForBlockCollision(delta);
+
 		//Draw Player
 		if(Game.player.isAlive()==true && Score.lives>=0){
 			Game.player.draw(delta);
 		}
-		
+
 		//Death Handling
-		
 		if(alive==false) {
-			xPos=1920/2;
-			
+			xPos=1920/2;	
 			////
 			respawn = respawn - delta*2f;
 			////
@@ -82,33 +95,33 @@ public class Player {
 			alive=true;
 			Score.lives --; 
 		}
-		
+
 		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
 			MAX_SPEED = 750;
 		}else {MAX_SPEED = 250;
-				
-			}
-		
-		
+
+		}
+
+
 		if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
 			xspeedm = xspeedm + (delta * ACCELERATION);
 		} else {
-			xspeedm = 1;
+			xspeedm = 0;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
 			xspeedp = xspeedp + (delta * ACCELERATION);
 		} else {
-			xspeedp = 1;
+			xspeedp = 0;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
 			yspeedp = yspeedp + (delta * ACCELERATION);
 		} else {
-			yspeedp = 1;
+			yspeedp = 0;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
 			yspeedm = yspeedm + (delta * ACCELERATION);
 		} else {
-			yspeedm = 1;
+			yspeedm = 0;
 		}
 		if (xspeedm > MAX_SPEED) {
 			xspeedm = MAX_SPEED;
@@ -122,20 +135,22 @@ public class Player {
 		if (yspeedm > MAX_SPEED) {
 			yspeedm = MAX_SPEED;
 		}
+		xSpeed = xspeedp - xspeedm;
+		ySpeed = yspeedp - yspeedm;
 		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-			yPos = yPos - delta * yspeedm;
+			yPos = yPos + delta * ySpeed;
 			playerTexture = 0;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-			yPos = yPos + delta * yspeedp;
+			yPos = yPos + delta * ySpeed;
 			playerTexture = 3;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_A)) {
-			xPos = xPos - delta * xspeedm;
+			xPos = xPos + delta * xSpeed;
 			playerTexture = 1;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
-			xPos = xPos + delta * xspeedp;
+			xPos = xPos + delta * xSpeed;
 			playerTexture = 2;
 		}
 		if (xPos > 1920-160 - PLAYER_WIDTH/2) {
@@ -155,7 +170,32 @@ public class Player {
 	public void draw(float delta) {
 		PlayerAimIndicator.draw(Game.player);
 		hvlDraw(hvlQuadc(xPos, yPos, PLAYER_WIDTH, PLAYER_HEIGHT), hvlTexture(playerTexture));
-		
+		if(Game.devMode) {
+
+		}
+	}
+
+	public void checkForBlockCollision(float delta) {
+
+		//Determine which side of the square the player collides with
+		//reduce X or Y speed accordingly
+		//Set X/Y pos to wherever the player was before the collision occurred
+		for(Block b : TerrainGeneration.blocks) {
+			
+			//Determining which side of the block the player is currently on.
+			boolean plLeft = (xPos <= b.getxPos() - (Block.BLOCK_SIZE/2));
+			boolean plRight = (xPos >= b.getxPos() + (Block.BLOCK_SIZE/2));
+			boolean plAbove = (yPos <= b.getyPos() - (Block.BLOCK_SIZE/2));
+			boolean plBelow = (yPos >= b.getyPos() + (Block.BLOCK_SIZE/2));
+			
+			//Determining if a collision has occurred.
+			//???
+			
+		}
+
+
+
+
 	}
 
 	public float getxPos() {
@@ -181,7 +221,7 @@ public class Player {
 	public void setAlive(boolean alive) {
 		this.alive = alive;
 	}
-	
+
 	public HvlCoord getPlayerPos() {
 		return playerPos;
 	}
@@ -190,7 +230,7 @@ public class Player {
 		this.playerPos = playerPos;
 	}
 
-	
-	
+
+
 
 }
