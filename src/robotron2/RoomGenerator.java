@@ -16,6 +16,7 @@ import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 import robotron2.enemy.EnemyGrunt;
 import robotron2.enemy.EnemyHulk;
 import robotron2.util.Utility;
+import robotron2.weapon.BulletLogic;
 
 import java.util.ArrayList;
 

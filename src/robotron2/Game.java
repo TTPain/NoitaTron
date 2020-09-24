@@ -12,6 +12,7 @@ import com.osreboot.ridhvl2.menu.HvlMenu;
 import robotron2.enemy.EnemyHulk;
 import robotron2.menu.MenuManager;
 import robotron2.terrain.TerrainGeneration;
+import robotron2.weapon.BulletLogic;
 
 public class Game {
 

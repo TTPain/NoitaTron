@@ -1,4 +1,4 @@
-package robotron2;
+package robotron2.weapon;
 
 import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;

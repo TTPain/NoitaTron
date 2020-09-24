@@ -15,6 +15,7 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 import com.osreboot.ridhvl2.loader.HvlLoaderSound;
 
 import robotron2.util.Utility;
+import robotron2.weapon.Bullet;
 
 public class BulletFire {
 

@@ -1,4 +1,4 @@
-package robotron2;
+package robotron2.weapon;
 
 import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
@@ -13,6 +13,8 @@ import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.HvlCoord;
 
+import robotron2.Game;
+import robotron2.Player;
 import robotron2.util.Utility;
 
 public class BulletLogic {

@@ -12,9 +12,7 @@ import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.HvlCoord;
 
-import robotron2.Bullet;
 import robotron2.BulletFire;
-import robotron2.BulletLogic;
 import robotron2.Door;
 import robotron2.RoomGenerator;
 import robotron2.Game;
@@ -23,6 +21,8 @@ import robotron2.Score;
 import robotron2.load.SoundLoader;
 import robotron2.terrain.Block;
 import robotron2.terrain.TerrainGeneration;
+import robotron2.weapon.Bullet;
+import robotron2.weapon.BulletLogic;
 
 public class EnemyGrunt {
 
