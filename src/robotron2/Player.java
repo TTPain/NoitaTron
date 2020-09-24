@@ -31,10 +31,10 @@ public class Player {
 
 	public static final float PLAYER_START_X = 1920/2;
 	public static final float PLAYER_START_Y = 1080/2;
-	public static final float PLAYER_WIDTH = 24;
-	public static final float PLAYER_HEIGHT = 24;
+	public static final float PLAYER_WIDTH = 22;
+	public static final float PLAYER_HEIGHT = 22;
 	public static final float ACCELERATION = 500;
-	public static final float PIXELWALK_BUFFER = 8;
+	public static final float PIXELWALK_BUFFER = 3;
 	public static float MAX_SPEED = 250;
 
 	private float xPos = 1920/2;
@@ -189,38 +189,38 @@ public class Player {
 		for(Block b : TerrainGeneration.blocks) {
 
 			//Determining which side of the block the player is currently on.
-			boolean plLeft  = (xPos <= b.getxPos() - (Block.BLOCK_SIZE/2));
-			boolean plRight = (xPos >= b.getxPos() + (Block.BLOCK_SIZE/2));
-			boolean plAbove = (yPos <= b.getyPos() - (Block.BLOCK_SIZE/2));
-			boolean plBelow = (yPos >= b.getyPos() + (Block.BLOCK_SIZE/2));
+			boolean plLeft  = (xPos <= b.getxPos() - (Block.BLOCK_SIZE/2) - ((Player.PLAYER_WIDTH/2) - PIXELWALK_BUFFER));
+			boolean plRight = (xPos >= b.getxPos() + (Block.BLOCK_SIZE/2) + ((Player.PLAYER_WIDTH/2) - PIXELWALK_BUFFER));
+			boolean plAbove = (yPos <= b.getyPos() - (Block.BLOCK_SIZE/2) - ((Player.PLAYER_HEIGHT/2) - PIXELWALK_BUFFER));
+			boolean plBelow = (yPos >= b.getyPos() + (Block.BLOCK_SIZE/2) + ((Player.PLAYER_HEIGHT/2) - PIXELWALK_BUFFER));
 
 			//Determining if a collision will occur on the next frame.
-			if(newyPos >= b.getyPos() - (Block.BLOCK_SIZE/2) && newyPos <= b.getyPos() + (Block.BLOCK_SIZE/2) && 
-					newxPos >= b.getxPos() - (Block.BLOCK_SIZE/2) && newxPos <= b.getxPos() + (Block.BLOCK_SIZE/2)){
+			if(newyPos >= b.getyPos() - (Block.BLOCK_SIZE/2) - Player.PLAYER_HEIGHT/2 && newyPos <= b.getyPos() + (Block.BLOCK_SIZE/2) + Player.PLAYER_HEIGHT/2 && 
+					newxPos >= b.getxPos() - (Block.BLOCK_SIZE/2) - Player.PLAYER_WIDTH/2 && newxPos <= b.getxPos() + (Block.BLOCK_SIZE/2)+Player.PLAYER_WIDTH/2){
 
 				if(plLeft && !plRight && !plAbove && !plBelow) { //Player is to the left
 					if(xSpeed > 0) {
 						xSpeed = 0;
 					}
-					newxPos = b.getxPos() - Block.BLOCK_SIZE/2;
+					newxPos = b.getxPos() - Block.BLOCK_SIZE/2 - Player.PLAYER_WIDTH/2;
 				}
 				else if(!plLeft && plRight && !plAbove && !plBelow) { //Player is to the right
 					if(xSpeed < 0) {
 						xSpeed = 0;
 					}
-					newxPos = b.getxPos() + Block.BLOCK_SIZE/2;
+					newxPos = b.getxPos() + Block.BLOCK_SIZE/2 + Player.PLAYER_WIDTH/2;
 				}
 				else if(!plLeft && !plRight && plAbove && !plBelow) { //Player is above
 					if(ySpeed > 0) {
 						ySpeed = 0;
 					}
-					newyPos = b.getyPos() - Block.BLOCK_SIZE/2;
+					newyPos = b.getyPos() - Block.BLOCK_SIZE/2 - Player.PLAYER_HEIGHT/2;
 				}
 				else if(!plLeft && !plRight && !plAbove && plBelow) { //Player is below
 					if(ySpeed < 0) {
 						ySpeed = 0;
 					}
-					newyPos = b.getyPos() + Block.BLOCK_SIZE/2;
+					newyPos = b.getyPos() + Block.BLOCK_SIZE/2 + Player.PLAYER_HEIGHT/2;
 				}
 				
 				//Still need to address corner collisions.
