@@ -31,17 +31,18 @@ public class Main extends HvlTemplateI {
 
 	/*
 	 * TODO
-	 * Swap all Drawn calls to a Render class - for Zack
 	 * Reset player and enemy positions on death and keep player in safe zone - Tristin
 	 * THINGS TO ADD:
-	 * Render Class
+	 * Block collision for enemies
+	 * Block collision for bullets
+	 * Pathfinding for enemies
 	 * Rewrite score/lives so that it is a component of Player
 	 * Proper death animation
 	 * Proper Game Over screen
 	 * New enemies 
 	 * Upgrades
 	 * Money system?
-	 * Enemy Death Particles
+	 * Particles
 	 * Actual Textures
 	 * Sound
 	 * Better menus

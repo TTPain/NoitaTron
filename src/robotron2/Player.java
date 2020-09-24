@@ -222,12 +222,8 @@ public class Player {
 					}
 					newyPos = b.getyPos() + Block.BLOCK_SIZE/2 + Player.PLAYER_HEIGHT/2;
 				}
-				
-				//Still need to address corner collisions.
 
-			}
-			
-			
+			}				
 
 		}
 
