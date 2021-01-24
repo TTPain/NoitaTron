@@ -20,19 +20,34 @@ public class TerrainGeneration {
 
 	public static ArrayList<Block> blocks = new ArrayList<Block>();
 	
+
+	
 	public static Block sampleBlock = new Block(500, 500, true);
 	public static Block sampleBlock2 = new Block(600, 600, true);
+	public static Block sampleBlock3 = new Block(500, 600, false);
 	
-	public static void initialize() {
-		blocks.add(sampleBlock);
-		blocks.add(sampleBlock2);
+	public static void loadBlocks() {
+		if(Game.level == 0) {
+		//blocks.add(sampleBlock);
+		//blocks.add(sampleBlock2);
+		//blocks.add(sampleBlock3);
+		}else {
+			blocks.clear();
+			blocks = LevelLoader.blocks;
+		}
 	}
 	
 	public static void update() {
+		
+		System.out.println(blocks.size());
 		if(HvlMenu.top() == MenuManager.game) {
 			for(int i = 0; i < blocks.size(); i++) {
 				//Draw the block
-				hvlDraw(hvlQuadc(blocks.get(i).getxPos(), blocks.get(i).getyPos(), Block.BLOCK_SIZE, Block.BLOCK_SIZE), Color.blue);				
+				if(blocks.get(i).getCollidable()) {
+					hvlDraw(hvlQuadc(blocks.get(i).getxPos(), blocks.get(i).getyPos(), Block.BLOCK_SIZE, Block.BLOCK_SIZE), Color.blue);
+				}else {
+					hvlDraw(hvlQuadc(blocks.get(i).getxPos(), blocks.get(i).getyPos(), Block.BLOCK_SIZE, Block.BLOCK_SIZE), Color.gray);	
+				}
 								
 				//Devmode Lines
 				if(Game.devMode) {

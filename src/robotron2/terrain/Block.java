@@ -7,7 +7,7 @@ import com.osreboot.ridhvl2.HvlMath;
 
 public class Block {
 
-	public static final float BLOCK_SIZE = 100;
+	public static final float BLOCK_SIZE = 60;
 
 	private float xPos;
 	private float yPos;

@@ -1,9 +1,18 @@
 package robotron2;
 
 import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
-import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
 import static com.osreboot.ridhvl2.HvlStatics.hvlRotate;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
 import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Color;
@@ -25,5 +34,5 @@ public class PlayerAimIndicator {
 			//System.out.println("AIM"+player.getyPos()+DISTANCE_FROM_PLAYER);
 		});
 	}
-	
+
 }

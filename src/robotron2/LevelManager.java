@@ -35,7 +35,7 @@ public class LevelManager {
 					
 					//SET NEXT LEVEL
 					System.out.println("You beat the game!");
-					Game.selected_level++;
+					Game.level++;
 					RoomGenerator.reset(player);
 
 				}

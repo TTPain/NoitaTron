@@ -32,11 +32,12 @@ public class Player {
 	public static final float PLAYER_START_X = 1920/2;
 	public static final float PLAYER_START_Y = 1080/2;
 	public static final float PLAYER_WIDTH = 22;
-	public static final float PLAYER_HEIGHT = 22;
+	public static final float PLAYER_HEIGHT = 25;
 	public static final float ACCELERATION = 500;
 	public static final float PIXELWALK_BUFFER = 3;
 	public static float MAX_SPEED = 250;
-
+	
+	// Make sure to make his starting position coincide with level entry in future
 	private float xPos = 1920/2;
 	private float yPos = 1080/2;
 	private float newyPos;
@@ -141,7 +142,7 @@ public class Player {
 		xSpeed = xspeedp - xspeedm;
 		ySpeed = yspeedp - yspeedm;
 
-		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
+		/*if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
 			playerTexture = 0;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
@@ -165,7 +166,7 @@ public class Player {
 		}
 		if (yPos < 0 + PLAYER_HEIGHT/2) {
 			yPos = 0 + PLAYER_HEIGHT/2;
-		}
+		}*/
 
 		//Represents the player's position on the next frame.
 		newyPos = yPos + (delta * ySpeed);
@@ -188,43 +189,46 @@ public class Player {
 	public void checkForBlockCollision(float delta) {
 		for(Block b : TerrainGeneration.blocks) {
 
-			//Determining which side of the block the player is currently on.
-			boolean plLeft  = (xPos <= b.getxPos() - (Block.BLOCK_SIZE/2) - ((Player.PLAYER_WIDTH/2) - PIXELWALK_BUFFER));
-			boolean plRight = (xPos >= b.getxPos() + (Block.BLOCK_SIZE/2) + ((Player.PLAYER_WIDTH/2) - PIXELWALK_BUFFER));
-			boolean plAbove = (yPos <= b.getyPos() - (Block.BLOCK_SIZE/2) - ((Player.PLAYER_HEIGHT/2) - PIXELWALK_BUFFER));
-			boolean plBelow = (yPos >= b.getyPos() + (Block.BLOCK_SIZE/2) + ((Player.PLAYER_HEIGHT/2) - PIXELWALK_BUFFER));
+			if(b.getCollidable()) {
 
-			//Determining if a collision will occur on the next frame.
-			if(newyPos >= b.getyPos() - (Block.BLOCK_SIZE/2) - Player.PLAYER_HEIGHT/2 && newyPos <= b.getyPos() + (Block.BLOCK_SIZE/2) + Player.PLAYER_HEIGHT/2 && 
-					newxPos >= b.getxPos() - (Block.BLOCK_SIZE/2) - Player.PLAYER_WIDTH/2 && newxPos <= b.getxPos() + (Block.BLOCK_SIZE/2)+Player.PLAYER_WIDTH/2){
+				//Determining which side of the block the player is currently on.
+				boolean plLeft  = (xPos <= b.getxPos() - (Block.BLOCK_SIZE/2) - ((Player.PLAYER_WIDTH/2) - PIXELWALK_BUFFER));
+				boolean plRight = (xPos >= b.getxPos() + (Block.BLOCK_SIZE/2) + ((Player.PLAYER_WIDTH/2) - PIXELWALK_BUFFER));
+				boolean plAbove = (yPos <= b.getyPos() - (Block.BLOCK_SIZE/2) - ((Player.PLAYER_HEIGHT/2) - PIXELWALK_BUFFER));
+				boolean plBelow = (yPos >= b.getyPos() + (Block.BLOCK_SIZE/2) + ((Player.PLAYER_HEIGHT/2) - PIXELWALK_BUFFER));
 
-				if(plLeft && !plRight && !plAbove && !plBelow) { //Player is to the left
-					if(xSpeed > 0) {
-						xSpeed = 0;
-					}
-					newxPos = b.getxPos() - Block.BLOCK_SIZE/2 - Player.PLAYER_WIDTH/2;
-				}
-				else if(!plLeft && plRight && !plAbove && !plBelow) { //Player is to the right
-					if(xSpeed < 0) {
-						xSpeed = 0;
-					}
-					newxPos = b.getxPos() + Block.BLOCK_SIZE/2 + Player.PLAYER_WIDTH/2;
-				}
-				else if(!plLeft && !plRight && plAbove && !plBelow) { //Player is above
-					if(ySpeed > 0) {
-						ySpeed = 0;
-					}
-					newyPos = b.getyPos() - Block.BLOCK_SIZE/2 - Player.PLAYER_HEIGHT/2;
-				}
-				else if(!plLeft && !plRight && !plAbove && plBelow) { //Player is below
-					if(ySpeed < 0) {
-						ySpeed = 0;
-					}
-					newyPos = b.getyPos() + Block.BLOCK_SIZE/2 + Player.PLAYER_HEIGHT/2;
-				}
+				//Determining if a collision will occur on the next frame.
+				if(newyPos >= b.getyPos() - (Block.BLOCK_SIZE/2) - Player.PLAYER_HEIGHT/2 && newyPos <= b.getyPos() + (Block.BLOCK_SIZE/2) + Player.PLAYER_HEIGHT/2 && 
+						newxPos >= b.getxPos() - (Block.BLOCK_SIZE/2) - Player.PLAYER_WIDTH/2 && newxPos <= b.getxPos() + (Block.BLOCK_SIZE/2)+Player.PLAYER_WIDTH/2){
 
-			}				
+					if(plLeft && !plRight && !plAbove && !plBelow) { //Player is to the left
+						if(xSpeed > 0) {
+							xSpeed = 0;
+						}
+						newxPos = b.getxPos() - Block.BLOCK_SIZE/2 - Player.PLAYER_WIDTH/2;
+					}
+					else if(!plLeft && plRight && !plAbove && !plBelow) { //Player is to the right
+						if(xSpeed < 0) {
+							xSpeed = 0;
+						}
+						newxPos = b.getxPos() + Block.BLOCK_SIZE/2 + Player.PLAYER_WIDTH/2;
+					}
+					else if(!plLeft && !plRight && plAbove && !plBelow) { //Player is above
+						if(ySpeed > 0) {
+							ySpeed = 0;
+						}
+						newyPos = b.getyPos() - Block.BLOCK_SIZE/2 - Player.PLAYER_HEIGHT/2;
+					}
+					else if(!plLeft && !plRight && !plAbove && plBelow) { //Player is below
+						if(ySpeed < 0) {
+							ySpeed = 0;
+						}
+						newyPos = b.getyPos() + Block.BLOCK_SIZE/2 + Player.PLAYER_HEIGHT/2;
+					}
 
+				}				
+
+			}
 		}
 
 	}

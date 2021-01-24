@@ -19,8 +19,10 @@ public class Game {
 	public static Player player;
 	public static float globalTimer = 0f;
 	public static float gameplayTimer = 0f;
-	public static int selected_level = 1;
+	public static int level = 1;
 	public static boolean devMode = false;
+	
+	//BULLETS STILL HIT OLD BORDER!!!!!!
     
 
 	public static void initialize() {
@@ -34,28 +36,23 @@ public class Game {
 		BulletFire.initialize();
 		BulletLogic.initialize();
 		BulletLogic.reset(player);
+		TerrainGeneration.loadBlocks();
 		RoomGenerator.reset(player);
-		TerrainGeneration.initialize();
 		
 	}
 
 	public static void update(float delta) {
 		globalTimer += delta;
-
-		if(HvlMenu.top() == MenuManager.game) {	
-			
+		if(HvlMenu.top() == MenuManager.game) {		
 		gameplayTimer += delta;
-		
-		RoomGenerator.update(delta);
-	
-		BulletFire.update(delta, player);
-		BulletLogic.update(delta, player);
-		
 		LevelManager.update(player, delta);
-		Border.draw(delta);
 		Score.update(delta, player);
 		TerrainGeneration.update();
+		BulletFire.update(delta, player);
+		BulletLogic.update(delta, player);
+		RoomGenerator.update(delta);
 		player.update(delta);
+	
 		}
 		
 	}

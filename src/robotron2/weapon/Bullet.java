@@ -44,7 +44,7 @@ public class Bullet {
 	}
 
 	public boolean isOnScreen() {
-		if ((xPos > 160 && xPos < 1920-160) && (yPos > 0 && yPos < 1080)) {
+		if ((xPos > -8000 && xPos < 8000) && (yPos > -8000 && yPos < 8000)) {
 			return true;
 		} else {
 			return false;
@@ -52,7 +52,7 @@ public class Bullet {
 	}
 
 	public void draw(float delta) {
-		if (xPos > 160 && xPos < 1920-160 && yPos > 0 && yPos < 1080) {
+		if (xPos > -8000 && xPos < 8000 && yPos > -8000 && yPos < 8000) {
 			hvlDraw(hvlQuadc(xPos, yPos, BULLET_SIZE, BULLET_SIZE), Color.white);
 		}
 

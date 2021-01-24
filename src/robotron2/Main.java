@@ -20,11 +20,13 @@ import com.osreboot.ridhvl2.loader.HvlLoader;
 import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 import com.osreboot.ridhvl2.template.HvlDisplayWindowed;
 import com.osreboot.ridhvl2.template.HvlTemplateI;
+import com.osreboot.ridhvl2.template.HvlTimer;
 
 import robotron2.enemy.EnemyGrunt;
 import robotron2.load.SoundLoader;
 import robotron2.load.TextureLoader;
 import robotron2.menu.MenuManager;
+import robotron2.terrain.LevelLoader;
 import robotron2.util.Utility;
 
 public class Main extends HvlTemplateI {
@@ -47,7 +49,7 @@ public class Main extends HvlTemplateI {
 	 * Sound
 	 * Better menus
 	 * Credits menu
-	 * 
+	 * Special Levels can change orientation to enhance gameplay and variety
 	 */
 
 
@@ -61,9 +63,11 @@ public class Main extends HvlTemplateI {
 
 	@Override
 	public void initialize() {
+		getTimer().setMaxDelta(20);
 		TextureLoader.loadTextures();
 		SoundLoader.loadSounds();
 		Game.initialize();
+		LevelLoader.load();
 	}
 
 	@Override
