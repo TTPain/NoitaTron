@@ -29,51 +29,33 @@ public class LevelLoader {
 		}
 		reader = new BufferedReader(r);
 
-		char ch = ' ';
+		String line;
 
+		try {
+			while ((line = reader.readLine()) != null) {
+				// process the line.
 
-		for(int i = 0; i < 5237; i++) {
-			try {
-				ch=(char)(reader.read());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			System.out.println(ch);
-			
-			if(blockNum%96 == 0 && xPos != 0) {
-				System.out.println("XPos: " +xPos);
 				xPos = 0;
+				for (int k = 0; k < line.length(); k++){
+					char c = line.charAt(k);   
+					System.out.println(line);
+					xPos+= Block.BLOCK_SIZE;					
+						if(c == '0') {
+							blocks.add(new Block(xPos, yPos, false));
+							blockNum++;
+						}else if(c =='1') {
+							blocks.add(new Block(xPos, yPos, true));
+							blockNum++;
+						}
+					}
 				yPos += Block.BLOCK_SIZE;
-				System.out.println("XPos: " +xPos);
-			}
+				}			
+
 			
-			else {
-				xPos+= Block.BLOCK_SIZE;
-			}
-			
-			if(ch == '0') {
-				blocks.add(new Block(xPos, yPos, false));
-				//System.out.println("Added Block " + blockNum);
-				//System.out.println("Block Total " + blocks.size());
-				//System.out.println("XPos: " +xPos);
-				//System.out.println("YPos: " +yPos);
-
-				blockNum++;
-
-			}else if(ch =='1') {
-				blocks.add(new Block(xPos, yPos, true));
-				//System.out.println("Added Block " + blockNum);
-				//System.out.println("Block Total " + blocks.size());
-				//System.out.println("XPos: " +xPos);
-				//System.out.println("YPos: " +yPos);
-				blockNum++;
-
-			}
-			
-
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
 	}
 	/*
 	 * We can write the names of levels based on their categories. For example, Level1, Level 2, Level 3, etc..
