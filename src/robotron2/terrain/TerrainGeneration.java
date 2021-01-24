@@ -22,6 +22,7 @@ public class TerrainGeneration {
 	
 
 	
+	
 	public static Block sampleBlock = new Block(500, 500, true);
 	public static Block sampleBlock2 = new Block(600, 600, true);
 	public static Block sampleBlock3 = new Block(500, 600, false);
