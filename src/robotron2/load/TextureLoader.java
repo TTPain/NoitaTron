@@ -12,7 +12,8 @@ public class TextureLoader {
     INDEX_MOVE_RIGHT = 2,
     INDEX_MOVE_DOWN = 3,
     INDEX_GRUNTSTEP_1 = 4,
-    INDEX_GRUNTSTEP_2 = 5;
+    INDEX_GRUNTSTEP_2 = 5,
+    INDEX_FLOOR = 7;
 
 	public static void loadTextures() {
 		hvlLoad("PlayerBlueBack.png");  //0
@@ -21,7 +22,8 @@ public class TextureLoader {
 		hvlLoad("PlayerBlue.png");      //3
 		hvlLoad("GruntStep1.png");      //4
 		hvlLoad("GruntStep2.png");      //5
-		hvlLoad("INOF.hvlft");	        //6
+		hvlLoad("Floor2.png");	        //6
+		hvlLoad("INOF.hvlft");   //7
 		hvlFont(0);
 	}
 	
