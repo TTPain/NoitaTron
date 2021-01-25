@@ -19,10 +19,7 @@ public class Score {
 		if(extraLifeScore >= EXTRA_LIFE_VALUE) {
 			extraLifeScore = extraLifeScore - EXTRA_LIFE_VALUE;
 			lives = lives + 1;
-			System.out.println("Extra Life!");
-			
-			
-		}
+			}
 		
 		if(lives <= -1) {
 			RoomGenerator.reset(player);

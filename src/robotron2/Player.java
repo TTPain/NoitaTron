@@ -74,9 +74,6 @@ public class Player {
 
 
 
-		System.out.println(xSpeed);
-		System.out.println(ySpeed);
-
 		playerPos.x = xPos;
 		playerPos.y = yPos;
 
@@ -142,7 +139,7 @@ public class Player {
 		xSpeed = xspeedp - xspeedm;
 		ySpeed = yspeedp - yspeedm;
 
-		/*if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
+		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
 			playerTexture = 0;
 		}
 		if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
@@ -154,6 +151,7 @@ public class Player {
 		if (Keyboard.isKeyDown(Keyboard.KEY_D)) {
 			playerTexture = 2;
 		}
+		/*
 
 		if (xPos > 1920-160 - PLAYER_WIDTH/2) {
 			xPos = 1920-160 - PLAYER_WIDTH/2;

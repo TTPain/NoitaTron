@@ -19,9 +19,7 @@ public class RoomClearAnimation {
 			animationCounter += delta;
 		}
 		
-		System.out.println(animationCounter);
-
-		if (animationCounter < animationLength && stop == false) {
+				if (animationCounter < animationLength && stop == false) {
 
 			hvlFont(0).draw("Room Cleared!", (1920 / 2) - 180, 100, Color.white, 0.3f);
 

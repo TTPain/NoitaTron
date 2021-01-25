@@ -260,8 +260,7 @@ public class EnemyGrunt {
 		// END GRUNT STUTTER SPEED
 
 		//GRUNT LINE OF SIGHT AND CHASE MECHANICS
-		if(player.getxPos() < xPos + LINE_OF_SIGHT/2 && player.getxPos() > xPos - LINE_OF_SIGHT/2
-				&& player.getyPos() < yPos + LINE_OF_SIGHT/2 && player.getyPos() > yPos - LINE_OF_SIGHT/2) {	
+		if(Block.hasLineOfSight(TerrainGeneration.blocks, player.getPlayerPos(), gruntPos)) {	
 			canSeePlayer = true;
 			enemychase = 20;
 		}else {
