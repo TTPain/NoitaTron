@@ -45,7 +45,7 @@ public class TerrainGeneration {
 			for(int i = 0; i < blocks.size(); i++) {
 				//Draw the block (Still only supports two states)
 				if(blocks.get(i).getCollidable()) {
-					hvlDraw(hvlQuadc(blocks.get(i).getxPos(), blocks.get(i).getyPos(), Block.BLOCK_SIZE, Block.BLOCK_SIZE), Color.blue);
+					hvlDraw(hvlQuadc(blocks.get(i).getxPos(), blocks.get(i).getyPos(), Block.BLOCK_SIZE, Block.BLOCK_SIZE), new Color(0f, 0f, 1f, 0.1f));
 				}else {
 					hvlDraw(hvlQuadc(blocks.get(i).getxPos(), blocks.get(i).getyPos(), Block.BLOCK_SIZE, Block.BLOCK_SIZE), hvlTexture(6));	
 				}
