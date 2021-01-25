@@ -74,7 +74,6 @@ public class BulletLogic {
 		bulletSpeedx = bulletSpeed.x * 750;
 		bulletSpeedy = bulletSpeed.y * 750;	
 		
-		System.out.println("Total Number of Bullets: " + bulletTotal.size());
 
 		if(Mouse.isButtonDown(0) && player.isAlive()) {	
 
@@ -98,7 +97,9 @@ public class BulletLogic {
 				if(availableBullets == 0 && cooldownClock == 0) {
 					System.out.println("OUT OF BULLETS! Adding a new bullet to the array...");
 					bulletTotal.add(new Bullet(Game.player.getxPos(), Game.player.getyPos(), 0, 0, false, false, 0));
+					System.out.println("Total Number of Bullets: " + bulletTotal.size());
 					break;
+					
 				}
 			}
 		}

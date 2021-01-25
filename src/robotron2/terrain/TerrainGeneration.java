@@ -40,7 +40,6 @@ public class TerrainGeneration {
 	
 	public static void update() {
 		
-		System.out.println(blocks.size());
 		if(HvlMenu.top() == MenuManager.game) {
 			for(int i = 0; i < blocks.size(); i++) {
 				//Draw the block
