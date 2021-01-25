@@ -43,7 +43,7 @@ public class TerrainGeneration {
 		
 		if(HvlMenu.top() == MenuManager.game) {
 			for(int i = 0; i < blocks.size(); i++) {
-				//Draw the block
+				//Draw the block (Still only supports two states)
 				if(blocks.get(i).getCollidable()) {
 					hvlDraw(hvlQuadc(blocks.get(i).getxPos(), blocks.get(i).getyPos(), Block.BLOCK_SIZE, Block.BLOCK_SIZE), Color.blue);
 				}else {

@@ -6,6 +6,8 @@ import com.osreboot.ridhvl2.HvlCoord;
 import com.osreboot.ridhvl2.HvlMath;
 
 public class Block {
+	
+	//Blocks still only support two states (wall or air), need to extend to support new Gird Maker files
 
 	public static final float BLOCK_SIZE = 60;
 

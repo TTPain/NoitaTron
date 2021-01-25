@@ -42,7 +42,7 @@ public class LevelLoader {
 						if(c == '0') {
 							blocks.add(new Block(xPos, yPos, false));
 							blockNum++;
-						}else if(c =='1') {
+						}else /*Everything that's not open air*/ {
 							blocks.add(new Block(xPos, yPos, true));
 							blockNum++;
 						}

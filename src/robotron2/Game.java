@@ -20,9 +20,7 @@ public class Game {
 	public static float globalTimer = 0f;
 	public static float gameplayTimer = 0f;
 	public static int level = 1;
-	public static boolean devMode = false;
-	
-	//BULLETS STILL HIT OLD BORDER!!!!!!
+	public static boolean devMode;
     
 
 	public static void initialize() {
