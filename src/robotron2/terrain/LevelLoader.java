@@ -38,7 +38,6 @@ public class LevelLoader {
 				xPos = 0;
 				for (int k = 0; k < line.length(); k++){
 					char c = line.charAt(k);   
-					System.out.println(line);
 					xPos+= Block.BLOCK_SIZE;					
 						if(c == '0') {
 							blocks.add(new Block(xPos, yPos, false));
