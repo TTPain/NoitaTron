@@ -16,11 +16,12 @@ public class Block {
 	private boolean collidable;
 	private int blockType;
 
-	public Block(float xArg, float yArg, boolean isCollidable, int blockType) {
+	public Block(float xArg, float yArg, boolean isCollidable, int blockTypeArg) {
 
 		xPos = xArg;
 		yPos = yArg;
 		collidable = isCollidable;
+		blockType = blockTypeArg;
 
 	}
 
