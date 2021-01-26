@@ -21,7 +21,7 @@ public class LevelLoader {
 
 
 	public static void load() {
-		f = new File("res/levels/FloorPlan2.txt");
+		f = new File("res/levels/FloorPlan.txt");
 		try {
 			r = new FileReader(f);
 		} catch (FileNotFoundException e) {

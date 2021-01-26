@@ -39,8 +39,12 @@ public class Main extends HvlTemplateI {
 	 * Block collision for bullets
 	 * Pathfinding for enemies
 	 * Rewrite score/lives so that it is a component of Player
-	 * Proper death animation
+	 * Optimization
+	 * Support for different block types
+
+	 * LOW PRIORITY
 	 * Proper Game Over screen
+	 * Proper death animation
 	 * New enemies 
 	 * Upgrades
 	 * Money system?

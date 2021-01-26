@@ -45,6 +45,7 @@ public class EnemyGrunt {
 	public boolean livingState = true;
 	public float gruntStutter = 0;
 	public int gruntTexture;
+	public boolean withinRange;
 	public boolean canSeePlayer;
 
 	public int stutterSpeed = 1;
@@ -60,13 +61,15 @@ public class EnemyGrunt {
 		gruntPos.x = xPos;
 		gruntPos.y = yPos;
 
-		if(canSeePlayer && (Block.hasLineOfSight(TerrainGeneration.blocks, player.getPlayerPos(), gruntPos))) {
-			if(Game.devMode) {
-			hvlDraw(hvlLine(xPos, yPos, player.getxPos(), player.getyPos(), 2), Color.red);
-			}
-		}else{
-			if(Game.devMode) {
-			hvlDraw(hvlLine(xPos, yPos, player.getxPos(), player.getyPos(), 2), Color.white);
+		if(withinRange) {
+			if(canSeePlayer && (Block.hasLineOfSight(TerrainGeneration.blocks, player.getPlayerPos(), gruntPos))) {
+				if(Game.devMode) {
+					hvlDraw(hvlLine(xPos, yPos, player.getxPos(), player.getyPos(), 2), Color.red);
+				}
+			}else{
+				if(Game.devMode) {
+					hvlDraw(hvlLine(xPos, yPos, player.getxPos(), player.getyPos(), 2), Color.white);
+				}
 			}
 		}
 
@@ -260,14 +263,24 @@ public class EnemyGrunt {
 		// END GRUNT STUTTER SPEED
 
 		//GRUNT LINE OF SIGHT AND CHASE MECHANICS
-		if(Block.hasLineOfSight(TerrainGeneration.blocks, player.getPlayerPos(), gruntPos)) {	
-			canSeePlayer = true;
-			enemychase = 20;
+
+		if(player.getxPos() >=  xPos - Block.BLOCK_SIZE*8 && player.getxPos() <=  xPos  + Block.BLOCK_SIZE*8
+				&& player.getyPos() >=  yPos - Block.BLOCK_SIZE*8 && player.getyPos() <=  yPos + Block.BLOCK_SIZE*8) {
+			withinRange = true;
 		}else {
-			canSeePlayer = false;
+			withinRange = false;
 		}
-		if (enemychase < 0) {
-			enemychase = 0;
+
+		if(withinRange) {
+			if(Block.hasLineOfSight(TerrainGeneration.blocks, player.getPlayerPos(), gruntPos)){	
+				canSeePlayer = true;
+				enemychase = 20;
+			}else {
+				canSeePlayer = false;
+			}
+			if (enemychase < 0) {
+				enemychase = 0;
+			}
 		}
 		//END LINE OF SIGHT AND CHASE MECHANICS
 
