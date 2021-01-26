@@ -15,6 +15,8 @@ import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 
 import robotron2.enemy.EnemyGrunt;
 import robotron2.enemy.EnemyHulk;
+import robotron2.terrain.Block;
+import robotron2.terrain.TerrainGeneration;
 import robotron2.util.Utility;
 import robotron2.weapon.BulletLogic;
 
@@ -28,14 +30,15 @@ public class RoomGenerator {
 	public static ArrayList<EnemyHulk> enemyHulks = new ArrayList<>();
 	public static int enemiesAlive = 0;
 	public static int rangen = 0;
-
+	
+	
 	public static void reset(Player player) {
 		levelTimer = Game.gameplayTimer;
-		
+
 		//PLAYER INITIAL X AND Y
 		player.setxPos(1920/2);
 		player.setyPos(1080/2);
-		
+
 		BulletLogic.reset(player);
 		enemyGrunts.clear();
 		enemyHulks.clear();
@@ -43,7 +46,7 @@ public class RoomGenerator {
 		RoomClearAnimation.stop = false;
 		// Fill array with enemies, exact placement can be specified
 		if ((Game.level == 0)) {
-			doors.add(new Door(1920-160, 1080/2, false));
+			//doors.add(new Door(1920-160, 1080/2, false));
 			// xPos, yPos, livingState, StutterStart, Can see player, Starter Texture
 			enemyGrunts.add(new EnemyGrunt(300f, 100f, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(500f, 500f, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
@@ -52,23 +55,21 @@ public class RoomGenerator {
 			enemyGrunts.add(new EnemyGrunt(400f, 200f, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
 			enemiesAlive = enemyGrunts.size();
 			//enemyHulks.add(new EnemyHulk(0, 0, 1));
-			
+
 		}
-			
-		
+
+
 		else {
-			rangen = Utility.randomIntBetween(1, 100);
-			
-			doors.add(new Door(1920-160, 1080/2, false));
-			// xPos, yPos, livingState, StutterStart, ShatterDirection, Starter Texture
 
-			for (int i = 0; i <rangen; i++) {
-			enemyGrunts.add(new EnemyGrunt(25*(Utility.randomIntBetween(5, 75)), 25*(Utility.randomIntBetween(5, 40)), true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
+			// xPos, yPos, livingState, StutterStart, CAN SEE PLAYER, Starter Texture
+			for(Block b : TerrainGeneration.blocks) {
+				if(b.getBlockType() == 0) {
+					enemyGrunts.add(new EnemyGrunt(b.getxPos(), b.getyPos(), true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
+				}
 			}
-
-			enemyHulks.add(new EnemyHulk(0, 0, 1));
-			enemiesAlive = enemyGrunts.size();
 		}
+		enemyHulks.add(new EnemyHulk(0, 0, 1));
+		enemiesAlive = enemyGrunts.size();
 	}
 
 	public static void update(float delta) {
@@ -76,7 +77,7 @@ public class RoomGenerator {
 		for(Door door : doors) {
 			door.draw();
 		}
-		
+
 		for (EnemyGrunt grunt : enemyGrunts) {
 			if (grunt.getLivingState()) {
 				hvlDraw(hvlQuadc(grunt.xPos, grunt.yPos, EnemyGrunt.GRUNT_SIZE, EnemyGrunt.GRUNT_SIZE),
@@ -84,14 +85,14 @@ public class RoomGenerator {
 				grunt.update(delta, Game.player);
 			}
 		}
-		
+
 		for (EnemyHulk hulk : enemyHulks) {
-		
-				hvlDraw(hvlQuadc(hulk.xPos, hulk.yPos, 50, 50),
-						hvlTexture(3));
-				hulk.update(delta, Game.player);
+
+			hvlDraw(hvlQuadc(hulk.xPos, hulk.yPos, 50, 50),
+					hvlTexture(3));
+			hulk.update(delta, Game.player);
 
 		}
-		
+
 	}
 }

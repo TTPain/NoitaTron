@@ -13,7 +13,7 @@ public class Score {
 	
 	public static int extraLifeScore=0;
 	public static int score=0;
-	public static int lives=3;
+	public static int lives=13;
 
 	public static void update(float delta, Player player) {
 		if(extraLifeScore >= EXTRA_LIFE_VALUE) {

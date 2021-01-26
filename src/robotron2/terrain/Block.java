@@ -14,8 +14,9 @@ public class Block {
 	private float xPos;
 	private float yPos;
 	private boolean collidable;
+	private int blockType;
 
-	public Block(float xArg, float yArg, boolean isCollidable) {
+	public Block(float xArg, float yArg, boolean isCollidable, int blockType) {
 
 		xPos = xArg;
 		yPos = yArg;
@@ -72,6 +73,14 @@ public class Block {
 			}
 		}
 		return hasLineOfSight;
+	}
+
+	public int getBlockType() {
+		return blockType;
+	}
+
+	public void setBlockType(int blockType) {
+		this.blockType = blockType;
 	}
 
 

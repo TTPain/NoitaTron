@@ -21,7 +21,7 @@ public class LevelLoader {
 
 
 	public static void load() {
-		f = new File("res/levels/FloorPlan.txt");
+		f = new File("res/levels/FloorPlan2.txt");
 		try {
 			r = new FileReader(f);
 		} catch (FileNotFoundException e) {
@@ -40,10 +40,10 @@ public class LevelLoader {
 					char c = line.charAt(k);   
 					xPos+= Block.BLOCK_SIZE;					
 						if(c == '0') {
-							blocks.add(new Block(xPos, yPos, false));
+							blocks.add(new Block(xPos, yPos, false, 0));
 							blockNum++;
 						}else /*Everything that's not open air*/ {
-							blocks.add(new Block(xPos, yPos, true));
+							blocks.add(new Block(xPos, yPos, true, 1));
 							blockNum++;
 						}
 					}
