@@ -340,12 +340,9 @@ public class EnemyGrunt {
 		pathToEachTile.put(startPos, new ArrayList<HvlCoord>());
 		pathToEachTile.get(startPos).add(startPos);
 
-		boolean foundEnd = false;		
-
-		while(!foundEnd) {
-
-			//System.out.println(checkedTiles.size());
-
+		//boolean foundEnd = false;		
+		//while(!foundEnd) {
+		for(int i = 0; i < 30; i++) {
 
 			for(HvlCoord tileBeingChecked : new ArrayList<>(tilesToCheck)) {
 				if(!(checkedTiles.contains(tileBeingChecked))){
