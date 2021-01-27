@@ -14,7 +14,7 @@ import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.HvlCoord;
 
-import robotron2.BulletFire;
+
 import robotron2.Door;
 import robotron2.RoomGenerator;
 import robotron2.Game;
@@ -208,15 +208,6 @@ public class EnemyGrunt {
 		// END MOVEMENT AND SPRITE CHANGE
 
 		// GRUNT HITBOX
-		for (Bullet bullet : BulletFire.bullets) {
-			if (((bullet.getxPos() < xPos + 15) && (bullet.getxPos() > xPos - 15) && (bullet.getyPos() < yPos + 15)
-					&& (bullet.getyPos() > yPos - 15))) {
-				livingState = false;
-				bullet.setFired(false);
-				bullet.setBulletDrawn(false);
-				Score.addPoints(100);
-			}
-		}
 		for (Bullet b : BulletLogic.bulletTotal) {
 			if (((b.getxPos() < xPos + 15) && (b.getxPos() > xPos - 15) && (b.getyPos() < yPos + 15)
 					&& (b.getyPos() > yPos - 15))) {
