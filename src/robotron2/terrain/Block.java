@@ -1,6 +1,11 @@
 package robotron2.terrain;
 
+import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
+import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
+
 import java.util.ArrayList;
+
+import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.HvlCoord;
 import com.osreboot.ridhvl2.HvlMath;
@@ -32,6 +37,10 @@ public class Block {
 	public void setxPos(float xArg) {
 		xPos = xArg;
 	}
+	
+	public void test() {
+		hvlDraw(hvlQuadc(xPos, yPos, 10, 10), Color.white);
+	}
 
 	public float getyPos() {
 		return yPos;
@@ -44,6 +53,7 @@ public class Block {
 	public boolean getCollidable() {
 		return collidable;
 	}
+	
 
 
 	//Checks if the line between two points (startPoint and endPoint) is intersected by a (square) block.

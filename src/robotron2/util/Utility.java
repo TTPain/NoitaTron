@@ -1,12 +1,19 @@
 package robotron2.util;
 
+import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
+import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
+
 import java.util.Random;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
+import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.HvlAction;
+import com.osreboot.ridhvl2.HvlCoord;
+
+import robotron2.terrain.Block;
 
 public class Utility {
 
@@ -46,5 +53,18 @@ public class Utility {
 		return Display.getHeight() - Mouse.getY();
 	}
 
+	public static HvlCoord getCurrentTile(float xArg, float yArg) {
+		
+		int x = (int)(xArg/Block.BLOCK_SIZE);
+		int y = (int)(yArg/Block.BLOCK_SIZE);
+		
+		hvlDraw(hvlQuadc(x*Block.BLOCK_SIZE, y*Block.BLOCK_SIZE, 10, 10), Color.white);
+		
+		System.out.println("X: " + x + " Y: " + y);
+		
+		return new HvlCoord(x, y);
+		
+		
+	}
 
 }

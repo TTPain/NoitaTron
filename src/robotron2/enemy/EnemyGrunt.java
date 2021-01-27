@@ -5,8 +5,10 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlLine;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
 import static com.osreboot.ridhvl2.HvlStatics.hvlSound;
+import static com.osreboot.ridhvl2.HvlStatics.hvlTexture;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.newdawn.slick.Color;
 
@@ -21,6 +23,7 @@ import robotron2.Score;
 import robotron2.load.SoundLoader;
 import robotron2.terrain.Block;
 import robotron2.terrain.TerrainGeneration;
+import robotron2.util.Utility;
 import robotron2.weapon.Bullet;
 import robotron2.weapon.BulletLogic;
 
@@ -38,6 +41,7 @@ public class EnemyGrunt {
 
 	public static final float GRUNT_SIZE = 25;
 	public static final int LINE_OF_SIGHT = 500;
+	private ArrayList<HvlCoord> pathToPlayer = new ArrayList<HvlCoord>();
 
 	public float yPos = 0;
 	public float xPos = 0;
@@ -262,8 +266,36 @@ public class EnemyGrunt {
 		}
 		// END GRUNT STUTTER SPEED
 
+
+
+		//PATHFINDING TO PLAYER;
+		Utility.getCurrentTile(xPos, yPos);
+
+		//If pathToPlayer is null, populate with pathfinding method
+		//if(pathToPlayer.size() == 0) {
+			pathToPlayer = pathfind(Utility.getCurrentTile(xPos, yPos), Utility.getCurrentTile(player.getxPos(), player.getyPos()));
+			
+			for(HvlCoord coord : pathToPlayer) {
+				
+				hvlDraw(hvlQuadc(coord.x, coord.y, 15, 15), Color.green);
+				
+			}
+			
+		//}
+		//Else follow the currently established path
+
+
+
 		//GRUNT LINE OF SIGHT AND CHASE MECHANICS
 
+		withinRange = true;
+		canSeePlayer = true;
+		//enemychase = 500;
+		//Develop list of coordinates from the enemy to the player
+
+
+
+		/*
 		if(player.getxPos() >=  xPos - Block.BLOCK_SIZE*8 && player.getxPos() <=  xPos  + Block.BLOCK_SIZE*8
 				&& player.getyPos() >=  yPos - Block.BLOCK_SIZE*8 && player.getyPos() <=  yPos + Block.BLOCK_SIZE*8) {
 			withinRange = true;
@@ -282,8 +314,107 @@ public class EnemyGrunt {
 				enemychase = 0;
 			}
 		}
+		 */
 		//END LINE OF SIGHT AND CHASE MECHANICS
 
+	}
+
+	public ArrayList<HvlCoord> pathfind(HvlCoord startPos, HvlCoord endPos){
+
+		startPos.x = startPos.x*Block.BLOCK_SIZE;
+		startPos.y = startPos.y*Block.BLOCK_SIZE;
+		
+		endPos.x = endPos.x*Block.BLOCK_SIZE;
+		endPos.y = endPos.y*Block.BLOCK_SIZE;
+		
+		
+		
+		ArrayList<HvlCoord> tilesToCheck = new ArrayList<HvlCoord>();
+		ArrayList<HvlCoord> checkedTiles = new ArrayList<HvlCoord>();
+		
+		HashMap<HvlCoord, ArrayList<HvlCoord>> pathToEachTile = new HashMap<>();
+
+		System.out.println(startPos);
+		
+		tilesToCheck.add(startPos);
+		pathToEachTile.put(startPos, new ArrayList<HvlCoord>());
+		pathToEachTile.get(startPos).add(startPos);
+
+		boolean foundEnd = false;		
+
+		while(!foundEnd) {
+
+			//System.out.println(checkedTiles.size());
+
+
+			for(HvlCoord tileBeingChecked : new ArrayList<>(tilesToCheck)) {
+				if(!(checkedTiles.contains(tileBeingChecked))){
+
+					
+					ArrayList<HvlCoord> pathToTileBeingChecked = pathToEachTile.get(tileBeingChecked);
+					
+					if(tileBeingChecked.equals(endPos)) {
+						return pathToTileBeingChecked;
+					}
+
+					//Right adjacent block
+					if(!isAWall(tileBeingChecked.x + Block.BLOCK_SIZE, tileBeingChecked.y)) {
+						
+						HvlCoord eastBlock = new HvlCoord(tileBeingChecked.x + Block.BLOCK_SIZE,tileBeingChecked.y);
+						tilesToCheck.add(eastBlock);
+						pathToEachTile.put(eastBlock, new ArrayList<>(pathToTileBeingChecked));
+						pathToEachTile.get(eastBlock).add(eastBlock);
+					}
+					//Left adjacent block
+					if(!isAWall(tileBeingChecked.x - Block.BLOCK_SIZE, tileBeingChecked.y)) {
+						HvlCoord westBlock = new HvlCoord(tileBeingChecked.x - Block.BLOCK_SIZE,tileBeingChecked.y);
+						tilesToCheck.add(westBlock);
+						pathToEachTile.put(westBlock, new ArrayList<>(pathToTileBeingChecked));
+						pathToEachTile.get(westBlock).add(westBlock);
+						
+					}
+					//Upper adjacent block
+					if(!isAWall(tileBeingChecked.x, tileBeingChecked.y - Block.BLOCK_SIZE)) {
+						HvlCoord northBlock = new HvlCoord(tileBeingChecked.x ,tileBeingChecked.y - Block.BLOCK_SIZE);
+						tilesToCheck.add(northBlock);
+						pathToEachTile.put(northBlock, new ArrayList<>(pathToTileBeingChecked));
+						pathToEachTile.get(northBlock).add(northBlock);
+					}
+					//Lower adjacent block
+					if(!isAWall(tileBeingChecked.x, tileBeingChecked.y + Block.BLOCK_SIZE)) {
+						HvlCoord southBlock = new HvlCoord(tileBeingChecked.x,tileBeingChecked.y + Block.BLOCK_SIZE);
+						tilesToCheck.add(southBlock);
+						pathToEachTile.put(southBlock, new ArrayList<>(pathToTileBeingChecked));
+						pathToEachTile.get(southBlock).add(southBlock);
+						
+					}
+
+					checkedTiles.add(tileBeingChecked);
+					tilesToCheck.remove(tileBeingChecked);
+				}
+
+			}
+		}
+
+		return new ArrayList<>();
+
+	}
+
+	public boolean isAWall(float xPos, float yPos) {
+		
+	
+		
+		for(Block b : TerrainGeneration.blocks) {
+			if(b.getxPos() == xPos && b.getyPos()== yPos) {
+				if(b.getBlockType() == 1) {
+					return true;
+				}else {
+					return false;
+				}
+			}
+		}
+		System.out.println("Could not find");
+		return true;
 	}
 
 

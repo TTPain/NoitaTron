@@ -60,18 +60,21 @@ public class RoomGenerator {
 
 
 		else {
+			enemyGrunts.add(new EnemyGrunt(200, 200, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
+			
+		
 
 			// xPos, yPos, livingState, StutterStart, CAN SEE PLAYER, Starter Texture
 			for(Block b : TerrainGeneration.blocks) {
 				rangen = Utility.randomIntBetween(0, 3);
-				if(b.getBlockType() == 0 && rangen == 1) {
-					enemyGrunts.add(new EnemyGrunt((b.getxPos() -+ Utility.randomFloatBetween(0, (Block.BLOCK_SIZE)/2)), (b.getyPos() -+ Utility.randomFloatBetween(0, (Block.BLOCK_SIZE)/2)), true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
+				//b.test();
+					//enemyGrunts.add(new EnemyGrunt((b.getxPos() -+ Utility.randomFloatBetween(0, (Block.BLOCK_SIZE)/2)), (b.getyPos() -+ Utility.randomFloatBetween(0, (Block.BLOCK_SIZE)/2)), true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
 				}
 			}
-		}
-		enemyHulks.add(new EnemyHulk(0, 0, 1));
+		
+		//enemyHulks.add(new EnemyHulk(0, 0, 1));
 		enemiesAlive = enemyGrunts.size();
-	}
+}
 
 	public static void update(float delta) {
 		// Each frame check if each enemy is alive, and if so, update and draw it.

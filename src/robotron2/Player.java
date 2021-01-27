@@ -17,6 +17,7 @@ import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 
 import robotron2.terrain.Block;
 import robotron2.terrain.TerrainGeneration;
+import robotron2.util.Utility;
 
 public class Player {
 
@@ -177,6 +178,7 @@ public class Player {
 	}
 
 	public void draw(float delta) {
+		Utility.getCurrentTile(xPos, yPos);
 		PlayerAimIndicator.draw(Game.player);
 		hvlDraw(hvlQuadc(xPos, yPos, PLAYER_WIDTH, PLAYER_HEIGHT), hvlTexture(playerTexture));
 		if(Game.devMode) {
@@ -230,6 +232,8 @@ public class Player {
 		}
 
 	}
+	
+
 
 	public float getxPos() {
 		return xPos;
