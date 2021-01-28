@@ -45,7 +45,7 @@ public class RoomGenerator {
 		doors.clear();
 		RoomClearAnimation.stop = false;
 		// Fill array with enemies, exact placement can be specified
-		if ((Game.level == 0)) {
+		if ((Game.level == 1)) {
 			//doors.add(new Door(1920-160, 1080/2, false));
 			// xPos, yPos, livingState, StutterStart, Can see player, Starter Texture
 			enemyGrunts.add(new EnemyGrunt(300f, 100f, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));

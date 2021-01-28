@@ -14,7 +14,6 @@ import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.HvlCoord;
 
-import robotron2.BulletFire;
 import robotron2.Door;
 import robotron2.RoomGenerator;
 import robotron2.Game;
@@ -41,6 +40,8 @@ public class EnemyGrunt {
 
 	public static final float GRUNT_SIZE = 25;
 	public static final int LINE_OF_SIGHT = 500;
+	public static final int PATHFINDING_RANGE = 30;
+
 	private ArrayList<HvlCoord> pathToPlayer = new ArrayList<HvlCoord>();
 
 	public float yPos = 0;
@@ -72,7 +73,7 @@ public class EnemyGrunt {
 				}
 			}else{
 				if(Game.devMode) {
-					hvlDraw(hvlLine(xPos, yPos, player.getxPos(), player.getyPos(), 2), Color.white);
+					hvlDraw(hvlLine(xPos, yPos, player.getxPos(), player.getyPos(), 1), Color.white);
 				}
 			}
 		}
@@ -208,15 +209,6 @@ public class EnemyGrunt {
 		// END MOVEMENT AND SPRITE CHANGE
 
 		// GRUNT HITBOX
-		for (Bullet bullet : BulletFire.bullets) {
-			if (((bullet.getxPos() < xPos + 15) && (bullet.getxPos() > xPos - 15) && (bullet.getyPos() < yPos + 15)
-					&& (bullet.getyPos() > yPos - 15))) {
-				livingState = false;
-				bullet.setFired(false);
-				bullet.setBulletDrawn(false);
-				Score.addPoints(100);
-			}
-		}
 		for (Bullet b : BulletLogic.bulletTotal) {
 			if (((b.getxPos() < xPos + 15) && (b.getxPos() > xPos - 15) && (b.getyPos() < yPos + 15)
 					&& (b.getyPos() > yPos - 15))) {
@@ -269,28 +261,27 @@ public class EnemyGrunt {
 
 
 		//PATHFINDING TO PLAYER;
+		//If an enemy has *direct* line of sight to the player, it should ignore the pathfinding algorithm and
+		//just rush the player.
 		Utility.getCurrentTile(xPos, yPos);
-
 		//If pathToPlayer is null, populate with pathfinding method
 		//if(pathToPlayer.size() == 0) {
-			pathToPlayer = pathfind(Utility.getCurrentTile(xPos, yPos), Utility.getCurrentTile(player.getxPos(), player.getyPos()));
-			
+		pathToPlayer = pathfind(Utility.getCurrentTile(xPos, yPos), Utility.getCurrentTile(player.getxPos(), player.getyPos()));
+
+		//Pathfinding Representation
+		if(Game.devMode) {
 			for(HvlCoord coord : pathToPlayer) {
-				
 				hvlDraw(hvlQuadc(coord.x, coord.y, 15, 15), Color.green);
-				
 			}
-			
+		}
+
 		//}
 		//Else follow the currently established path
-
-
-
 		//GRUNT LINE OF SIGHT AND CHASE MECHANICS
 
 		withinRange = true;
 		canSeePlayer = true;
-		//enemychase = 500;
+		enemychase = 500;
 		//Develop list of coordinates from the enemy to the player
 
 
@@ -323,40 +314,35 @@ public class EnemyGrunt {
 
 		startPos.x = startPos.x*Block.BLOCK_SIZE;
 		startPos.y = startPos.y*Block.BLOCK_SIZE;
-		
+
 		endPos.x = endPos.x*Block.BLOCK_SIZE;
-		endPos.y = endPos.y*Block.BLOCK_SIZE;
-		
-		
-		
+		endPos.y = endPos.y*Block.BLOCK_SIZE;		
+
 		ArrayList<HvlCoord> tilesToCheck = new ArrayList<HvlCoord>();
 		ArrayList<HvlCoord> checkedTiles = new ArrayList<HvlCoord>();
-		
+
 		HashMap<HvlCoord, ArrayList<HvlCoord>> pathToEachTile = new HashMap<>();
 
 		System.out.println(startPos);
-		
+
 		tilesToCheck.add(startPos);
 		pathToEachTile.put(startPos, new ArrayList<HvlCoord>());
 		pathToEachTile.get(startPos).add(startPos);
 
-		//boolean foundEnd = false;		
-		//while(!foundEnd) {
-		for(int i = 0; i < 30; i++) {
+		for(int i = 0; i < PATHFINDING_RANGE; i++) {
 
 			for(HvlCoord tileBeingChecked : new ArrayList<>(tilesToCheck)) {
 				if(!(checkedTiles.contains(tileBeingChecked))){
 
-					
 					ArrayList<HvlCoord> pathToTileBeingChecked = pathToEachTile.get(tileBeingChecked);
-					
+
 					if(tileBeingChecked.equals(endPos)) {
 						return pathToTileBeingChecked;
 					}
 
 					//Right adjacent block
 					if(!isAWall(tileBeingChecked.x + Block.BLOCK_SIZE, tileBeingChecked.y)) {
-						
+
 						HvlCoord eastBlock = new HvlCoord(tileBeingChecked.x + Block.BLOCK_SIZE,tileBeingChecked.y);
 						tilesToCheck.add(eastBlock);
 						pathToEachTile.put(eastBlock, new ArrayList<>(pathToTileBeingChecked));
@@ -368,7 +354,7 @@ public class EnemyGrunt {
 						tilesToCheck.add(westBlock);
 						pathToEachTile.put(westBlock, new ArrayList<>(pathToTileBeingChecked));
 						pathToEachTile.get(westBlock).add(westBlock);
-						
+
 					}
 					//Upper adjacent block
 					if(!isAWall(tileBeingChecked.x, tileBeingChecked.y - Block.BLOCK_SIZE)) {
@@ -383,7 +369,7 @@ public class EnemyGrunt {
 						tilesToCheck.add(southBlock);
 						pathToEachTile.put(southBlock, new ArrayList<>(pathToTileBeingChecked));
 						pathToEachTile.get(southBlock).add(southBlock);
-						
+
 					}
 
 					checkedTiles.add(tileBeingChecked);
@@ -398,9 +384,7 @@ public class EnemyGrunt {
 	}
 
 	public boolean isAWall(float xPos, float yPos) {
-		
-	
-		
+
 		for(Block b : TerrainGeneration.blocks) {
 			if(b.getxPos() == xPos && b.getyPos()== yPos) {
 				if(b.getBlockType() == 1) {

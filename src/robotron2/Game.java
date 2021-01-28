@@ -31,7 +31,6 @@ public class Game {
 		player = new Player(Player.PLAYER_START_X, Player.PLAYER_START_Y, true);
 		player.reset();
 		MenuManager.initialize(player);
-		BulletFire.initialize();
 		BulletLogic.initialize();
 		BulletLogic.reset(player);
 		TerrainGeneration.loadBlocks();
@@ -46,7 +45,6 @@ public class Game {
 		LevelManager.update(player, delta);
 		Score.update(delta, player);
 		TerrainGeneration.update();
-		BulletFire.update(delta, player);
 		BulletLogic.update(delta, player);
 		RoomGenerator.update(delta);
 		player.update(delta);
@@ -59,7 +57,6 @@ public class Game {
 		RoomGenerator.reset(player);
 		player.reset();
 		Score.reset();
-		BulletFire.reset(player);
 
 		
 	}

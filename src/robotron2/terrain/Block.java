@@ -85,6 +85,8 @@ public class Block {
 		}
 		return hasLineOfSight;
 	}
+	
+	
 
 	public int getBlockType() {
 		return blockType;

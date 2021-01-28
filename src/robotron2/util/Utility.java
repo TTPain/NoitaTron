@@ -55,6 +55,9 @@ public class Utility {
 
 	public static HvlCoord getCurrentTile(float xArg, float yArg) {
 		
+		xArg+=Block.BLOCK_SIZE/2;
+		yArg+=Block.BLOCK_SIZE/2;
+		
 		int x = (int)(xArg/Block.BLOCK_SIZE);
 		int y = (int)(yArg/Block.BLOCK_SIZE);
 		

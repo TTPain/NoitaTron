@@ -25,7 +25,6 @@ public class Score {
 			RoomGenerator.reset(player);
 			player.reset();
 			Score.reset();
-			BulletFire.reset(player);
 			//LevelGenerator.reset();
 			if(HvlMenu.top()==MenuManager.game) {
 				HvlMenu.set(MenuManager.gameover);
