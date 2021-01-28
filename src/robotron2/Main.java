@@ -33,13 +33,14 @@ public class Main extends HvlTemplateI {
 
 	/*
 	 * TODO
-	 * Reset player and enemy positions on death and keep player in safe zone - Tristin
-	 * THINGS TO ADD:
-	 * Block collision for enemies
-	 * Block collision for bullets
-	 * Pathfinding for enemies
+	 * Reset player and enemy positions on death
+	 * Fix issues with bullets (random trajectory bug, randomly stops firing bug)
+	 * Enemies must follow pathfinding path
+	 * Pathfinding does not occur if enemies have direct LOS
 	 * Rewrite score/lives so that it is a component of Player
 	 * Optimization
+	 
+	 * THINGS TO ADD:
 	 * Support for different block types
 
 	 * LOW PRIORITY
