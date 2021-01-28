@@ -67,10 +67,10 @@ public class TerrainGeneration {
 
 				//Devmode Lines
 				if(Game.devMode) {
-					//hvlDraw(hvlLine(new HvlCoord(blocks.get(i).getxPos() - (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() - (Block.BLOCK_SIZE/2)), new HvlCoord(blocks.get(i).getxPos() + (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() - (Block.BLOCK_SIZE/2)), 3), Color.orange);
-				    //hvlDraw(hvlLine(new HvlCoord(blocks.get(i).getxPos() - (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() - (Block.BLOCK_SIZE/2)), new HvlCoord(blocks.get(i).getxPos() - (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() + (Block.BLOCK_SIZE/2)), 3), Color.orange);
-					//hvlDraw(hvlLine(new HvlCoord(blocks.get(i).getxPos() + (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() + (Block.BLOCK_SIZE/2)), new HvlCoord(blocks.get(i).getxPos() - (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() + (Block.BLOCK_SIZE/2)), 3), Color.orange);
-					//hvlDraw(hvlLine(new HvlCoord(blocks.get(i).getxPos() + (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() + (Block.BLOCK_SIZE/2)), new HvlCoord(blocks.get(i).getxPos() + (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() - (Block.BLOCK_SIZE/2)), 3), Color.orange);
+					hvlDraw(hvlLine(new HvlCoord(blocks.get(i).getxPos() - (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() - (Block.BLOCK_SIZE/2)), new HvlCoord(blocks.get(i).getxPos() + (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() - (Block.BLOCK_SIZE/2)), 3), Color.orange);
+				    hvlDraw(hvlLine(new HvlCoord(blocks.get(i).getxPos() - (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() - (Block.BLOCK_SIZE/2)), new HvlCoord(blocks.get(i).getxPos() - (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() + (Block.BLOCK_SIZE/2)), 3), Color.orange);
+				    hvlDraw(hvlLine(new HvlCoord(blocks.get(i).getxPos() + (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() + (Block.BLOCK_SIZE/2)), new HvlCoord(blocks.get(i).getxPos() - (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() + (Block.BLOCK_SIZE/2)), 3), Color.orange);
+					hvlDraw(hvlLine(new HvlCoord(blocks.get(i).getxPos() + (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() + (Block.BLOCK_SIZE/2)), new HvlCoord(blocks.get(i).getxPos() + (Block.BLOCK_SIZE/2), blocks.get(i).getyPos() - (Block.BLOCK_SIZE/2)), 3), Color.orange);
 				}
 
 			}

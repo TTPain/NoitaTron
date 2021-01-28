@@ -22,7 +22,7 @@ import com.osreboot.ridhvl2.template.HvlDisplayWindowed;
 import com.osreboot.ridhvl2.template.HvlTemplateI;
 import com.osreboot.ridhvl2.template.HvlTimer;
 
-import robotron2.enemy.EnemyGrunt;
+import robotron2.enemy.grunt.EnemyGrunt;
 import robotron2.load.SoundLoader;
 import robotron2.load.TextureLoader;
 import robotron2.menu.MenuManager;

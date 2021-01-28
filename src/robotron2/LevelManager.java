@@ -2,7 +2,7 @@ package robotron2;
 
 import org.lwjgl.input.Keyboard;
 
-import robotron2.enemy.EnemyGrunt;
+import robotron2.enemy.grunt.EnemyGrunt;
 
 public class LevelManager {
 

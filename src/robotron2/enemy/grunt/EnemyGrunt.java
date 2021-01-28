@@ -1,4 +1,4 @@
-package robotron2.enemy;
+package robotron2.enemy.grunt;
 
 import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlLine;

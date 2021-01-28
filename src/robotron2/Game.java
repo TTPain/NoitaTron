@@ -9,7 +9,7 @@ import org.newdawn.slick.Color;
 
 import com.osreboot.ridhvl2.menu.HvlMenu;
 
-import robotron2.enemy.EnemyHulk;
+import robotron2.enemy.hulk.EnemyHulk;
 import robotron2.menu.MenuManager;
 import robotron2.terrain.TerrainGeneration;
 import robotron2.weapon.BulletLogic;
@@ -25,7 +25,7 @@ public class Game {
 
 	public static void initialize() {
 		///////
-		devMode = true;
+		devMode = false;
 		//////
 		//hvlSound(1).playAsMusic(1f, 1f, true);
 		player = new Player(Player.PLAYER_START_X, Player.PLAYER_START_Y, true);

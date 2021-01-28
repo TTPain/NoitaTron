@@ -13,8 +13,8 @@ import org.newdawn.slick.Color;
 import com.osreboot.ridhvl2.loader.HvlLoader;
 import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 
-import robotron2.enemy.EnemyGrunt;
-import robotron2.enemy.EnemyHulk;
+import robotron2.enemy.grunt.EnemyGrunt;
+import robotron2.enemy.hulk.EnemyHulk;
 import robotron2.terrain.Block;
 import robotron2.terrain.TerrainGeneration;
 import robotron2.util.Utility;
