@@ -57,7 +57,6 @@ public class Game {
 		RoomGenerator.reset(player);
 		player.reset();
 		Score.reset();
-
 		
 	}
 	
