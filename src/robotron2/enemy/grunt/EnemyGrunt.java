@@ -328,7 +328,7 @@ public class EnemyGrunt {
 
 		HashMap<HvlCoord, ArrayList<HvlCoord>> pathToEachTile = new HashMap<>();
 
-		System.out.println(startPos);
+		//System.out.println(startPos);
 
 		tilesToCheck.add(startPos);
 		pathToEachTile.put(startPos, new ArrayList<HvlCoord>());

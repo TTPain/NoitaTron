@@ -63,7 +63,7 @@ public class Utility {
 		
 		hvlDraw(hvlQuadc(x*Block.BLOCK_SIZE, y*Block.BLOCK_SIZE, 10, 10), Color.white);
 		
-		System.out.println("X: " + x + " Y: " + y);
+		//System.out.println("X: " + x + " Y: " + y);
 		
 		return new HvlCoord(x, y);
 		
