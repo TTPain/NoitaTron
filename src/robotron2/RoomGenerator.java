@@ -30,8 +30,8 @@ public class RoomGenerator {
 	public static ArrayList<EnemyHulk> enemyHulks = new ArrayList<>();
 	public static int enemiesAlive = 0;
 	public static int rangen = 0;
-	
-	
+
+
 	public static void reset(Player player) {
 		levelTimer = Game.gameplayTimer;
 
@@ -45,7 +45,7 @@ public class RoomGenerator {
 		doors.clear();
 		RoomClearAnimation.stop = false;
 		// Fill array with enemies, exact placement can be specified
-		if ((Game.level == 1)) {
+		if ((Game.level == 0)) {
 			//doors.add(new Door(1920-160, 1080/2, false));
 			// xPos, yPos, livingState, StutterStart, Can see player, Starter Texture
 			enemyGrunts.add(new EnemyGrunt(300f, 100f, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
@@ -60,21 +60,18 @@ public class RoomGenerator {
 
 
 		else {
-			enemyGrunts.add(new EnemyGrunt(200, 200, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
 			
-		
-
 			// xPos, yPos, livingState, StutterStart, CAN SEE PLAYER, Starter Texture
 			for(Block b : TerrainGeneration.blocks) {
-				rangen = Utility.randomIntBetween(0, 3);
-				//b.test();
-					//enemyGrunts.add(new EnemyGrunt((b.getxPos() -+ Utility.randomFloatBetween(0, (Block.BLOCK_SIZE)/2)), (b.getyPos() -+ Utility.randomFloatBetween(0, (Block.BLOCK_SIZE)/2)), true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
+				rangen = Utility.randomIntBetween(0, 800);
+				if(b.getBlockType()== 0 && rangen == 1) {
+					enemyGrunts.add(new EnemyGrunt((b.getxPos() -+ Utility.randomFloatBetween(0, (Block.BLOCK_SIZE)/2)), (b.getyPos() -+ Utility.randomFloatBetween(0, (Block.BLOCK_SIZE)/2)), true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
 				}
 			}
-		
+		}
 		//enemyHulks.add(new EnemyHulk(0, 0, 1));
 		enemiesAlive = enemyGrunts.size();
-}
+	}
 
 	public static void update(float delta) {
 		// Each frame check if each enemy is alive, and if so, update and draw it.

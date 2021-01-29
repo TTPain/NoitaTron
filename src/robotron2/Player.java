@@ -37,7 +37,7 @@ public class Player {
 	public static final float ACCELERATION = 500;
 	public static final float PIXELWALK_BUFFER = 3;
 	public static float MAX_SPEED = 250;
-	
+
 	// Make sure to make his starting position coincide with level entry in future
 	private float xPos = 1920/2;
 	private float yPos = 1080/2;
@@ -181,13 +181,18 @@ public class Player {
 		Utility.getCurrentTile(xPos, yPos);
 		PlayerAimIndicator.draw(Game.player);
 		hvlDraw(hvlQuadc(xPos, yPos, PLAYER_WIDTH, PLAYER_HEIGHT), hvlTexture(playerTexture));
-		if(Game.devMode) {
-
-		}
 	}
 
 	public void checkForBlockCollision(float delta) {
 		for(Block b : TerrainGeneration.blocks) {
+
+								//Devmode Lines
+			if(Game.devMode) {
+				//hvlDraw(hvlLine(new HvlCoord(b.getxPos() - (Block.BLOCK_SIZE/2), b.getyPos() - (Block.BLOCK_SIZE/2)), new HvlCoord(b.getxPos() + (Block.BLOCK_SIZE/2), b.getyPos() - (Block.BLOCK_SIZE/2)), 3), Color.orange);
+				//hvlDraw(hvlLine(new HvlCoord(b.getxPos() - (Block.BLOCK_SIZE/2), b.getyPos() - (Block.BLOCK_SIZE/2)), new HvlCoord(b.getxPos() - (Block.BLOCK_SIZE/2), b.getyPos() + (Block.BLOCK_SIZE/2)), 3), Color.orange);
+				hvlDraw(hvlLine(new HvlCoord(b.getxPos() + (Block.BLOCK_SIZE/2), b.getyPos() + (Block.BLOCK_SIZE/2)), new HvlCoord(b.getxPos() - (Block.BLOCK_SIZE/2), b.getyPos() + (Block.BLOCK_SIZE/2)), 3), Color.orange);
+				hvlDraw(hvlLine(new HvlCoord(b.getxPos() + (Block.BLOCK_SIZE/2), b.getyPos() + (Block.BLOCK_SIZE/2)), new HvlCoord(b.getxPos() + (Block.BLOCK_SIZE/2), b.getyPos() - (Block.BLOCK_SIZE/2)), 3), Color.orange);
+			}
 
 			if(b.getCollidable()) {
 
@@ -225,14 +230,11 @@ public class Player {
 						}
 						newyPos = b.getyPos() + Block.BLOCK_SIZE/2 + Player.PLAYER_HEIGHT/2;
 					}
-
 				}				
-
 			}
 		}
-
 	}
-	
+
 
 
 	public float getxPos() {

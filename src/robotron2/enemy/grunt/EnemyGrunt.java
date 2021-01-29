@@ -284,14 +284,14 @@ public class EnemyGrunt {
 		//Else follow the currently established path
 		//GRUNT LINE OF SIGHT AND CHASE MECHANICS
 
-		withinRange = true;
-		canSeePlayer = true;
-		enemychase = 500;
+		//withinRange = false;
+		//canSeePlayer = true;
+		//enemychase = 500;
 		//Develop list of coordinates from the enemy to the player
 
 
 
-		/*
+		
 		if(player.getxPos() >=  xPos - Block.BLOCK_SIZE*8 && player.getxPos() <=  xPos  + Block.BLOCK_SIZE*8
 				&& player.getyPos() >=  yPos - Block.BLOCK_SIZE*8 && player.getyPos() <=  yPos + Block.BLOCK_SIZE*8) {
 			withinRange = true;
@@ -310,7 +310,7 @@ public class EnemyGrunt {
 				enemychase = 0;
 			}
 		}
-		 */
+		 
 		//END LINE OF SIGHT AND CHASE MECHANICS
 
 	}

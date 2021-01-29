@@ -61,7 +61,7 @@ public class BulletLogic {
 		if (cooldownClock < 0) {
 			cooldownClock = 0;
 		}
-		
+
 		bulletSpeedx =Utility.getCursorX() - (Display.getWidth()/2);
 		bulletSpeedy = Utility.getCursorY() - (Display.getHeight()/2);
 
@@ -73,9 +73,9 @@ public class BulletLogic {
 
 		bulletSpeedx = bulletSpeed.x * 750;
 		bulletSpeedy = bulletSpeed.y * 750;	
-		
 
-		if(Mouse.isButtonDown(0) && player.isAlive()) {	
+
+		if(Mouse.isButtonDown(0) && player.isAlive()) {
 
 			for (Bullet b : bulletTotal){
 				availableBullets = bulletTotal.size();
@@ -88,7 +88,6 @@ public class BulletLogic {
 					}
 					b.setxSpeed(bulletSpeedx);
 					b.setySpeed(bulletSpeedy);
-
 				}
 			}
 			for(Bullet q : bulletTotal) {
@@ -100,11 +99,10 @@ public class BulletLogic {
 					bulletTotal.add(new Bullet(Game.player.getxPos(), Game.player.getyPos(), 0, 0, false, false, 0));
 					System.out.println("Total Number of Bullets: " + bulletTotal.size());
 					break;
-					
 				}
 			}
 		}
-		
+
 		for (Bullet bullet : bulletTotal) {
 			if (bullet.isOnScreen()) {
 				bullet.setyPos(bullet.getyPos() + (delta * bullet.getySpeed()));
@@ -122,11 +120,7 @@ public class BulletLogic {
 				bullet.setBulletDrawn(false);
 			}
 		}
-
 	}	
-
-
-
 }
 
 

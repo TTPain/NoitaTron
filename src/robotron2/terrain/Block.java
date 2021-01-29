@@ -11,7 +11,7 @@ import com.osreboot.ridhvl2.HvlCoord;
 import com.osreboot.ridhvl2.HvlMath;
 
 public class Block {
-	
+
 	//Blocks still only support two states (wall or air), need to extend to support new Gird Maker files
 
 	public static final float BLOCK_SIZE = 60;
@@ -37,7 +37,7 @@ public class Block {
 	public void setxPos(float xArg) {
 		xPos = xArg;
 	}
-	
+
 	public void test() {
 		hvlDraw(hvlQuadc(xPos, yPos, 10, 10), Color.white);
 	}
@@ -53,7 +53,7 @@ public class Block {
 	public boolean getCollidable() {
 		return collidable;
 	}
-	
+
 
 
 	//Checks if the line between two points (startPoint and endPoint) is intersected by a (square) block.
@@ -85,9 +85,6 @@ public class Block {
 		}
 		return hasLineOfSight;
 	}
-	
-	
-
 	public int getBlockType() {
 		return blockType;
 	}
