@@ -14,7 +14,7 @@ public class Block {
 
 	//Blocks still only support two states (wall or air), need to extend to support new Gird Maker files
 
-	public static final float BLOCK_SIZE = 500;
+	public static final float BLOCK_SIZE = 60;
 
 	private float xPos;
 	private float yPos;
