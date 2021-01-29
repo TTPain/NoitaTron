@@ -46,12 +46,13 @@ public class EnemyGrunt {
 	public static final float GRUNT_SIZE = 25;
 	public static final int LINE_OF_SIGHT = 500;
 	public static final int PATHFINDING_RANGE = 30;
+	public static final int CHASE_TIMER = 20;
 
 	private ArrayList<HvlCoord> pathToPlayer = new ArrayList<HvlCoord>();
 
 	public float yPos = 0;
 	public float xPos = 0;
-	public float enemychase = 0;
+	public float enemyChase = 0;
 	public boolean livingState = true;
 	public float gruntStutter = 0;
 	public int gruntTexture;
@@ -68,6 +69,9 @@ public class EnemyGrunt {
 	private HvlCoord gruntPos = new HvlCoord(0, 0);
 
 	public void update(float delta, Player player) {
+
+		System.out.println(enemyChase);
+
 		gruntPos.x = xPos;
 		gruntPos.y = yPos;
 
@@ -90,15 +94,16 @@ public class EnemyGrunt {
 		movedThisFrame = false;
 
 		// GRUNT MOVEMENT AND SPRITE CHANGE
-		if (livingState == true && enemychase > 0) {
-			enemychase = enemychase-(delta*5);
+		if (livingState == true && enemyChase > 0 && canSeePlayer) {
+			enemyChase = enemyChase-(delta*5);
+
+
 			if (player.getxPos() > xPos && stutterSpeed != 3
 					&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepX)))) {
 
 				xPos = xPos + 12;
-
 				firstStepX = true;
-				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -106,13 +111,14 @@ public class EnemyGrunt {
 					gruntTexture = 4;
 					movedThisFrame = true;
 				}
+
+
 			} else if (player.getxPos() < xPos && stutterSpeed != 3
 					&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepX)))) {
 
 				xPos = xPos - 12;
-
 				firstStepX = true;
-				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -120,6 +126,7 @@ public class EnemyGrunt {
 					gruntTexture = 4;
 					movedThisFrame = true;
 				}
+
 			}
 
 			if (player.getxPos() > xPos && stutterSpeed == 3
@@ -128,7 +135,6 @@ public class EnemyGrunt {
 				xPos = xPos + 13;
 
 				firstStepX = true;
-				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -136,13 +142,12 @@ public class EnemyGrunt {
 					gruntTexture = 4;
 					movedThisFrame = true;
 				}
+
 			} else if (player.getxPos() < xPos && stutterSpeed == 3
 					&& (gruntStutter <= 0 || ((gruntStutter <= 0.1) && !(firstStepX)))) {
 
 				xPos = xPos - 13;
-
 				firstStepX = true;
-				//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
 				if (gruntTexture == 4 && movedThisFrame == false) {
 					gruntTexture = 5;
 					movedThisFrame = true;
@@ -150,6 +155,7 @@ public class EnemyGrunt {
 					gruntTexture = 4;
 					movedThisFrame = true;
 				}
+
 			}
 
 			if (player.getyPos() > yPos && stutterSpeed != 3
@@ -210,6 +216,70 @@ public class EnemyGrunt {
 					movedThisFrame = true;
 				}
 			}
+		}else if(!canSeePlayer && enemyChase > 0 && enemyChase < CHASE_TIMER) {
+			pathToPlayer = pathfind(Utility.getCurrentTile(xPos, yPos), Utility.getCurrentTile(player.getxPos(), player.getyPos()));
+
+			if(pathToPlayer.size() >=2) {
+
+				if (pathToPlayer.get(1).x > xPos 
+						&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepX)))) {
+					xPos = xPos + 12;
+					firstStepX = true;
+
+					if (gruntTexture == 4 && movedThisFrame == false) {
+						gruntTexture = 5;
+						movedThisFrame = true;
+					} else if (gruntTexture == 5 && movedThisFrame == false) {
+						gruntTexture = 4;
+						movedThisFrame = true;
+					}
+				}else if (pathToPlayer.get(1).x < xPos 
+						&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepX)))) {
+
+					xPos = xPos - 12;
+					firstStepX = true;
+
+					if (gruntTexture == 4 && movedThisFrame == false) {
+						gruntTexture = 5;
+						movedThisFrame = true;
+					} else if (gruntTexture == 5 && movedThisFrame == false) {
+						gruntTexture = 4;
+						movedThisFrame = true;
+					}
+
+				}
+
+				if (pathToPlayer.get(1).y > yPos
+						&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepY)))) {
+
+					yPos = yPos + 12;
+
+					firstStepY = true;
+					//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+					if (gruntTexture == 4 && movedThisFrame == false) {
+						gruntTexture = 5;
+						movedThisFrame = true;
+					} else if (gruntTexture == 5 && movedThisFrame == false) {
+						gruntTexture = 4;
+						movedThisFrame = true;
+					}
+				}else if (pathToPlayer.get(1).y < yPos 
+						&& (gruntStutter <= 0 || ((gruntStutter <= 0.1) && !(firstStepY)))) {
+
+					yPos = yPos - 13;
+
+					firstStepY = true;
+					//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+					if (gruntTexture == 4 && movedThisFrame == false) {
+						gruntTexture = 5;
+						movedThisFrame = true;
+					} else if (gruntTexture == 5 && movedThisFrame == false) {
+						gruntTexture = 4;
+						movedThisFrame = true;
+					}
+				}
+			}
+
 		}
 		// END MOVEMENT AND SPRITE CHANGE
 
@@ -271,10 +341,11 @@ public class EnemyGrunt {
 		Utility.getCurrentTile(xPos, yPos);
 		//If pathToPlayer is null, populate with pathfinding method
 		//if(pathToPlayer.size() == 0) {
-		pathToPlayer = pathfind(Utility.getCurrentTile(xPos, yPos), Utility.getCurrentTile(player.getxPos(), player.getyPos()));
+
+
 
 		//Pathfinding Representation
-		if(Game.devMode) {
+		if(Game.devMode && !canSeePlayer && enemyChase > 0 && enemyChase < CHASE_TIMER) {
 			for(HvlCoord coord : pathToPlayer) {
 				hvlDraw(hvlQuadc(coord.x, coord.y, 15, 15), Color.green);
 			}
@@ -291,7 +362,7 @@ public class EnemyGrunt {
 
 
 
-		
+
 		if(player.getxPos() >=  xPos - Block.BLOCK_SIZE*8 && player.getxPos() <=  xPos  + Block.BLOCK_SIZE*8
 				&& player.getyPos() >=  yPos - Block.BLOCK_SIZE*8 && player.getyPos() <=  yPos + Block.BLOCK_SIZE*8) {
 			withinRange = true;
@@ -302,15 +373,15 @@ public class EnemyGrunt {
 		if(withinRange) {
 			if(Block.hasLineOfSight(TerrainGeneration.blocks, player.getPlayerPos(), gruntPos)){	
 				canSeePlayer = true;
-				enemychase = 20;
+				enemyChase = CHASE_TIMER;
 			}else {
 				canSeePlayer = false;
 			}
-			if (enemychase < 0) {
-				enemychase = 0;
+			if (enemyChase < 0) {
+				enemyChase = 0;
 			}
 		}
-		 
+
 		//END LINE OF SIGHT AND CHASE MECHANICS
 
 	}

@@ -22,7 +22,7 @@ public class TextureLoader {
 		hvlLoad("PlayerBlue.png");      //3
 		hvlLoad("GruntStep1.png");      //4
 		hvlLoad("GruntStep2.png");      //5
-		hvlLoad("Floor2.png");	        //6
+		hvlLoad("FloorTexture.png");    //6
 		hvlLoad("INOF.hvlft");   //7
 		hvlFont(0);
 	}

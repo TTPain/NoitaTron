@@ -4,10 +4,16 @@ import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
 import static com.osreboot.ridhvl2.HvlStatics.hvlTexture;
 
+import java.util.ArrayList;
+
+import com.osreboot.ridhvl2.HvlCoord;
+
 import robotron2.Player;
 
 public class EnemyHulk {
-//
+	
+	private ArrayList<HvlCoord> pathToPlayer = new ArrayList<HvlCoord>();
+
 	public EnemyHulk(float xPosArg, float yPosArg, int textureArg) {
 		xPos = xPosArg;
 		yPos = yPosArg;

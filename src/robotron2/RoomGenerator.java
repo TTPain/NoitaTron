@@ -63,7 +63,7 @@ public class RoomGenerator {
 			
 			// xPos, yPos, livingState, StutterStart, CAN SEE PLAYER, Starter Texture
 			for(Block b : TerrainGeneration.blocks) {
-				rangen = Utility.randomIntBetween(0, 800);
+				rangen = Utility.randomIntBetween(0, 100);
 				if(b.getBlockType()== 0 && rangen == 1) {
 					enemyGrunts.add(new EnemyGrunt((b.getxPos() -+ Utility.randomFloatBetween(0, (Block.BLOCK_SIZE)/2)), (b.getyPos() -+ Utility.randomFloatBetween(0, (Block.BLOCK_SIZE)/2)), true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
 				}

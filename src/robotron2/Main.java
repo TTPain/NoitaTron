@@ -34,9 +34,8 @@ public class Main extends HvlTemplateI {
 	/*
 	 * TODO
 	 * Reset player and enemy positions on death
+	 * Issues with pathfinding (enemies decide walls don't exist sometimes)
 	 * Fix issues with bullets (random trajectory bug, randomly stops firing bug)
-	 * Enemies must follow pathfinding path
-	 * Pathfinding does not occur if enemies have direct LOS
 	 * Rewrite score/lives so that it is a component of Player
 	 * Optimization
 	 
