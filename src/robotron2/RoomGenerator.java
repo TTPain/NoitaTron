@@ -81,8 +81,8 @@ public class RoomGenerator {
 
 		for (EnemyGrunt grunt : enemyGrunts) {
 			if (grunt.getLivingState()) {
-				hvlDraw(hvlQuadc(grunt.xPos, grunt.yPos, EnemyGrunt.GRUNT_SIZE, EnemyGrunt.GRUNT_SIZE),
-						hvlTexture(grunt.gruntTexture));
+				hvlDraw(hvlQuadc(grunt.getxPos(), grunt.getyPos(), EnemyGrunt.GRUNT_SIZE, EnemyGrunt.GRUNT_SIZE),
+						hvlTexture(grunt.getGruntTexture()));
 				grunt.update(delta, Game.player);
 			}
 		}

@@ -14,7 +14,7 @@ public class LevelManager {
 		gruntDeathCount = 0;
 		RoomGenerator.enemiesAlive = RoomGenerator.enemyGrunts.size();
 		for (EnemyGrunt grunt : RoomGenerator.enemyGrunts) {
-			if (grunt.livingState == false) {
+			if (grunt.getLivingState() == false) {
 				RoomGenerator.enemiesAlive--;
 			}
 		}

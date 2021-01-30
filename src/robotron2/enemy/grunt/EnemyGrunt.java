@@ -44,32 +44,28 @@ public class EnemyGrunt {
 	}
 
 	public static final float GRUNT_SIZE = 25;
-	public static final int LINE_OF_SIGHT = 500;
-	public static final int CHASE_TIMER = 20;
+	public static final int DETECTION_RANGE = 500; //Distance (in pixels) before an enemy in line of sight will begin tracking
+	public static final int CHASE_TIMER = 20; //Currently unused; can used to enable a maximum non-LOS chase timer
+	public static final int PATHFINDING_RANGE = 30; //Maximum allowed distance (in blocks) that pathfinding can calculate
 
 	private ArrayList<HvlCoord> pathToPlayer = new ArrayList<HvlCoord>();
 
-	public float yPos = 0;
-	public float xPos = 0;
-	public float enemyChase = 0;
-	public boolean livingState = true;
-	public float gruntStutter = 0;
-	public int gruntTexture;
-	public boolean withinRange;
-	public boolean canSeePlayer;
-
-	public int stutterSpeed = 1;
+	private float yPos = 0;
+	private float xPos = 0;
+	private float enemyChase = 0;
+	private boolean livingState = true;
+	private float gruntStutter = 0;
+	private int gruntTexture;
+	private boolean withinRange;
+	private boolean canSeePlayer;
+	private int stutterSpeed = 1;
 	private boolean firstStepX = false;
 	private boolean firstStepY = false;
-
-
-	private boolean movedThisFrame;
+	private boolean movedThisFrame = false;
 
 	private HvlCoord gruntPos = new HvlCoord(0, 0);
 
 	public void update(float delta, Player player) {
-
-		System.out.println(enemyChase);
 
 		gruntPos.x = xPos;
 		gruntPos.y = yPos;
@@ -86,11 +82,7 @@ public class EnemyGrunt {
 			}
 		}
 
-
-		//Box representing grunt field of view
-		//hvlDraw(hvlQuadc(xPos, yPos, LINE_OF_SIGHT, LINE_OF_SIGHT), Color.white);
-
-		movedThisFrame = false;
+		
 
 		// GRUNT MOVEMENT AND SPRITE CHANGE
 		if (livingState == true && enemyChase > 0 && canSeePlayer) {
@@ -362,8 +354,8 @@ public class EnemyGrunt {
 
 
 
-		if(player.getxPos() >=  xPos - Block.BLOCK_SIZE*8 && player.getxPos() <=  xPos  + Block.BLOCK_SIZE*8
-				&& player.getyPos() >=  yPos - Block.BLOCK_SIZE*8 && player.getyPos() <=  yPos + Block.BLOCK_SIZE*8) {
+		if(player.getxPos() >=  xPos - DETECTION_RANGE && player.getxPos() <=  xPos  + DETECTION_RANGE
+				&& player.getyPos() >=  yPos - DETECTION_RANGE && player.getyPos() <=  yPos + DETECTION_RANGE) {
 			withinRange = true;
 		}else {
 			if(enemyChase > 0) {
@@ -390,7 +382,7 @@ public class EnemyGrunt {
 	}
 
 	public ArrayList<HvlCoord> pathfind(HvlCoord startPos, HvlCoord endPos){
-		return Pathfind.pathfind(startPos, endPos);	
+		return GruntPathfinding.pathfind(startPos, endPos);	
 	}
 
 
@@ -435,5 +427,82 @@ public class EnemyGrunt {
 	public void setGruntStutter(int gruntStutter) {
 		this.gruntStutter = gruntStutter;
 	}
+	
+	public ArrayList<HvlCoord> getPathToPlayer() {
+		return pathToPlayer;
+	}
+
+	public void setPathToPlayer(ArrayList<HvlCoord> pathToPlayer) {
+		this.pathToPlayer = pathToPlayer;
+	}
+
+	public float getEnemyChase() {
+		return enemyChase;
+	}
+
+	public void setEnemyChase(float enemyChase) {
+		this.enemyChase = enemyChase;
+	}
+
+	public int getGruntTexture() {
+		return gruntTexture;
+	}
+
+	public void setGruntTexture(int gruntTexture) {
+		this.gruntTexture = gruntTexture;
+	}
+
+	public boolean isWithinRange() {
+		return withinRange;
+	}
+
+	public void setWithinRange(boolean withinRange) {
+		this.withinRange = withinRange;
+	}
+
+	public boolean isCanSeePlayer() {
+		return canSeePlayer;
+	}
+
+	public void setCanSeePlayer(boolean canSeePlayer) {
+		this.canSeePlayer = canSeePlayer;
+	}
+
+	public int getStutterSpeed() {
+		return stutterSpeed;
+	}
+
+	public void setStutterSpeed(int stutterSpeed) {
+		this.stutterSpeed = stutterSpeed;
+	}
+
+	public boolean isFirstStepX() {
+		return firstStepX;
+	}
+
+	public void setFirstStepX(boolean firstStepX) {
+		this.firstStepX = firstStepX;
+	}
+
+	public boolean isFirstStepY() {
+		return firstStepY;
+	}
+
+	public void setFirstStepY(boolean firstStepY) {
+		this.firstStepY = firstStepY;
+	}
+
+	public boolean isMovedThisFrame() {
+		return movedThisFrame;
+	}
+
+	public void setMovedThisFrame(boolean movedThisFrame) {
+		this.movedThisFrame = movedThisFrame;
+	}
+
+	public void setGruntStutter(float gruntStutter) {
+		this.gruntStutter = gruntStutter;
+	}
+
 
 }

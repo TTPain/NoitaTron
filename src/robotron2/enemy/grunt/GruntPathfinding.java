@@ -8,9 +8,9 @@ import com.osreboot.ridhvl2.HvlCoord;
 import robotron2.terrain.Block;
 import robotron2.terrain.TerrainGeneration;
 
-public class Pathfind {
+public class GruntPathfinding {
 	
-	public static final int PATHFINDING_RANGE = 30;
+	
 	
 	public static ArrayList<HvlCoord> pathfind(HvlCoord startPos, HvlCoord endPos){
 
@@ -31,7 +31,7 @@ public class Pathfind {
 		pathToEachTile.put(startPos, new ArrayList<HvlCoord>());
 		pathToEachTile.get(startPos).add(startPos);
 
-		for(int i = 0; i < PATHFINDING_RANGE; i++) {
+		for(int i = 0; i < EnemyGrunt.PATHFINDING_RANGE; i++) {
 
 			for(HvlCoord tileBeingChecked : new ArrayList<>(tilesToCheck)) {
 				if(!(checkedTiles.contains(tileBeingChecked))){
@@ -96,7 +96,6 @@ public class Pathfind {
 				}
 			}
 		}
-		System.out.println("Could not find");
 		return true;
 	}
 
