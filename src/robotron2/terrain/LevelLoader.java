@@ -41,7 +41,6 @@ public class LevelLoader {
 					if(c == '0') {
 						blocks.add(new Block(xPos, yPos, false, 0));
 						blockNum++;
-						xPos+= Block.BLOCK_SIZE;	
 					}
 					else {
 						blocks.add(new Block(xPos, yPos, true, 1));
