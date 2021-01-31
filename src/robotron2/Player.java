@@ -59,8 +59,8 @@ public class Player {
 	private HvlCoord playerPos = new HvlCoord(0, 0);
 
 	public void reset() {
-		xPos = 1920/2;
-		yPos = 1080/2;
+		xPos = Block.BLOCK_SIZE;
+		yPos = Block.BLOCK_SIZE;
 		alive = true;
 
 		xspeedm = 0;
@@ -87,8 +87,8 @@ public class Player {
 
 		//Death Handling
 		if(alive==false) {
-			xPos=1920/2;	
-			////
+			xPos = Block.BLOCK_SIZE;
+			yPos = Block.BLOCK_SIZE;
 			respawn = respawn - delta*2f;
 			////
 		}

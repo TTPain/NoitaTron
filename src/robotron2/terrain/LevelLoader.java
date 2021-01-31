@@ -37,15 +37,16 @@ public class LevelLoader {
 
 				xPos = 0;
 				for (int k = 0; k < line.length(); k++){
-					char c = line.charAt(k);   
-					xPos+= Block.BLOCK_SIZE;					
+					char c = line.charAt(k);
 						if(c == '0') {
 							blocks.add(new Block(xPos, yPos, false, 0));
 							blockNum++;
-						}else /*Everything that's not open air*/ {
+						}
+						else /*Everything that's not open air*/ {
 							blocks.add(new Block(xPos, yPos, true, 1));
 							blockNum++;
 						}
+						xPos += Block.BLOCK_SIZE;
 					}
 				yPos += Block.BLOCK_SIZE;
 				}			
