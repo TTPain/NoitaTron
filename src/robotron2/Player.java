@@ -73,7 +73,8 @@ public class Player {
 
 	public void update(float delta) {
 
-
+System.out.println(xPos);
+System.out.println(yPos);
 
 		playerPos.x = xPos;
 		playerPos.y = yPos;
@@ -87,7 +88,8 @@ public class Player {
 
 		//Death Handling
 		if(alive==false) {
-			xPos=1920/2;	
+			xPos=Block.BLOCK_SIZE;
+			yPos=Block.BLOCK_SIZE;	
 			////
 			respawn = respawn - delta*2f;
 			////
