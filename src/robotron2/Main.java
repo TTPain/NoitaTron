@@ -62,7 +62,7 @@ public class Main extends HvlTemplateI {
 	}
 
 	public Main() {
-		super(new HvlDisplayWindowed(144, 1280, 720, "Robotron 2", true));
+		super(new HvlDisplayWindowed(144, 1280, 720, "Noitatron", true));
 	}
 
 	@Override
