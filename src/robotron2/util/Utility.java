@@ -13,6 +13,7 @@ import org.newdawn.slick.Color;
 import com.osreboot.ridhvl2.HvlAction;
 import com.osreboot.ridhvl2.HvlCoord;
 
+import robotron2.Game;
 import robotron2.terrain.Block;
 
 public class Utility {
@@ -61,7 +62,10 @@ public class Utility {
 		int x = (int)(xArg/Block.BLOCK_SIZE);
 		int y = (int)(yArg/Block.BLOCK_SIZE);
 		
+		
+		if(Game.devMode) {
 		hvlDraw(hvlQuadc(x*Block.BLOCK_SIZE, y*Block.BLOCK_SIZE, 10, 10), Color.white);
+		}
 		
 		//System.out.println("X: " + x + " Y: " + y);
 		

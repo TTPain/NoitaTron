@@ -81,6 +81,8 @@ public class GruntPathfinding {
 			}
 		}
 
+		
+		//System.out.println("Could not find player!");
 		return new ArrayList<>();
 
 	}

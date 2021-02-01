@@ -41,6 +41,10 @@ public class Player {
 	// Make sure to make his starting position coincide with level entry in future
 	private float xPos = 1920/2;
 	private float yPos = 1080/2;
+	
+	private float xPosLastFrame = 0;
+	private float yPosLastFrame = 0;
+	
 	private float newyPos;
 	private float newxPos;
 	private boolean alive = true;
@@ -49,6 +53,8 @@ public class Player {
 	private float yspeedm = 0;
 	private float xspeedp = 0;
 	private float yspeedp = 0;
+	
+	private boolean movedBlocks = false;
 
 	private float xSpeed = 0;
 	private float ySpeed = 0;
@@ -72,14 +78,21 @@ public class Player {
 	}
 
 	public void update(float delta) {
-
-System.out.println(xPos);
-System.out.println(yPos);
-
+		
+		//System.out.println("CURRENT TILE: "+Utility.getCurrentTile(xPos, yPos).toString());
+		//System.out.println("PREVIOUS TILE: "+Utility.getCurrentTile(xPosLastFrame, yPosLastFrame).toString());
+		
 		playerPos.x = xPos;
 		playerPos.y = yPos;
+		
+		//Represents the player's position on the previous frame.
+		if(Utility.getCurrentTile(xPos, yPos).equals(Utility.getCurrentTile(xPosLastFrame, yPosLastFrame))){
+			movedBlocks = false;
+		}else {
+			movedBlocks = true;
+		}
 
-
+		//System.out.println(movedBlocks);
 
 		//Draw Player
 		if(Game.player.isAlive()==true && Score.lives>=0){
@@ -170,11 +183,19 @@ System.out.println(yPos);
 		//Represents the player's position on the next frame.
 		newyPos = yPos + (delta * ySpeed);
 		newxPos = xPos + (delta * xSpeed);
+		
+		
+		xPosLastFrame = xPos;
+		yPosLastFrame = yPos;
 
 		checkForBlockCollision(delta);
 
+
 		xPos = newxPos;
 		yPos = newyPos;
+		
+		//System.out.println(updateLastFrame);
+		
 	}
 
 	public void draw(float delta) {
@@ -236,7 +257,10 @@ System.out.println(yPos);
 	}
 
 
-
+	public boolean getMovedBlocks() {
+		return movedBlocks;
+	}
+	
 	public float getxPos() {
 		return xPos;
 	}
@@ -251,6 +275,14 @@ System.out.println(yPos);
 
 	public void setyPos(float yPos) {
 		this.yPos = yPos;
+	}
+	
+	public float getyPosLastFrame() {
+		return yPosLastFrame;
+	}
+
+	public float getxPosLastFrame() {
+		return xPosLastFrame;
 	}
 
 	public boolean isAlive() {

@@ -38,9 +38,6 @@ public class Block {
 		xPos = xArg;
 	}
 
-	public void test() {
-		hvlDraw(hvlQuadc(xPos, yPos, 10, 10), Color.white);
-	}
 
 	public float getyPos() {
 		return yPos;

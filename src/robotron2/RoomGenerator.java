@@ -48,7 +48,7 @@ public class RoomGenerator {
 		if ((Game.level == 0)) {
 			//doors.add(new Door(1920-160, 1080/2, false));
 			// xPos, yPos, livingState, StutterStart, Can see player, Starter Texture
-			enemyGrunts.add(new EnemyGrunt(300f, 100f, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
+			
 			enemyGrunts.add(new EnemyGrunt(500f, 500f, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(700f, 700f, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
 			enemyGrunts.add(new EnemyGrunt(600f, 200f, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
@@ -60,7 +60,7 @@ public class RoomGenerator {
 
 
 		else {
-			
+			enemyGrunts.add(new EnemyGrunt(300f, 100f, true, Utility.randomFloatBetween(0, 1), false, Utility.randomIntBetween(4, 5)));
 			// xPos, yPos, livingState, StutterStart, CAN SEE PLAYER, Starter Texture
 			for(Block b : TerrainGeneration.blocks) {
 				rangen = Utility.randomIntBetween(0, 100);
