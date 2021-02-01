@@ -272,7 +272,6 @@ public class EnemyGrunt {
 
 
 				if(pathToPlayer.size() < 2 ) {
-					System.out.println("nopes");
 					enemyChase = 0;
 				}else {
 
