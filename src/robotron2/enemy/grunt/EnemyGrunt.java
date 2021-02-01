@@ -42,6 +42,11 @@ public class EnemyGrunt {
 		gruntTexture = textureArg;
 		canSeePlayer = canSeePlayerArg;
 	}
+	
+	
+	
+	public static int pathfindingCalls = 0;
+	
 
 	public static final float GRUNT_SIZE = 25;
 	public static final int DETECTION_RANGE = 500; //Distance (in pixels) before an enemy in line of sight will begin tracking
@@ -52,6 +57,9 @@ public class EnemyGrunt {
 
 	private float yPos = 0;
 	private float xPos = 0;
+	private float yPosLastFrame = -Block.BLOCK_SIZE;
+	private float xPosLastFrame = -Block.BLOCK_SIZE;
+	private boolean movedBlocks = false;
 	private float enemyChase = 0;
 	private boolean livingState = true;
 	private float gruntStutter = 0;
@@ -62,28 +70,75 @@ public class EnemyGrunt {
 	private boolean firstStepX = false;
 	private boolean firstStepY = false;
 	private boolean movedThisFrame = false;
+	
+	private boolean lineOfSightBrokenOnThisFrame = false;
+	private boolean hasHadLineOfSightSinceLastBroken = false;
 
 	private HvlCoord gruntPos = new HvlCoord(0, 0);
 
 	public void update(float delta, Player player) {
+		
+		if(enemyChase>0 && !canSeePlayer) {
+			
+		}
+		
+		System.out.println(pathfindingCalls);
+		
+		//System.out.println("CURRENT TILE: "+Utility.getCurrentTile(xPos, yPos).toString());
+		//System.out.println("PREVIOUS TILE: "+Utility.getCurrentTile(xPosLastFrame, yPosLastFrame).toString());
+		//System.out.println(movedBlocks);
+		
+		if(Utility.getCurrentTile(xPos, yPos).equals(Utility.getCurrentTile(xPosLastFrame, yPosLastFrame))){
+			movedBlocks = false;
+		}else {
+			movedBlocks = true;
+		}
 
 		gruntPos.x = xPos;
 		gruntPos.y = yPos;
 
 		if(withinRange) {
 			if(canSeePlayer && (Block.hasLineOfSight(TerrainGeneration.blocks, player.getPlayerPos(), gruntPos))) {
+				
+				hasHadLineOfSightSinceLastBroken = true;
+				
 				if(Game.devMode) {
 					hvlDraw(hvlLine(xPos, yPos, player.getxPos(), player.getyPos(), 2), Color.red);
 				}
+				
 			}else{
+				
+				if(hasHadLineOfSightSinceLastBroken) {
+					hasHadLineOfSightSinceLastBroken = false;
+					lineOfSightBrokenOnThisFrame = true;
+				}
+				
 				if(Game.devMode) {
 					hvlDraw(hvlLine(xPos, yPos, player.getxPos(), player.getyPos(), 1), Color.white);
 				}
 			}
 		}
-
 		
 
+		if(withinRange) {
+			if(canSeePlayer && (Block.hasLineOfSight(TerrainGeneration.blocks, player.getPlayerPos(), gruntPos))) {
+					hasHadLineOfSightSinceLastBroken = true;
+			}else{
+					if(hasHadLineOfSightSinceLastBroken) {
+						hasHadLineOfSightSinceLastBroken = false;
+						lineOfSightBrokenOnThisFrame = true;
+					}
+				
+			}
+		}
+
+
+		
+		
+		xPosLastFrame = xPos;
+		yPosLastFrame = yPos;
+
+		
 		// GRUNT MOVEMENT AND SPRITE CHANGE
 		if (livingState == true && enemyChase > 0 && canSeePlayer) {
 			enemyChase = enemyChase-(delta*5);
@@ -208,7 +263,13 @@ public class EnemyGrunt {
 				}
 			}
 		}else if(!canSeePlayer && enemyChase > 0 && enemyChase < CHASE_TIMER) {
-			pathToPlayer = pathfind(Utility.getCurrentTile(xPos, yPos), Utility.getCurrentTile(player.getxPos(), player.getyPos()));
+			
+			
+			//ALSO NEED TO CHECK IF A CHASE IS ACTIVE AND LINE OF SIGHT WAS BROKEN ON THIS FRAME
+			if((player.getMovedBlocks() || movedBlocks) || lineOfSightBrokenOnThisFrame) {		
+				pathToPlayer = pathfind(Utility.getCurrentTile(xPos, yPos), Utility.getCurrentTile(player.getxPos(), player.getyPos()));
+				pathfindingCalls++;
+			}
 
 			if(pathToPlayer.size() >=2) {
 
@@ -377,7 +438,9 @@ public class EnemyGrunt {
 			}
 		}
 
+		lineOfSightBrokenOnThisFrame = false;	
 		//END LINE OF SIGHT AND CHASE MECHANICS
+
 
 	}
 
@@ -427,7 +490,7 @@ public class EnemyGrunt {
 	public void setGruntStutter(int gruntStutter) {
 		this.gruntStutter = gruntStutter;
 	}
-	
+
 	public ArrayList<HvlCoord> getPathToPlayer() {
 		return pathToPlayer;
 	}
