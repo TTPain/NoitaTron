@@ -69,21 +69,20 @@ public class EnemyGrunt {
 	private int stutterSpeed = 1;
 	private boolean firstStepX = false;
 	private boolean firstStepY = false;
-
 	private boolean movedThisFrame = false;
-	private boolean hasHadLineOfSightSinceLastBroken = false;
-	private boolean lineOfSightBrokenOnThisFrame = false;
 
+	private boolean lineOfSightBrokenOnThisFrame = false;
+	private boolean hasHadLineOfSightSinceLastBroken = false;
 
 	private HvlCoord gruntPos = new HvlCoord(0, 0);
 
 	public void update(float delta, Player player) {
 
 		if(enemyChase>0 && !canSeePlayer) {
-
+			
 		}
 
-		System.out.println(pathfindingCalls);
+		//System.out.println(pathfindingCalls);
 
 		//System.out.println("CURRENT TILE: "+Utility.getCurrentTile(xPos, yPos).toString());
 		//System.out.println("PREVIOUS TILE: "+Utility.getCurrentTile(xPosLastFrame, yPosLastFrame).toString());
@@ -122,7 +121,7 @@ public class EnemyGrunt {
 
 
 		if(withinRange) {
-			if(canSeePlayer && (Block.hasLineOfSight(TerrainGeneration.blocks, player.getPlayerPos(), gruntPos))) {
+			if(canSeePlayer) {
 				hasHadLineOfSightSinceLastBroken = true;
 			}else{
 				if(hasHadLineOfSightSinceLastBroken) {
@@ -264,79 +263,79 @@ public class EnemyGrunt {
 				}
 			}
 		}else if(!canSeePlayer && enemyChase > 0 && enemyChase < CHASE_TIMER) {
-
-
-			if((player.getMovedBlocks() || movedBlocks) || lineOfSightBrokenOnThisFrame) {		
+			
+			//ALSO NEED TO CHECK IF A CHASE IS ACTIVE AND LINE OF SIGHT WAS BROKEN ON THIS FRAME
+			if(player.getMovedBlocks() || movedBlocks || lineOfSightBrokenOnThisFrame) {		
 				pathToPlayer = pathfind(Utility.getCurrentTile(xPos, yPos), Utility.getCurrentTile(player.getxPos(), player.getyPos()));
+				
 				pathfindingCalls++;
-
-
-				if(pathToPlayer.size() < 2 ) {
+				//System.out.println("SIZE " + pathToPlayer.size());
+				if(pathToPlayer.size() < 2) {
 					enemyChase = 0;
-				}else {
+				}
+			}
 
-					if(pathToPlayer.size() >=2) {
+			if(pathToPlayer.size() >=2) {
 
-						if (pathToPlayer.get(1).x > xPos 
-								&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepX)))) {
-							xPos = xPos + 12;
-							firstStepX = true;
+				if (pathToPlayer.get(1).x > xPos 
+						&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepX)))) {
+					xPos = xPos + 12;
+					firstStepX = true;
 
-							if (gruntTexture == 4 && movedThisFrame == false) {
-								gruntTexture = 5;
-								movedThisFrame = true;
-							} else if (gruntTexture == 5 && movedThisFrame == false) {
-								gruntTexture = 4;
-								movedThisFrame = true;
-							}
-						}else if (pathToPlayer.get(1).x < xPos 
-								&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepX)))) {
+					if (gruntTexture == 4 && movedThisFrame == false) {
+						gruntTexture = 5;
+						movedThisFrame = true;
+					} else if (gruntTexture == 5 && movedThisFrame == false) {
+						gruntTexture = 4;
+						movedThisFrame = true;
+					}
+				}else if (pathToPlayer.get(1).x < xPos 
+						&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepX)))) {
 
-							xPos = xPos - 12;
-							firstStepX = true;
+					xPos = xPos - 12;
+					firstStepX = true;
 
-							if (gruntTexture == 4 && movedThisFrame == false) {
-								gruntTexture = 5;
-								movedThisFrame = true;
-							} else if (gruntTexture == 5 && movedThisFrame == false) {
-								gruntTexture = 4;
-								movedThisFrame = true;
-							}
+					if (gruntTexture == 4 && movedThisFrame == false) {
+						gruntTexture = 5;
+						movedThisFrame = true;
+					} else if (gruntTexture == 5 && movedThisFrame == false) {
+						gruntTexture = 4;
+						movedThisFrame = true;
+					}
 
-						}
+				}
 
-						if (pathToPlayer.get(1).y > yPos
-								&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepY)))) {
+				if (pathToPlayer.get(1).y > yPos
+						&& (gruntStutter <= 0 || ((gruntStutter <= 0.15) && !(firstStepY)))) {
 
-							yPos = yPos + 12;
+					yPos = yPos + 12;
 
-							firstStepY = true;
-							//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
-							if (gruntTexture == 4 && movedThisFrame == false) {
-								gruntTexture = 5;
-								movedThisFrame = true;
-							} else if (gruntTexture == 5 && movedThisFrame == false) {
-								gruntTexture = 4;
-								movedThisFrame = true;
-							}
-						}else if (pathToPlayer.get(1).y < yPos 
-								&& (gruntStutter <= 0 || ((gruntStutter <= 0.1) && !(firstStepY)))) {
+					firstStepY = true;
+					//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+					if (gruntTexture == 4 && movedThisFrame == false) {
+						gruntTexture = 5;
+						movedThisFrame = true;
+					} else if (gruntTexture == 5 && movedThisFrame == false) {
+						gruntTexture = 4;
+						movedThisFrame = true;
+					}
+				}else if (pathToPlayer.get(1).y < yPos 
+						&& (gruntStutter <= 0 || ((gruntStutter <= 0.1) && !(firstStepY)))) {
 
-							yPos = yPos - 13;
+					yPos = yPos - 13;
 
-							firstStepY = true;
-							//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
-							if (gruntTexture == 4 && movedThisFrame == false) {
-								gruntTexture = 5;
-								movedThisFrame = true;
-							} else if (gruntTexture == 5 && movedThisFrame == false) {
-								gruntTexture = 4;
-								movedThisFrame = true;
-							}
-						}
+					firstStepY = true;
+					//hvlSound(SoundLoader.INDEX_GRUNTSTEP).playAsSoundEffect(0.15f, 0.05f, false);
+					if (gruntTexture == 4 && movedThisFrame == false) {
+						gruntTexture = 5;
+						movedThisFrame = true;
+					} else if (gruntTexture == 5 && movedThisFrame == false) {
+						gruntTexture = 4;
+						movedThisFrame = true;
 					}
 				}
 			}
+
 		}
 		// END MOVEMENT AND SPRITE CHANGE
 
