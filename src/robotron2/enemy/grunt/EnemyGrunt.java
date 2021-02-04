@@ -25,6 +25,7 @@ import robotron2.Game;
 import robotron2.Player;
 import robotron2.Score;
 import robotron2.load.SoundLoader;
+import robotron2.pickups.Shmoney;
 import robotron2.terrain.Block;
 import robotron2.terrain.TerrainGeneration;
 import robotron2.util.Utility;
@@ -77,10 +78,6 @@ public class EnemyGrunt {
 	private HvlCoord gruntPos = new HvlCoord(0, 0);
 
 	public void update(float delta, Player player) {
-
-		if(enemyChase>0 && !canSeePlayer) {
-
-		}
 
 		//System.out.println(pathfindingCalls);
 
@@ -345,6 +342,9 @@ public class EnemyGrunt {
 				b.setFired(false);
 				b.setBulletDrawn(false);
 				Score.addPoints(100);
+				for(int i = 0; i < 12; i++) {
+					Shmoney.availableRubies.add(new Shmoney(xPos + Utility.randomIntBetween(-50, 50), yPos + Utility.randomIntBetween(-50, 50), 0));
+				}
 			}
 		}
 

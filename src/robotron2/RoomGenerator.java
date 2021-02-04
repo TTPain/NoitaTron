@@ -15,6 +15,7 @@ import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 
 import robotron2.enemy.grunt.EnemyGrunt;
 import robotron2.enemy.hulk.EnemyHulk;
+import robotron2.pickups.Shmoney;
 import robotron2.terrain.Block;
 import robotron2.terrain.TerrainGeneration;
 import robotron2.util.Utility;
@@ -73,7 +74,7 @@ public class RoomGenerator {
 		enemiesAlive = enemyGrunts.size();
 	}
 
-	public static void update(float delta) {
+	public static void update(float delta, Player player) {
 		// Each frame check if each enemy is alive, and if so, update and draw it.
 		for(Door door : doors) {
 			door.draw();
@@ -94,6 +95,11 @@ public class RoomGenerator {
 			hulk.update(delta, Game.player);
 
 		}
-
+		
+		for(Shmoney rubies : Shmoney.availableRubies) {
+			if(rubies.isExists()) {
+				rubies.update(delta, player);
+			}
+		}
 	}
 }
