@@ -8,5 +8,4 @@ public class Shmoney {
 	public Shmoney() {
 		
 	}
-
 }

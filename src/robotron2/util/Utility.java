@@ -71,7 +71,5 @@ public class Utility {
 		
 		return new HvlCoord(x, y);
 		
-		
 	}
-
 }
