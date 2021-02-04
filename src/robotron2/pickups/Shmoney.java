@@ -13,12 +13,15 @@ import robotron2.Score;
 
 public class Shmoney {
 	
+	//Number of seconds rubies will last before despawning, plus or minus a few frames
+	public static final int DESPAWN_TIMER_IN_SECONDS = 6;
+	
 	private float xPos;
 	private float yPos;
 	public int shmoneyAmount;
 	private int type;
 	private boolean exists = true;
-	public static int timer = 144*15;
+	private int timer = (144*DESPAWN_TIMER_IN_SECONDS);
 	public static ArrayList<Shmoney> availableRubies = new ArrayList<Shmoney>();	
 	
 	public Shmoney(float xPosArg, float yPosArg, int typeArg) {
@@ -64,17 +67,11 @@ public class Shmoney {
 	public void setExists(boolean exists) {
 		this.exists = exists;
 	}
-	public ArrayList<Shmoney> getAvailableRubies() {
-		return availableRubies;
-	}
-	public void setAvailableRubies(ArrayList<Shmoney> availableRubies) {
-		this.availableRubies = availableRubies;
-	}
 	public int getTimer() {
 		return timer;
 	}
-	public static void setTimer(int timer) {
-		Shmoney.timer = timer;
+	public void setTimer(int timer) {
+		this.timer = timer;
 	}	
 }
 

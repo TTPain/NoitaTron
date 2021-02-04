@@ -100,6 +100,9 @@ public class RoomGenerator {
 			if(rubies.isExists()) {
 				rubies.update(delta, player);
 			}
+			if(rubies.getTimer() > 0) {
+				rubies.setTimer(rubies.getTimer()-1);
+			}
 			if(rubies.getTimer() == 0) {
 				rubies.setExists(false);
 			}
