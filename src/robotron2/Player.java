@@ -15,17 +15,19 @@ import com.osreboot.ridhvl2.HvlCoord;
 import com.osreboot.ridhvl2.loader.HvlLoader;
 import com.osreboot.ridhvl2.loader.HvlLoaderTexture;
 
+import robotron2.pickups.Shmoney;
 import robotron2.terrain.Block;
 import robotron2.terrain.TerrainGeneration;
 import robotron2.util.Utility;
 
 public class Player {
 
-	public Player(float xArg, float yArg, boolean aliveArg) {
+	public Player(float xArg, float yArg, boolean aliveArg, float moneyArg) {
 
 		xPos = xArg;
 		yPos = yArg;
 		alive = aliveArg;
+		shmoney = moneyArg;
 
 
 	}
@@ -53,6 +55,8 @@ public class Player {
 	private float yspeedm = 0;
 	private float xspeedp = 0;
 	private float yspeedp = 0;
+	
+	private float shmoney = 100;
 	
 	private boolean movedBlocks = false;
 
@@ -211,8 +215,8 @@ public class Player {
 			if(Game.devMode) {
 				//hvlDraw(hvlLine(new HvlCoord(b.getxPos() - (Block.BLOCK_SIZE/2), b.getyPos() - (Block.BLOCK_SIZE/2)), new HvlCoord(b.getxPos() + (Block.BLOCK_SIZE/2), b.getyPos() - (Block.BLOCK_SIZE/2)), 3), Color.orange);
 				//hvlDraw(hvlLine(new HvlCoord(b.getxPos() - (Block.BLOCK_SIZE/2), b.getyPos() - (Block.BLOCK_SIZE/2)), new HvlCoord(b.getxPos() - (Block.BLOCK_SIZE/2), b.getyPos() + (Block.BLOCK_SIZE/2)), 3), Color.orange);
-				hvlDraw(hvlLine(new HvlCoord(b.getxPos() + (Block.BLOCK_SIZE/2), b.getyPos() + (Block.BLOCK_SIZE/2)), new HvlCoord(b.getxPos() - (Block.BLOCK_SIZE/2), b.getyPos() + (Block.BLOCK_SIZE/2)), 3), Color.orange);
-				hvlDraw(hvlLine(new HvlCoord(b.getxPos() + (Block.BLOCK_SIZE/2), b.getyPos() + (Block.BLOCK_SIZE/2)), new HvlCoord(b.getxPos() + (Block.BLOCK_SIZE/2), b.getyPos() - (Block.BLOCK_SIZE/2)), 3), Color.orange);
+				hvlDraw(hvlLine(new HvlCoord(b.getxPos() + (Block.BLOCK_SIZE/2), b.getyPos() + (Block.BLOCK_SIZE/2)), new HvlCoord(b.getxPos() - (Block.BLOCK_SIZE/2), b.getyPos() + (Block.BLOCK_SIZE/2)), 1), Color.orange);
+				hvlDraw(hvlLine(new HvlCoord(b.getxPos() + (Block.BLOCK_SIZE/2), b.getyPos() + (Block.BLOCK_SIZE/2)), new HvlCoord(b.getxPos() + (Block.BLOCK_SIZE/2), b.getyPos() - (Block.BLOCK_SIZE/2)), 1), Color.orange);
 			}
 
 			if(b.getCollidable()) {

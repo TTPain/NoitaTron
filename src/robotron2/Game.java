@@ -28,7 +28,7 @@ public class Game {
 		devMode = true;
 		//////
 		//hvlSound(1).playAsMusic(1f, 1f, true);
-		player = new Player(Player.PLAYER_START_X, Player.PLAYER_START_Y, true);
+		player = new Player(Player.PLAYER_START_X, Player.PLAYER_START_Y, true, 100);
 		player.reset();
 		MenuManager.initialize(player);
 		BulletLogic.initialize();
@@ -48,6 +48,7 @@ public class Game {
 		BulletLogic.update(delta, player);
 		RoomGenerator.update(delta);
 		player.update(delta);
+		
 	
 		}
 		

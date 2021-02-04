@@ -51,7 +51,7 @@ public class EnemyGrunt {
 	public static final float GRUNT_SIZE = 25;
 	public static final int DETECTION_RANGE = 500; //Distance (in pixels) before an enemy in line of sight will begin tracking
 	public static final int CHASE_TIMER = 20; //Currently unused; can used to enable a maximum non-LOS chase timer
-	public static final int PATHFINDING_RANGE = 30; //Maximum allowed distance (in blocks) that pathfinding can calculate
+	public static final int PATHFINDING_RANGE = 20; //Maximum allowed distance (in blocks) that pathfinding can calculate
 
 	private ArrayList<HvlCoord> pathToPlayer = new ArrayList<HvlCoord>();
 
@@ -79,7 +79,7 @@ public class EnemyGrunt {
 	public void update(float delta, Player player) {
 
 		if(enemyChase>0 && !canSeePlayer) {
-			
+
 		}
 
 		//System.out.println(pathfindingCalls);
@@ -128,11 +128,8 @@ public class EnemyGrunt {
 					hasHadLineOfSightSinceLastBroken = false;
 					lineOfSightBrokenOnThisFrame = true;
 				}
-
 			}
 		}
-
-
 
 
 		xPosLastFrame = xPos;
@@ -263,11 +260,12 @@ public class EnemyGrunt {
 				}
 			}
 		}else if(!canSeePlayer && enemyChase > 0 && enemyChase < CHASE_TIMER) {
-			
+
 			//ALSO NEED TO CHECK IF A CHASE IS ACTIVE AND LINE OF SIGHT WAS BROKEN ON THIS FRAME
-			if(player.getMovedBlocks() || movedBlocks || lineOfSightBrokenOnThisFrame) {		
+			if((lineOfSightBrokenOnThisFrame) || movedBlocks) {
+			//if((player.getMovedBlocks() || movedBlocks || lineOfSightBrokenOnThisFrame)) {		
 				pathToPlayer = pathfind(Utility.getCurrentTile(xPos, yPos), Utility.getCurrentTile(player.getxPos(), player.getyPos()));
-				
+
 				pathfindingCalls++;
 				//System.out.println("SIZE " + pathToPlayer.size());
 				if(pathToPlayer.size() < 2) {
@@ -570,6 +568,4 @@ public class EnemyGrunt {
 	public void setGruntStutter(float gruntStutter) {
 		this.gruntStutter = gruntStutter;
 	}
-
-
 }
