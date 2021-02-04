@@ -23,7 +23,8 @@ public class TextureLoader {
 		hvlLoad("GruntStep1.png");      //4
 		hvlLoad("GruntStep2.png");      //5
 		hvlLoad("FloorTexture.png");    //6
-		hvlLoad("INOF.hvlft");   //7
+		hvlLoad("ruby.png");			//7
+		hvlLoad("INOF.hvlft");   		//Must be last
 		hvlFont(0);
 	}
 	

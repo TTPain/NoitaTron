@@ -14,7 +14,8 @@ import robotron2.Score;
 public class Shmoney {
 	
 	//Number of seconds rubies will last before despawning, plus or minus a few frames
-	public static final int DESPAWN_TIMER_IN_SECONDS = 6;
+	public static final int DESPAWN_TIMER_IN_SECONDS = 10;
+	public static final int SIZE = 22;
 	
 	private float xPos;
 	private float yPos;
@@ -30,10 +31,10 @@ public class Shmoney {
 		type = typeArg;
 	}
 	public void update(float delta, Player player) {
-		if ((player.getxPos() - Player.PLAYER_WIDTH / 2 < xPos + 6)
-				&& (player.getxPos() + Player.PLAYER_WIDTH / 2 > xPos - 6)
-				&& (player.getyPos() - Player.PLAYER_HEIGHT / 2 < yPos + 6)
-				&& player.getyPos() + Player.PLAYER_HEIGHT / 2 > yPos - 6) {
+		if ((player.getxPos() - Player.PLAYER_WIDTH / 2 < xPos + SIZE/2)
+				&& (player.getxPos() + Player.PLAYER_WIDTH / 2 > xPos - SIZE/2)
+				&& (player.getyPos() - Player.PLAYER_HEIGHT / 2 < yPos + SIZE/2)
+				&& player.getyPos() + Player.PLAYER_HEIGHT / 2 > yPos - SIZE/2) {
 			Score.score += 1000;
 			exists = false;
 		}
@@ -41,7 +42,7 @@ public class Shmoney {
 		setTimer(getTimer() - 1);
 	}
 	public void draw(float delta) {
-		hvlDraw(hvlQuadc(xPos, yPos, 12, 12), Color.pink);	
+		hvlDraw(hvlQuadc(xPos, yPos, SIZE, SIZE), hvlTexture(7));	
 	}
 	public float getxPos() {
 		return xPos;
