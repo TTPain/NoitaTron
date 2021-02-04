@@ -18,6 +18,7 @@ public class Shmoney {
 	public int shmoneyAmount;
 	private int type;
 	private boolean exists = true;
+	public static int timer = 144*15;
 	public static ArrayList<Shmoney> availableRubies = new ArrayList<Shmoney>();	
 	
 	public Shmoney(float xPosArg, float yPosArg, int typeArg) {
@@ -34,6 +35,7 @@ public class Shmoney {
 			exists = false;
 		}
 		draw(delta);
+		setTimer(getTimer() - 1);
 	}
 	public void draw(float delta) {
 		hvlDraw(hvlQuadc(xPos, yPos, 12, 12), Color.pink);	
@@ -68,6 +70,11 @@ public class Shmoney {
 	public void setAvailableRubies(ArrayList<Shmoney> availableRubies) {
 		this.availableRubies = availableRubies;
 	}
-	
+	public int getTimer() {
+		return timer;
+	}
+	public static void setTimer(int timer) {
+		Shmoney.timer = timer;
+	}	
 }
 
