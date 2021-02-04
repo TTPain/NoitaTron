@@ -34,8 +34,8 @@ public class Player {
 
 	public static final float PLAYER_START_X = 1920/2;
 	public static final float PLAYER_START_Y = 1080/2;
-	public static final float PLAYER_WIDTH = 2*(Block.BLOCK_SIZE/4);
-	public static final float PLAYER_HEIGHT = 3*(Block.BLOCK_SIZE/4);
+	public static final float PLAYER_WIDTH = 2*(Block.BLOCK_SIZE/6);
+	public static final float PLAYER_HEIGHT = 3*(Block.BLOCK_SIZE/6);
 	public static final float ACCELERATION = 500;
 	public static final float PIXELWALK_BUFFER = 3;
 	public static float MAX_SPEED = 250;
