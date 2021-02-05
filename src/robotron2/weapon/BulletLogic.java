@@ -49,7 +49,6 @@ public class BulletLogic {
 			b.setxSpeed(0);
 			b.setySpeed(0);
 		}
-
 	}
 
 	public static void update(float delta, Player player) {

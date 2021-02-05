@@ -77,10 +77,8 @@ public class GruntPathfinding {
 					checkedTiles.add(tileBeingChecked);
 					tilesToCheck.remove(tileBeingChecked);
 				}
-
 			}
 		}
-
 		
 		//System.out.println("Could not find player!");
 		return new ArrayList<>();
@@ -100,5 +98,4 @@ public class GruntPathfinding {
 		}
 		return true;
 	}
-
 }

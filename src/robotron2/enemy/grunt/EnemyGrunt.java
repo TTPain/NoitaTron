@@ -342,10 +342,10 @@ public class EnemyGrunt {
 				b.setFired(false);
 				b.setBulletDrawn(false);
 				Score.addPoints(100);
-				for(int i = 0; i < 12; i++) {
+				for(int i = 0; i < Utility.randomIntBetween(1, 10); i++) {
 					Shmoney.availableRubies.add(new Shmoney(xPos + Utility.randomIntBetween(-50, 50), yPos + Utility.randomIntBetween(-50, 50), 0));
 					for(Shmoney rubies : Shmoney.availableRubies) {
-							rubies.setTimer(rubies.getTimer() + Utility.randomIntBetween(-10, 10));
+							rubies.setTimer(rubies.getTimer() + Utility.randomIntBetween(-10, 25));
 					}
 				}
 			}

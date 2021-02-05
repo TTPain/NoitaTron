@@ -121,7 +121,4 @@ public class Bullet {
 	public void setDirectionFired(int directionFired) {
 		this.directionFired = directionFired;
 	}
-	
-	
-
 }

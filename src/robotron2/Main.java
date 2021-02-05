@@ -1,6 +1,5 @@
 package robotron2;
 
-import static com.osreboot.ridhvl2.HvlStatics.hvlDraw;
 import static com.osreboot.ridhvl2.HvlStatics.hvlLoad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuad;
 import static com.osreboot.ridhvl2.HvlStatics.hvlQuadc;
@@ -27,7 +26,6 @@ import robotron2.load.SoundLoader;
 import robotron2.load.TextureLoader;
 import robotron2.menu.MenuManager;
 import robotron2.terrain.LevelLoader;
-import robotron2.util.Utility;
 
 public class Main extends HvlTemplateI {
 
