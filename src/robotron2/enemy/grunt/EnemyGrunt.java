@@ -344,6 +344,9 @@ public class EnemyGrunt {
 				Score.addPoints(100);
 				for(int i = 0; i < 12; i++) {
 					Shmoney.availableRubies.add(new Shmoney(xPos + Utility.randomIntBetween(-50, 50), yPos + Utility.randomIntBetween(-50, 50), 0));
+					for(Shmoney rubies : Shmoney.availableRubies) {
+							rubies.setTimer(rubies.getTimer() + Utility.randomIntBetween(-10, 10));
+					}
 				}
 			}
 		}
