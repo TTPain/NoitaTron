@@ -78,7 +78,7 @@ public class BulletLogic {
 
 			for (Bullet b : bulletTotal){
 				availableBullets = bulletTotal.size();
-				if(b.isFired() == false && (cooldownClock == 0) && player.isAlive()) {
+				if(b.isFired() == false && (cooldownClock == 0) && player.isAlive() && b.getxSpeed() == 0&& b.getySpeed() == 0) {
 					b.setFired(true);
 					//Bullet firing sound
 					hvlSound(0).playAsSoundEffect(Utility.randomFloatBetween(0.90f, 1.05f), 1, false);

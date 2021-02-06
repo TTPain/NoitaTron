@@ -25,7 +25,7 @@ public class Game {
 
 	public static void initialize() {
 		///////
-		devMode = true;
+		devMode = false;
 		//////
 		//hvlSound(1).playAsMusic(1f, 1f, true);
 		player = new Player(Player.PLAYER_START_X, Player.PLAYER_START_Y, true, 100);
