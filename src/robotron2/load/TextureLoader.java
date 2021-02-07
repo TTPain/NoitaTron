@@ -17,8 +17,8 @@ public class TextureLoader {
 
 	public static void loadTextures() {
 		hvlLoad("PlayerBlueBack.png");  //0
-		hvlLoad("arrowleft.png");       //1
-		hvlLoad("arrowright.png");      //2
+		hvlLoad("PlayerBlueLeft.png");       //1
+		hvlLoad("PlayerBlueRight.png");      //2
 		hvlLoad("PlayerBlue.png");      //3
 		hvlLoad("GruntStep1.png");      //4
 		hvlLoad("GruntStep2.png");      //5
